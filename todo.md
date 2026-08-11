@@ -18,4 +18,4 @@
 - [x] Persister le choix du thème dans le navigateur et respecter la préférence système au premier chargement.
 - [x] Définir un mode sombre élégant avec contrastes lisibles et animations cohérentes.
 - [x] Tester le bouton, les deux thèmes, le mobile et `prefers-reduced-motion`.
-- [ ] Sauvegarder la version et synchroniser le dépôt GitHub public.
+- [x] Sauvegarder la version et synchroniser le dépôt GitHub public.

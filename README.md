@@ -16,7 +16,7 @@ LUST DEV construit et partage des expériences numériques avec une approche dir
 | Terrains | Développement, bots, outils, scripts et automatisation |
 | Langages visibles | JavaScript, Python et TypeScript |
 | Format | Portfolio statique responsive, en français |
-| Signature | Charbon mat, rouge LUST et terminal éditorial |
+| Signature | Ivoire, encre bleue, corail doux et atelier éditorial |
 
 ## Liens officiels
 

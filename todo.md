@@ -2,8 +2,12 @@
 
 ## À faire
 
-- [x] Éclaircir la palette sans perdre le contraste et la signature rouge LUST.
-- [x] Ajouter des animations CSS3 sur les barres, les boutons, les liens et les éléments d’interface.
-- [x] Ajouter la fiche personnelle de Lusty Joseph : âge 20 ans, prénom Joseph, nom Lusty, naissance le 28 janvier, nationalité haïtienne.
-- [x] Vérifier que les animations respectent `prefers-reduced-motion`.
-- [x] Tester le rendu desktop et mobile, puis créer un nouveau checkpoint.
+## Nouvelle refonte — direction professionnelle
+
+- [x] Remplacer le vocabulaire hacker/terminal par une esthétique web professionnelle, éditoriale et accueillante.
+- [x] Recomposer les sections avec davantage d’espace, des surfaces claires et une hiérarchie plus calme.
+- [x] Introduire une palette ivoire, sable, bleu profond et corail, sans perdre le lien avec LUST DEV.
+- [x] Remplacer les animations fortes par des transitions CSS3 sobres : reveal, glissement, underline et flottement léger.
+- [x] Ajouter des symboles visuels aux liens : GitHub, YouTube, WhatsApp, Telegram et flèches d’exploration.
+- [x] Vérifier la responsivité, le contraste, les états focus et `prefers-reduced-motion`.
+- [ ] Créer un checkpoint et synchroniser la refonte sur le dépôt GitHub public.

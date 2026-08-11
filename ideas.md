@@ -94,3 +94,23 @@ La marque doit rester identifiable même lorsque la page est réduite à sa navi
 Les projets sont des fiches de chantier publiques, non de simples cartes : chaque ligne expose désormais le dépôt, le rôle technique, la destination externe et un indice de preuve visible.
 
 Les visuels secondaires reprennent les mêmes marqueurs que le hero — charbon mat, lignes fines, rouge LUST, coordonnées et labels `//` — afin de construire un langage visuel continu.
+
+## Nouvelle direction — Atelier éditorial
+
+La refonte quitte la logique hacker/terminal pour une direction de **web design professionnel, éditorial et accueillant**. La page doit ressembler à un portfolio de studio numérique contemporain : davantage d’air, des surfaces ivoire, une typographie nette, des touches corail et bleu encre, puis des animations brèves qui accompagnent la lecture au lieu de la dominer.
+
+### Palette
+
+Le fond principal devient ivoire chaud `#f7f4ef`, les surfaces secondaires restent blanches `#ffffff`, le texte utilise l’encre bleue `#14233b`, le corail `#ef6b5b` remplace le rouge agressif comme signature d’action et le bleu ciel `#b9dce5` apporte une respiration douce. Un jaune beurre `#f4c96b` sert uniquement aux petits accents et aux états de signal.
+
+### Composition
+
+La navigation devient un bandeau clair et stable. Le hero adopte une composition éditoriale en deux colonnes : une introduction typographique à gauche, l’image LUST cadrée comme une couverture à droite. Les sections utilisent des cartes ouvertes, des bordures fines et des espacements généreux. Les rails verticaux sont remplacés par des numéros en pastilles et des titres de section plus lisibles.
+
+### Animation
+
+Les barres de signal deviennent des petits indicateurs de progression doux, avec une montée lente et une opacité modérée. Les boutons utilisent une translation de 2px et une ombre légère au survol. Les projets révèlent une ligne de couleur sur le côté, les liens soulignent leur destination et les icônes tournent de quelques degrés. Aucun effet clignotant ou glow intense ne doit rester.
+
+### Symboles de liens
+
+Chaque canal garde son symbole reconnaissable — GitHub, YouTube, WhatsApp, Telegram — dans un cercle pastel bordé. Les flèches indiquent les destinations externes. Les projets reçoivent un symbole de code, et les sections utilisent des petits points numérotés plutôt que des marqueurs de terminal.

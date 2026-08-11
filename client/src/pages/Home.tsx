@@ -1,4 +1,4 @@
-// Style system: Forge rouge / terminal éditorial — la page se lit comme un manifeste public, avec une structure asymétrique et des preuves cliquables.
+// Style system: Atelier éditorial — portfolio professionnel, espaces aérés, palette ivoire/encre/corail et interactions discrètes.
 import { useState } from "react";
 import {
   ArrowDownRight,
@@ -116,9 +116,9 @@ export default function Home() {
         </button>
 
         <nav id="main-navigation" className={menuOpen ? "main-nav is-open" : "main-nav"} aria-label="Navigation principale">
-          <a href="#profile" onClick={closeMenu}><span>01</span>Profil</a>
-          <a href="#work" onClick={closeMenu}><span>02</span>Terrain</a>
-          <a href="#network" onClick={closeMenu}><span>03</span>Réseau</a>
+          <a href="#profile" onClick={closeMenu}><span className="nav-symbol" aria-hidden="true">◌</span>Profil</a>
+          <a href="#work" onClick={closeMenu}><span className="nav-symbol" aria-hidden="true">✦</span>Projets</a>
+          <a href="#network" onClick={closeMenu}><span className="nav-symbol" aria-hidden="true">↗</span>Liens</a>
           <a className="nav-contact" href={links.github} target="_blank" rel="noreferrer" onClick={closeMenu}>
             GitHub <ArrowUpRight size={15} aria-hidden="true" />
           </a>
@@ -130,10 +130,10 @@ export default function Home() {
           <div className="hero-backdrop" aria-hidden="true" />
           <div className="hero-gridline" aria-hidden="true" />
           <div className="hero-copy">
-            <p className="eyebrow"><span className="pulse-dot" /> Independent developer · public build log</p>
-            <h1 id="hero-title">Du code qui<br /><em>prend position.</em></h1>
+            <p className="eyebrow"><span className="pulse-dot" /> Portfolio personnel · LUST DEV</p>
+            <h1 id="hero-title">Des idées qui<br /><em>prennent forme.</em></h1>
             <p className="hero-intro">
-              LUST DEV construit des bots, des outils et des expériences numériques avec une signature directe, technique et reconnaissable.
+              Lusty Joseph, connu sous le nom de LUST DEV, crée des outils, des bots et des expériences numériques avec une approche claire, curieuse et personnelle.
             </p>
             <div className="hero-actions">
               <a className="button button-primary" href="#work">
@@ -149,7 +149,7 @@ export default function Home() {
               <span style={{ "--bar-height": "56%", "--bar-delay": "240ms" } as React.CSSProperties} />
               <span style={{ "--bar-height": "92%", "--bar-delay": "360ms" } as React.CSSProperties} />
               <span style={{ "--bar-height": "66%", "--bar-delay": "480ms" } as React.CSSProperties} />
-              <small>LIVE SIGNAL / LUST DEV</small>
+              <small>CREATIVE SIGNAL / LUST DEV</small>
             </div>
           </div>
 
@@ -160,7 +160,7 @@ export default function Home() {
               <div className="image-scanline" aria-hidden="true" />
               <span className="image-stamp">LUST / SIGNAL</span>
             </div>
-            <div className="visual-meta visual-meta-bottom"><span>FORGED IN PUBLIC</span><span>© LUST DEV</span></div>
+            <div className="visual-meta visual-meta-bottom"><span>MADE WITH INTENTION</span><span>© LUST DEV</span></div>
           </div>
 
           <div className="hero-index" aria-hidden="true">LD / 2026</div>
@@ -179,16 +179,16 @@ export default function Home() {
         <section className="profile-section content-section" id="profile" aria-labelledby="profile-title">
           <div className="section-rail">
             <span className="section-number">01</span>
-            <span className="section-rail-label">PROFILE / MANIFESTE</span>
+            <span className="section-rail-label">PROFILE / À PROPOS</span>
           </div>
           <div className="profile-layout">
             <div className="section-heading-block">
-              <p className="eyebrow">// qui construit ici</p>
-              <h2 id="profile-title">Une identité<br /><span>en mouvement.</span></h2>
+              <p className="eyebrow">À PROPOS DE LUST DEV</p>
+              <h2 id="profile-title">Lusty Joseph<br /><span>en clair.</span></h2>
             </div>
             <div className="profile-copy">
-              <p className="lead-copy">LUST DEV est un profil indépendant centré sur le développement, les bots et les outils qui rendent le numérique plus expressif.</p>
-              <p>Le travail est visible sur GitHub, dans des dépôts publics et dans une communauté qui se prolonge sur YouTube, WhatsApp et Telegram. Pas de vitrine silencieuse : chaque lien est une porte vers le terrain réel.</p>
+              <p className="lead-copy">LUST DEV est un portfolio indépendant centré sur le développement, les bots et les outils qui rendent le numérique plus simple et plus expressif.</p>
+              <p>Le travail est visible sur GitHub, dans des dépôts publics et dans une communauté qui se prolonge sur YouTube, WhatsApp et Telegram. Une identité personnelle, un travail ouvert et plusieurs façons de rester connecté.</p>
               <a className="inline-arrow-link" href={links.github} target="_blank" rel="noreferrer">
                 Parcourir l’écosystème public <ArrowUpRight size={17} aria-hidden="true" />
               </a>
@@ -218,12 +218,12 @@ export default function Home() {
         <section className="work-section content-section" id="work" aria-labelledby="work-title">
           <div className="section-rail">
             <span className="section-number">02</span>
-            <span className="section-rail-label">SELECTED / TERRAIN</span>
+            <span className="section-rail-label">WORK / PROJETS</span>
           </div>
           <div className="work-heading-row">
             <div>
-              <p className="eyebrow">// dépôts à explorer</p>
-              <h2 id="work-title">Ce qui prend<br /><span>forme.</span></h2>
+              <p className="eyebrow">PROJETS SÉLECTIONNÉS</p>
+              <h2 id="work-title">Des projets<br /><span>qui avancent.</span></h2>
             </div>
             <p className="section-aside">Une sélection de projets visibles sur le profil GitHub public de LUST DEV. Ouvrir chaque fiche pour lire le code, l’historique et le contexte.</p>
           </div>
@@ -232,7 +232,7 @@ export default function Home() {
               <a className={`project-row ${project.tone}`} href={project.href} target="_blank" rel="noreferrer" key={project.name}>
                 <span className="project-index">{project.index}</span>
                 <span className="project-main">
-                  <span className="project-name">{project.name}<ArrowUpRight size={20} aria-hidden="true" /></span>
+                  <span className="project-name"><span className="project-symbol"><Code2 size={15} aria-hidden="true" /></span>{project.name}<ArrowUpRight size={20} aria-hidden="true" /></span>
                   <span className="project-type">{project.type}</span>
                 </span>
                 <span className="project-description">{project.description}</span>
@@ -252,14 +252,14 @@ export default function Home() {
         <section className="network-section content-section" id="network" aria-labelledby="network-title">
           <div className="section-rail">
             <span className="section-number">03</span>
-            <span className="section-rail-label">SIGNAL / NETWORK</span>
+            <span className="section-rail-label">CONNECT / LIENS</span>
           </div>
           <div className="network-layout">
             <div className="network-copy">
-              <p className="eyebrow">// rester dans le signal</p>
-              <h2 id="network-title">Le code est<br /><span>public. Le lien aussi.</span></h2>
-              <p>Suivre LUST DEV, c’est choisir son point d’entrée : tutoriels vidéo, mises à jour communautaires ou conversations directes.</p>
-              <div className="network-signature"><Radio size={16} /> <span>CHANNELS ONLINE / 04</span></div>
+              <p className="eyebrow">RESTER CONNECTÉ</p>
+              <h2 id="network-title">Choisir<br /><span>son canal.</span></h2>
+              <p>Retrouver LUST DEV selon son rythme : tutoriels vidéo, mises à jour communautaires ou conversations directes.</p>
+              <div className="network-signature"><Radio size={16} /> <span>04 CANAUX PUBLICS</span></div>
             </div>
             <div className="social-list">
               <SocialLink href={links.youtube} icon={<Youtube size={19} />} label="YouTube" handle="@欲LUSTDEV望 · tutoriels" />
@@ -277,8 +277,8 @@ export default function Home() {
 
         <section className="closing-section" aria-labelledby="closing-title">
           <div className="closing-line" aria-hidden="true" />
-          <p className="eyebrow">// next signal</p>
-          <h2 id="closing-title">On se retrouve<br /><em>sur le terrain.</em></h2>
+          <p className="eyebrow">UNE DERNIÈRE CHOSE</p>
+          <h2 id="closing-title">On se retrouve<br /><em>en ligne.</em></h2>
           <a className="button button-primary" href={links.github} target="_blank" rel="noreferrer">
             Ouvrir le terrain de jeu <ArrowUpRight size={17} aria-hidden="true" />
           </a>

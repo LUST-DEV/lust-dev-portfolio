@@ -1,0 +1,14 @@
+{
+  "name": "LUST DEV — Portfolio public",
+  "short_name": "LUST DEV",
+  "description": "Portfolio public de LUST DEV, développeur indépendant.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#090909",
+  "theme_color": "#ff3b1f",
+  "icons": [{
+    "src": "/manus-storage/lust-dev-mark_b565848b.png",
+    "sizes": "512x512",
+    "type": "image/png"
+  }]
+}

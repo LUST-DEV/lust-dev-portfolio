@@ -58,6 +58,15 @@ const projects = [
   },
 ];
 
+const skills = [
+  { name: "JavaScript", level: 88, category: "Langage · scripting", tone: "coral" },
+  { name: "Python", level: 82, category: "Automatisation · outils", tone: "sky" },
+  { name: "TypeScript", level: 74, category: "Applications modernes", tone: "butter" },
+  { name: "React", level: 80, category: "Interfaces web", tone: "coral" },
+  { name: "Node.js", level: 76, category: "Tooling · services", tone: "sky" },
+  { name: "CSS3", level: 90, category: "Design · animations", tone: "butter" },
+];
+
 function ExternalLabel({ children }: { children: React.ReactNode }) {
   return (
     <span className="external-label">
@@ -132,6 +141,7 @@ export default function Home() {
 
         <nav id="main-navigation" className={menuOpen ? "main-nav is-open" : "main-nav"} aria-label="Navigation principale">
           <a href="#profile" onClick={closeMenu}><span className="nav-symbol" aria-hidden="true">◌</span>Profil</a>
+          <a href="#skills" onClick={closeMenu}><span className="nav-symbol" aria-hidden="true">◎</span>Compétences</a>
           <a href="#work" onClick={closeMenu}><span className="nav-symbol" aria-hidden="true">✦</span>Projets</a>
           <a href="#network" onClick={closeMenu}><span className="nav-symbol" aria-hidden="true">↗</span>Liens</a>
           <a className="nav-contact" href={links.github} target="_blank" rel="noreferrer" onClick={closeMenu}>
@@ -240,9 +250,46 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="work-section content-section" id="work" aria-labelledby="work-title">
+        <section className="skills-section content-section" id="skills" aria-labelledby="skills-title">
           <div className="section-rail">
             <span className="section-number">02</span>
+            <span className="section-rail-label">STACK / COMPÉTENCES</span>
+          </div>
+          <div className="skills-heading-row">
+            <div>
+              <p className="eyebrow">COMPÉTENCES TECHNIQUES</p>
+              <h2 id="skills-title">Une stack<br /><span>en construction.</span></h2>
+            </div>
+            <div className="skills-intro">
+              <p>Un aperçu des technologies qui nourrissent les projets, les outils et les interfaces de LUST DEV.</p>
+              <span className="skills-note"><span className="skills-note-dot" /> Repères éditoriaux · à personnaliser</span>
+            </div>
+          </div>
+          <div className="skills-grid" aria-label="Compétences techniques et niveaux de progression">
+            {skills.map((skill, index) => (
+              <article className={`skill-card ${skill.tone}`} key={skill.name} style={{ "--skill-level": `${skill.level}%`, "--skill-delay": `${index * 90}ms` } as React.CSSProperties}>
+                <div className="skill-card-top">
+                  <div className="skill-title-wrap">
+                    <span className="skill-symbol" aria-hidden="true"><Code2 size={16} /></span>
+                    <div>
+                      <h3>{skill.name}</h3>
+                      <p>{skill.category}</p>
+                    </div>
+                  </div>
+                  <strong>{skill.level}<small>%</small></strong>
+                </div>
+                <div className="skill-track" role="progressbar" aria-label={`${skill.name} : repère de progression`} aria-valuemin={0} aria-valuemax={100} aria-valuenow={skill.level}>
+                  <span className="skill-fill" />
+                </div>
+                <div className="skill-card-foot"><span>{skill.level >= 80 ? "Base solide" : "En progression"}</span><span>0{index + 1}</span></div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="work-section content-section" id="work" aria-labelledby="work-title">
+          <div className="section-rail">
+            <span className="section-number">03</span>
             <span className="section-rail-label">WORK / PROJETS</span>
           </div>
           <div className="work-heading-row">
@@ -276,7 +323,7 @@ export default function Home() {
 
         <section className="network-section content-section" id="network" aria-labelledby="network-title">
           <div className="section-rail">
-            <span className="section-number">03</span>
+            <span className="section-number">04</span>
             <span className="section-rail-label">CONNECT / LIENS</span>
           </div>
           <div className="network-layout">

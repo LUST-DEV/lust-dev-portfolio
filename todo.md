@@ -19,3 +19,11 @@
 - [x] Définir un mode sombre élégant avec contrastes lisibles et animations cohérentes.
 - [x] Tester le bouton, les deux thèmes, le mobile et `prefers-reduced-motion`.
 - [x] Sauvegarder la version et synchroniser le dépôt GitHub public.
+
+## Compétences techniques
+
+- [x] Ajouter une section dédiée entre le profil et les projets.
+- [x] Présenter JavaScript, Python, TypeScript, React, Node.js et CSS3 avec des niveaux de maîtrise clairement libellés.
+- [x] Animer les barres de progression avec CSS3, sans animation intrusive et avec `prefers-reduced-motion`.
+- [x] Adapter les couleurs et les contrastes aux modes clair et sombre.
+- [x] Tester la section sur desktop et mobile, puis sauvegarder et synchroniser la version publique.

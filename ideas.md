@@ -114,3 +114,7 @@ Les barres de signal deviennent des petits indicateurs de progression doux, avec
 ### Symboles de liens
 
 Chaque canal garde son symbole reconnaissable — GitHub, YouTube, WhatsApp, Telegram — dans un cercle pastel bordé. Les flèches indiquent les destinations externes. Les projets reçoivent un symbole de code, et les sections utilisent des petits points numérotés plutôt que des marqueurs de terminal.
+
+### Mode sombre
+
+Le mode sombre ne revient pas au noir hacker : il utilise un bleu nuit profond, des surfaces bleu ardoise, un texte ivoire chaud et des accents corail rosé. Le bouton est présent dans la navigation, porte un libellé clair, mémorise la préférence locale et respecte la préférence système au premier chargement.

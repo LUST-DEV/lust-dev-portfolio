@@ -1,5 +1,5 @@
 // Style system: Atelier éditorial — portfolio professionnel, espaces aérés, palette ivoire/encre/corail et interactions discrètes.
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   ArrowDownRight,
   ArrowUpRight,
@@ -11,6 +11,8 @@ import {
   MessageCircle,
   Radio,
   Send,
+  Moon,
+  Sun,
   Terminal,
   X,
   Youtube,
@@ -90,11 +92,24 @@ function SocialLink({
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [theme, setTheme] = useState<"light" | "dark">(() => {
+    if (typeof window === "undefined") return "light";
+    const previewTheme = new URLSearchParams(window.location.search).get("theme");
+    if (previewTheme === "light" || previewTheme === "dark") return previewTheme;
+    const savedTheme = window.localStorage.getItem("lust-dev-theme");
+    if (savedTheme === "light" || savedTheme === "dark") return savedTheme;
+    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  });
 
   const closeMenu = () => setMenuOpen(false);
 
+  useEffect(() => {
+    window.localStorage.setItem("lust-dev-theme", theme);
+    document.documentElement.style.colorScheme = theme;
+  }, [theme]);
+
   return (
-    <div className="site-shell">
+    <div className={`site-shell theme-${theme}`}>
       <div className="ambient ambient-one" aria-hidden="true" />
       <div className="ambient ambient-two" aria-hidden="true" />
 
@@ -122,6 +137,16 @@ export default function Home() {
           <a className="nav-contact" href={links.github} target="_blank" rel="noreferrer" onClick={closeMenu}>
             GitHub <ArrowUpRight size={15} aria-hidden="true" />
           </a>
+          <button
+            className="theme-toggle"
+            type="button"
+            onClick={() => setTheme((currentTheme) => currentTheme === "light" ? "dark" : "light")}
+            aria-label={theme === "light" ? "Activer le mode sombre" : "Activer le mode clair"}
+            title={theme === "light" ? "Activer le mode sombre" : "Activer le mode clair"}
+          >
+            <span className="theme-toggle-icon" aria-hidden="true">{theme === "light" ? <Moon size={15} /> : <Sun size={15} />}</span>
+            <span>{theme === "light" ? "Sombre" : "Clair"}</span>
+          </button>
         </nav>
       </header>
 

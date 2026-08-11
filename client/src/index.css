@@ -55,6 +55,10 @@ button { font: inherit; }
 .nav-contact { position: relative; overflow: hidden; padding: .68rem 1rem; border: 1px solid var(--ink); border-radius: 999px; color: var(--ink) !important; background: var(--white); }
 .nav-contact::after { position: absolute; content: ""; inset: 0; width: 35%; background: linear-gradient(90deg, transparent, rgba(255,255,255,.84), transparent); transform: translateX(-180%); transition: transform 520ms var(--ease-out); }
 .nav-contact:hover::after, .nav-contact:focus-visible::after { transform: translateX(420%); }
+.theme-toggle { display: inline-flex; align-items: center; gap: .45rem; min-height: 2.35rem; padding: .48rem .72rem; border: 1px solid var(--line-strong); border-radius: 999px; color: var(--ink-soft); background: transparent; font-family: "Space Grotesk", sans-serif; font-size: .62rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; cursor: pointer; transition: color 180ms var(--ease-out), border-color 180ms var(--ease-out), background-color 180ms var(--ease-out), transform 180ms var(--ease-out); }
+.theme-toggle:hover, .theme-toggle:focus-visible { color: var(--coral-deep); border-color: var(--coral); background: rgba(233,112,98,.08); transform: translateY(-2px); }
+.theme-toggle:active { transform: scale(.97); }
+.theme-toggle-icon { display: grid; place-items: center; width: 1.35rem; height: 1.35rem; border-radius: 50%; color: var(--coral-deep); background: var(--sky); }
 .menu-toggle { display: none; border: 0; color: var(--ink); background: transparent; }
 
 .hero-section { position: relative; display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(22rem, .95fr); gap: clamp(2.5rem, 8vw, 9rem); min-height: 47rem; padding: 11.5rem clamp(1.25rem, 9vw, 11rem) 7rem; isolation: isolate; }
@@ -190,6 +194,41 @@ h2 { font-size: clamp(3.2rem, 6.4vw, 6.5rem); }
 @keyframes ticker-drift { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(-.8rem); } }
 @keyframes line-breathe { 0%, 100% { width: 2.2rem; opacity: .74; } 50% { width: 4.8rem; opacity: 1; } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .001ms !important; } }
+
+/* Dark theme: elegant navy surfaces, warm text and restrained coral accents. */
+.theme-dark {
+  --paper: #111a2a;
+  --white: #1b2940;
+  --ink: #f7f4ef;
+  --ink-soft: #b7c1d0;
+  --coral: #ed8578;
+  --coral-deep: #f29486;
+  --sky: #29445d;
+  --sky-deep: #96cbd3;
+  --butter: #f0cf8d;
+  --sand: #2d3b50;
+  --line: rgba(239,245,250,.16);
+  --line-strong: rgba(239,245,250,.3);
+  color: var(--ink);
+  background: radial-gradient(circle at 78% 4%, rgba(120,171,185,.16), transparent 28rem), linear-gradient(135deg, #111a2a, #17243a 60%, #1b1c2b);
+}
+.theme-dark .site-header { border-color: rgba(239,245,250,.12); background: rgba(17,26,42,.78); }
+.theme-dark .hero-backdrop { background: linear-gradient(90deg, rgba(17,26,42,.98) 0%, rgba(17,26,42,.88) 48%, rgba(17,26,42,.34) 100%), url("/manus-storage/lust-dev-hero_05408bb6.jpg") 73% center / cover; }
+.theme-dark .hero-gridline { opacity: .26; background-image: radial-gradient(rgba(239,245,250,.22) 1px, transparent 1px); }
+.theme-dark .nav-contact { color: var(--ink) !important; border-color: var(--line-strong); background: rgba(255,255,255,.06); }
+.theme-dark .profile-section { background: #18253a; }
+.theme-dark .work-section { background: #111a2a; }
+.theme-dark .project-row { border-color: var(--line); background: #1b2940; }
+.theme-dark .project-row:hover, .theme-dark .project-row:focus-visible { box-shadow: 0 .8rem 1.8rem rgba(0,0,0,.22); }
+.theme-dark .button-outline { background: #1b2940; }
+.theme-dark .network-section { background: #29445d; }
+.theme-dark .network-visual { box-shadow: .55rem .6rem 0 rgba(0,0,0,.2); }
+.theme-dark .social-icon { background: rgba(17,26,42,.38); border-color: rgba(239,245,250,.22); }
+.theme-dark .identity-panel { background: linear-gradient(115deg, #29445d, #24364f 60%, #4b3a39); box-shadow: .45rem .55rem 0 rgba(0,0,0,.2); }
+.theme-dark .closing-section { background: #0d1625; }
+.theme-dark .closing-section h2 { color: #f7f4ef; }
+.theme-dark .site-footer { background: #18253a; border-color: var(--line); }
+.theme-dark .brand-badge { background: var(--white); box-shadow: .2rem .25rem 0 rgba(150,203,211,.36); }
 
 @media (max-width: 900px) {
   .hero-section { grid-template-columns: 1fr; gap: 4rem; min-height: auto; padding-top: 10rem; }

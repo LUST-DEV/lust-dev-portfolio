@@ -18,6 +18,10 @@ LUST DEV construit et partage des expériences numériques avec une approche dir
 | Format | Portfolio statique responsive, en français |
 | Signature | Ivoire, encre bleue, corail doux et atelier éditorial |
 
+## Compétences techniques
+
+Le portfolio inclut une section dédiée aux technologies utilisées dans l’écosystème LUST DEV : JavaScript, Python, TypeScript, React, Node.js et CSS3. Chaque technologie est accompagnée d’un repère de progression animé, présenté comme un indicateur éditorial plutôt qu’une certification formelle.
+
 ## Liens officiels
 
 | Canal | Accès |

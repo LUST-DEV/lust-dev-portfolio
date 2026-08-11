@@ -143,6 +143,14 @@ export default function Home() {
                 Voir le profil GitHub <ArrowUpRight size={16} aria-hidden="true" />
               </a>
             </div>
+            <div className="hero-signal-bars" aria-label="Signal LUST DEV animé">
+              <span style={{ "--bar-height": "42%", "--bar-delay": "0ms" } as React.CSSProperties} />
+              <span style={{ "--bar-height": "78%", "--bar-delay": "120ms" } as React.CSSProperties} />
+              <span style={{ "--bar-height": "56%", "--bar-delay": "240ms" } as React.CSSProperties} />
+              <span style={{ "--bar-height": "92%", "--bar-delay": "360ms" } as React.CSSProperties} />
+              <span style={{ "--bar-height": "66%", "--bar-delay": "480ms" } as React.CSSProperties} />
+              <small>LIVE SIGNAL / LUST DEV</small>
+            </div>
           </div>
 
           <div className="hero-visual">
@@ -190,6 +198,20 @@ export default function Home() {
             <div><strong>20</strong><span>dépôts publics visibles</span></div>
             <div><strong>03</strong><span>langages repérés</span></div>
             <div><strong>04</strong><span>canaux officiels</span></div>
+          </div>
+          <div className="identity-panel" aria-labelledby="identity-title">
+            <div className="identity-heading">
+              <p className="eyebrow" id="identity-title">// fiche personnelle</p>
+              <span className="identity-status"><i /> PROFILE ONLINE</span>
+            </div>
+            <div className="identity-grid">
+              <div><span>Nom</span><strong>Lusty</strong></div>
+              <div><span>Prénom</span><strong>Joseph</strong></div>
+              <div><span>Âge</span><strong>20 ans</strong></div>
+              <div><span>Né le</span><strong>28 janvier</strong></div>
+              <div><span>Nationalité</span><strong>Haïtien</strong></div>
+            </div>
+            <div className="identity-footer"><span>IDENTITY / 001</span><span>HAÏTI · CARAÏBES</span><span>BUILDING IN PUBLIC</span></div>
           </div>
         </section>
 

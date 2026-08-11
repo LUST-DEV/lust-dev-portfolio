@@ -1,6 +1,6 @@
 # LUST DEV — Portfolio public
 
-**LUST DEV** est un profil indépendant orienté développement, bots, outils et automatisation. Ce dépôt présente une identité publique claire, les projets visibles de l’écosystème LUST DEV et les canaux officiels pour suivre son travail.
+**LUST DEV** est le nom public de **Lusty Joseph**, développeur indépendant haïtien. Ce dépôt présente une identité publique claire, les projets visibles de l’écosystème LUST DEV et les canaux officiels pour suivre son travail.
 
 > Du code qui prend position.
 
@@ -11,6 +11,8 @@ LUST DEV construit et partage des expériences numériques avec une approche dir
 | Repère | Présentation |
 |---|---|
 | Identité | LUST DEV / LUST-DEV |
+| Profil | Lusty Joseph, 20 ans, né le 28 janvier |
+| Nationalité | Haïtienne |
 | Terrains | Développement, bots, outils, scripts et automatisation |
 | Langages visibles | JavaScript, Python et TypeScript |
 | Format | Portfolio statique responsive, en français |

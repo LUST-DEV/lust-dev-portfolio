@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lust-dev.github.io/lust-dev-portfolio/sitemap.xml

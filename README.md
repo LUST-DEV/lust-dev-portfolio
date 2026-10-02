@@ -2,7 +2,7 @@
 
 > **Du code qui prend position.**
 
-Portfolio personnel de **Lusty Joseph**, connu sous le nom de **LUST DEV** : développeur indépendant haïtien, créateur de bots, d’outils et d’expériences numériques pensées pour être utiles, lisibles et accessibles.
+Portfolio personnel de **Lusty Joseph Gregoire**, connu sous le nom de **LUST DEV** et parfois de **Valery** : développeur indépendant haïtien, créateur de bots, d’outils et d’expériences numériques pensées pour être utiles, lisibles et accessibles.
 
 [![Déployer avec Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/LUST-DEV/lust-dev-portfolio)
 [![Licence MIT](https://img.shields.io/badge/license-MIT-20304a.svg)](LICENSE)
@@ -16,17 +16,22 @@ Portfolio personnel de **Lusty Joseph**, connu sous le nom de **LUST DEV** : dé
 
 ## Présentation
 
-LUST DEV est un espace public pour explorer des projets open source, des outils d’automatisation et une identité numérique en construction. Le site privilégie une direction artistique éditoriale : typographie nette, labels courts, contrastes doux, animations discrètes et lecture confortable sur mobile comme sur grand écran.
+LUST DEV est né en Haïti, le 28 janvier. À 16 ans, Lusty Joseph Gregoire crée son premier projet HTML à **Eagle Stream Academy**. Passionné par la programmation, la technologie et le hacking éthique, il cherche à comprendre le fonctionnement des choses et apprend chaque jour par la pratique.
+
+Le site est un espace public pour explorer ses projets open source, ses outils d’automatisation et son identité numérique. Il privilégie une direction artistique sombre et expressive : typographie nette, labels courts, pluie de particules, effets glow, animations de touches et lecture confortable sur mobile comme sur grand écran.
 
 ### Repères
 
 | Repère | Détail |
 |---|---|
-| Identité | LUST DEV / Lusty Joseph |
-| Profil | Développeur indépendant haïtien |
+| Identité | LUST DEV / Lusty Joseph Gregoire |
+| Alias | Valery · signature : joseph |
+| Profil | Développeur indépendant haïtien, basé à Delmas |
+| Parcours | Premier projet HTML à 16 ans · Eagle Stream Academy |
 | Terrains | Bots, outils, scripts, automatisation et interfaces web |
-| Technologies | JavaScript, Python, TypeScript, React, Node.js et CSS3 |
-| Interface | React + Vite + TypeScript |
+| Socle maîtrisé | HTML5, CSS3 et JavaScript |
+| En progression | Python, TypeScript, React et Node.js |
+| Interface | React + Vite + TypeScript, thème sombre privilégié |
 | Déploiement recommandé | Vercel depuis GitHub |
 | Langue principale | Français |
 | Licence du portfolio | MIT |

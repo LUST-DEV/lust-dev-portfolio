@@ -63,12 +63,12 @@ const projects = [
 ];
 
 const skills = [
-  { name: "JavaScript", level: 88, category: "Langage · scripting", tone: "coral" },
-  { name: "Python", level: 82, category: "Automatisation · outils", tone: "sky" },
-  { name: "TypeScript", level: 74, category: "Applications modernes", tone: "butter" },
-  { name: "React", level: 80, category: "Interfaces web", tone: "coral" },
-  { name: "Node.js", level: 76, category: "Tooling · services", tone: "sky" },
+  { name: "HTML5", level: 92, category: "Structure · accessibilité", tone: "coral" },
   { name: "CSS3", level: 90, category: "Design · animations", tone: "butter" },
+  { name: "JavaScript", level: 88, category: "Langage · scripting", tone: "coral" },
+  { name: "Python", level: 58, category: "En progression · outils", tone: "sky" },
+  { name: "TypeScript", level: 52, category: "En progression · applications", tone: "butter" },
+  { name: "React / Node.js", level: 48, category: "En progression · web", tone: "sky" },
 ];
 
 function ExternalLabel({ children }: { children: React.ReactNode }) {
@@ -131,7 +131,7 @@ export default function Home() {
     if (previewTheme === "light" || previewTheme === "dark") return previewTheme;
     const savedTheme = window.localStorage.getItem("lust-dev-theme");
     if (savedTheme === "light" || savedTheme === "dark") return savedTheme;
-    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    return "dark";
   });
 
   const closeMenu = () => setMenuOpen(false);
@@ -193,12 +193,13 @@ export default function Home() {
             <p className="eyebrow"><span className="pulse-dot" /> Portfolio personnel · LUST DEV</p>
             <h1 id="hero-title">Des idées qui<br /><em>prennent forme.</em></h1>
             <p className="hero-intro">
-              Lusty Joseph, connu sous le nom de LUST DEV, crée des outils, des bots et des expériences numériques avec une approche claire, curieuse et personnelle.
+              Lusty Joseph Gregoire, connu sous le nom de LUST DEV et parfois de Valery, crée des outils, des bots et des expériences numériques avec une curiosité constante.
             </p>
             <div className="hero-tags" aria-label="Domaines d’activité">
               <span className="label-chip">Bots</span>
               <span className="label-chip">Automation</span>
               <span className="label-chip">Open source</span>
+              <span className="label-chip">Ethical hacking</span>
             </div>
             <div className="hero-actions">
               <a className="button button-primary" href="#work">
@@ -252,8 +253,9 @@ export default function Home() {
               <h2 id="profile-title">Lusty Joseph<br /><span>en clair.</span></h2>
             </div>
             <div className="profile-copy">
-              <p className="lead-copy">LUST DEV est un portfolio indépendant centré sur le développement, les bots et les outils qui rendent le numérique plus simple et plus expressif.</p>
-              <p>Le travail est visible sur GitHub, dans des dépôts publics et dans une communauté qui se prolonge sur YouTube, WhatsApp et Telegram. Une identité personnelle, un travail ouvert et plusieurs façons de rester connecté.</p>
+              <p className="lead-copy">Né en Haïti le 28 janvier, Lusty Joseph Gregoire est passionné par la programmation, la technologie et le hacking éthique.</p>
+              <p>À 16 ans, il crée son premier projet HTML à Eagle Stream Academy. Depuis, sa curiosité l’amène à comprendre comment les choses fonctionnent, à apprendre chaque jour et à transformer ses découvertes en projets publics.</p>
+              <p>Connu aussi sous le nom de jeu <strong>Valery</strong>, il construit une identité ouverte entre code, créativité et culture numérique.</p>
               <a className="inline-arrow-link" href={links.github} target="_blank" rel="noopener noreferrer">
                 Parcourir l’écosystème public <ArrowUpRight size={17} aria-hidden="true" />
               </a>
@@ -261,7 +263,7 @@ export default function Home() {
           </div>
           <div className="profile-data" aria-label="Repères publics">
             <div><strong>20</strong><span>dépôts publics visibles</span></div>
-            <div><strong>03</strong><span>langages repérés</span></div>
+            <div><strong>03</strong><span>langages fondamentaux</span></div>
             <div><strong>04</strong><span>canaux officiels</span></div>
           </div>
           <div className="identity-panel" aria-labelledby="identity-title">
@@ -270,13 +272,15 @@ export default function Home() {
               <span className="identity-status"><i /> PROFILE ONLINE</span>
             </div>
             <div className="identity-grid">
-              <div><span>Nom</span><strong>Lusty</strong></div>
-              <div><span>Prénom</span><strong>Joseph</strong></div>
-              <div><span>Âge</span><strong>20 ans</strong></div>
+              <div><span>Nom</span><strong>Gregoire</strong></div>
+              <div><span>Prénom</span><strong>Lusty Joseph</strong></div>
+              <div><span>Signature</span><strong>joseph</strong></div>
               <div><span>Né le</span><strong>28 janvier</strong></div>
               <div><span>Nationalité</span><strong>Haïtien</strong></div>
+              <div><span>Ville</span><strong>Delmas, Haïti</strong></div>
+              <div><span>Alias</span><strong>Valery</strong></div>
             </div>
-            <div className="identity-footer"><span>IDENTITY / 001</span><span>HAÏTI · CARAÏBES</span><span>BUILDING IN PUBLIC</span></div>
+            <div className="identity-footer"><span>IDENTITY / 001</span><span>EAGLE STREAM ACADEMY · 16 ANS</span><span>BUILDING IN PUBLIC</span></div>
           </div>
         </section>
 
@@ -291,8 +295,8 @@ export default function Home() {
               <h2 id="skills-title">Une stack<br /><span>en construction.</span></h2>
             </div>
             <div className="skills-intro">
-              <p>Un aperçu des technologies qui nourrissent les projets, les outils et les interfaces de LUST DEV.</p>
-              <span className="skills-note"><span className="skills-note-dot" /> Repères éditoriaux · à personnaliser</span>
+              <p>HTML, CSS et JavaScript forment le socle maîtrisé. Python, TypeScript, React et Node.js avancent au rythme d’un apprentissage quotidien.</p>
+              <span className="skills-note"><span className="skills-note-dot" /> Socle maîtrisé · reste en progression</span>
             </div>
           </div>
           <div className="skills-grid" aria-label="Compétences techniques et niveaux de progression">

@@ -262,6 +262,11 @@ h2 { font-size: clamp(3.2rem, 6.4vw, 6.5rem); }
 .theme-dark .closing-section h2 { color: #f7f4ef; }
 .theme-dark .site-footer { background: #18253a; border-color: var(--line); }
 .theme-dark .brand-badge { background: var(--white); box-shadow: .2rem .25rem 0 rgba(150,203,211,.36); }
+.theme-dark h1, .theme-dark h2 { text-shadow: 0 0 2.5rem rgba(150,203,211,.1); }
+.theme-dark .label-chip { border-color: rgba(150,203,211,.3); background: rgba(17,26,42,.58); box-shadow: 0 0 .9rem rgba(150,203,211,.06); }
+.theme-dark .label-chip:hover, .theme-dark .label-chip:focus-visible { box-shadow: 0 0 1.2rem rgba(237,133,120,.22); }
+.theme-dark .button-primary { box-shadow: 0 .7rem 1.6rem rgba(237,133,120,.2), 0 0 1.2rem rgba(237,133,120,.08); }
+.theme-dark .rain-layer { opacity: .86; }
 
 @media (max-width: 900px) {
   .hero-section { grid-template-columns: 1fr; gap: 4rem; min-height: auto; padding-top: 10rem; }

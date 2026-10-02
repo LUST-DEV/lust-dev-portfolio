@@ -371,9 +371,14 @@ h2 { font-size: clamp(3.2rem, 6.4vw, 6.5rem); }
 @media (prefers-reduced-motion: reduce) { .rain-layer { display: none; } .label-chip { animation: none; } }
 
 .cookie-banner { position: fixed; z-index: 30; right: clamp(1rem, 3vw, 2.5rem); bottom: clamp(1rem, 3vw, 2.5rem); left: clamp(1rem, 3vw, 2.5rem); display: flex; align-items: end; justify-content: space-between; gap: 1.5rem; max-width: 62rem; margin: auto; padding: 1.15rem 1.25rem; border: 1px solid var(--line-strong); border-radius: 1rem; color: var(--ink); background: color-mix(in srgb, var(--white), transparent 4%); box-shadow: 0 1rem 3rem rgba(32,48,74,.2); backdrop-filter: blur(20px); animation: cookie-rise 420ms var(--ease-out) both; }
+.cookie-settings-button { position: fixed; z-index: 29; right: 1rem; bottom: 1rem; padding: .45rem .65rem; border: 1px solid var(--line); border-radius: .45rem; color: var(--ink-soft); background: color-mix(in srgb, var(--white), transparent 12%); font-family: "Space Grotesk", sans-serif; font-size: .58rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; cursor: pointer; opacity: .78; }
+.cookie-settings-button:hover, .cookie-settings-button:focus-visible { color: var(--ink); border-color: var(--coral); opacity: 1; }
 .cookie-kicker { margin: 0 0 .35rem; color: var(--coral-deep); font-family: "Space Grotesk", sans-serif; font-size: .58rem; font-weight: 700; letter-spacing: .12em; }
 .cookie-banner h2 { margin: 0 0 .35rem; font-size: 1.35rem; letter-spacing: -.035em; }
 .cookie-banner p:not(.cookie-kicker) { max-width: 38rem; margin: 0; color: var(--ink-soft); font-size: .78rem; line-height: 1.5; }
+.cookie-details { display: grid; gap: .35rem; max-width: 38rem; margin-top: .7rem; padding-top: .7rem; border-top: 1px solid var(--line); }
+.cookie-details p { font-size: .72rem !important; }
+.cookie-details strong { color: var(--ink); }
 .cookie-actions { display: flex; flex-shrink: 0; gap: .55rem; }
 .cookie-button { min-width: 6.5rem; padding: .7rem .9rem; border: 1px solid var(--line-strong); border-radius: .55rem; font-family: "Space Grotesk", sans-serif; font-size: .65rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; cursor: pointer; transition: transform 180ms var(--ease-out), background-color 180ms var(--ease-out), color 180ms var(--ease-out); }
 .cookie-button:hover, .cookie-button:focus-visible { transform: translateY(-2px); }
@@ -383,4 +388,4 @@ h2 { font-size: clamp(3.2rem, 6.4vw, 6.5rem); }
 .cookie-button-primary:hover, .cookie-button-primary:focus-visible { background: var(--ink); }
 @keyframes cookie-rise { from { opacity: 0; transform: translateY(1rem); } to { opacity: 1; transform: translateY(0); } }
 .theme-dark .cookie-banner { box-shadow: 0 1rem 3rem rgba(0,0,0,.3); }
-@media (max-width: 640px) { .cookie-banner { align-items: stretch; flex-direction: column; gap: 1rem; } .cookie-actions { width: 100%; } .cookie-button { flex: 1; } }
+@media (max-width: 640px) { .cookie-banner { align-items: stretch; flex-direction: column; gap: 1rem; } .cookie-actions { width: 100%; } .cookie-button { min-width: 0; flex: 1; } }

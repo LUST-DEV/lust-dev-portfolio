@@ -9,6 +9,11 @@ Portfolio personnel de **Lusty Joseph**, connu sous le nom de **LUST DEV** : dé
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.6-3178c6.svg)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React-19-61dafb.svg)](https://react.dev/)
 
+[![GitHub — LUST DEV](https://img.shields.io/badge/GitHub-LUST--DEV-181717?logo=github&logoColor=white)](https://github.com/LUST-DEV)
+[![YouTube — LUST DEV](https://img.shields.io/badge/YouTube-LUST--DEV-FF0000?logo=youtube&logoColor=white)](https://youtube.com/channel/UC7R0pFFLu6vSYblJGLQrVCQ?si=nfIhDsGTLOTQX2Af)
+[![WhatsApp — Canal LUST DEV](https://img.shields.io/badge/WhatsApp-Canal_LUST_DEV-25D366?logo=whatsapp&logoColor=white)](https://whatsapp.com/channel/0029VbCiqwyBVJl3Jv5T4I15)
+[![Telegram — @yokubo666](https://img.shields.io/badge/Telegram-%40yokubo666-229ED9?logo=telegram&logoColor=white)](https://t.me/yokubo666)
+
 ## Présentation
 
 LUST DEV est un espace public pour explorer des projets open source, des outils d’automatisation et une identité numérique en construction. Le site privilégie une direction artistique éditoriale : typographie nette, labels courts, contrastes doux, animations discrètes et lecture confortable sur mobile comme sur grand écran.
@@ -52,14 +57,14 @@ La liste complète est disponible sur le [profil GitHub de LUST DEV](https://git
 - **E-mail :** [lustdev927@gmail.com](mailto:lustdev927@gmail.com)
 - **Téléphone :** [+1 829 478 6326](tel:+18294786326)
 
-## Canaux officiels
+## Labels et liens officiels
 
 | Canal | Lien |
 |---|---|
-| GitHub | [github.com/LUST-DEV](https://github.com/LUST-DEV) |
-| YouTube | [Chaîne LUST DEV](https://youtube.com/channel/UC7R0pFFLu6vSYblJGLQrVCQ?si=nfIhDsGTLOTQX2Af) |
-| WhatsApp | [Canal LUST DEV](https://whatsapp.com/channel/0029VbCiqwyBVJl3Jv5T4I15) |
-| Telegram | [@yokubo666](https://t.me/yokubo666) |
+| **GitHub** | [LUST-DEV · repositories](https://github.com/LUST-DEV) |
+| **YouTube** | [LUST DEV · tutoriels et vidéos](https://youtube.com/channel/UC7R0pFFLu6vSYblJGLQrVCQ?si=nfIhDsGTLOTQX2Af) |
+| **WhatsApp** | [Canal LUST DEV · communauté](https://whatsapp.com/channel/0029VbCiqwyBVJl3Jv5T4I15) |
+| **Telegram** | [@yokubo666 · messages directs](https://t.me/yokubo666) |
 
 ## Installation locale
 

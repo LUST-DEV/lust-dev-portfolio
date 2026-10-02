@@ -88,7 +88,7 @@ function SocialLink({
   handle: string;
 }) {
   return (
-    <a className="social-link" href={href} target="_blank" rel="noreferrer">
+    <a className="social-link" href={href} target="_blank" rel="noopener noreferrer">
       <span className="social-icon">{icon}</span>
       <span>
         <strong>{label}</strong>
@@ -96,6 +96,26 @@ function SocialLink({
       </span>
       <ArrowUpRight className="social-arrow" size={17} aria-hidden="true" />
     </a>
+  );
+}
+
+function RainParticles() {
+  return (
+    <div className="rain-layer" aria-hidden="true">
+      {Array.from({ length: 42 }, (_, index) => (
+        <span
+          className="rain-drop"
+          key={index}
+          style={{
+            "--rain-x": `${(index * 37) % 100}%`,
+            "--rain-delay": `${(index % 13) * -0.42}s`,
+            "--rain-duration": `${3.6 + (index % 7) * 0.38}s`,
+            "--rain-length": `${12 + (index % 5) * 7}px`,
+            "--rain-opacity": `${0.16 + (index % 4) * 0.08}`,
+          } as React.CSSProperties}
+        />
+      ))}
+    </div>
   );
 }
 
@@ -121,10 +141,11 @@ export default function Home() {
     <div className={`site-shell theme-${theme}`}>
       <div className="ambient ambient-one" aria-hidden="true" />
       <div className="ambient ambient-two" aria-hidden="true" />
+      <RainParticles />
 
       <header className="site-header">
         <a className="brand-lockup" href="#top" onClick={closeMenu} aria-label="LUST DEV, revenir en haut">
-          <span className="brand-badge"><img src="/manus-storage/lust-dev-mark_b565848b.png" alt="" className="brand-mark" /></span>
+          <span className="brand-badge"><img src={`${import.meta.env.BASE_URL}lust-mark.svg`} alt="" className="brand-mark" /></span>
           <span className="brand-wordmark">LUST<span>DEV</span></span>
         </a>
 
@@ -144,7 +165,7 @@ export default function Home() {
           <a href="#skills" onClick={closeMenu}><span className="nav-symbol" aria-hidden="true">◎</span>Compétences</a>
           <a href="#work" onClick={closeMenu}><span className="nav-symbol" aria-hidden="true">✦</span>Projets</a>
           <a href="#network" onClick={closeMenu}><span className="nav-symbol" aria-hidden="true">↗</span>Liens</a>
-          <a className="nav-contact" href={links.github} target="_blank" rel="noreferrer" onClick={closeMenu}>
+          <a className="nav-contact" href={links.github} target="_blank" rel="noopener noreferrer" onClick={closeMenu}>
             GitHub <ArrowUpRight size={15} aria-hidden="true" />
           </a>
           <button
@@ -170,11 +191,16 @@ export default function Home() {
             <p className="hero-intro">
               Lusty Joseph, connu sous le nom de LUST DEV, crée des outils, des bots et des expériences numériques avec une approche claire, curieuse et personnelle.
             </p>
+            <div className="hero-tags" aria-label="Domaines d’activité">
+              <span className="label-chip">Bots</span>
+              <span className="label-chip">Automation</span>
+              <span className="label-chip">Open source</span>
+            </div>
             <div className="hero-actions">
               <a className="button button-primary" href="#work">
                 Explorer le terrain <ArrowDownRight size={17} aria-hidden="true" />
               </a>
-              <a className="text-link" href={links.github} target="_blank" rel="noreferrer">
+              <a className="text-link" href={links.github} target="_blank" rel="noopener noreferrer">
                 Voir le profil GitHub <ArrowUpRight size={16} aria-hidden="true" />
               </a>
             </div>
@@ -191,7 +217,7 @@ export default function Home() {
           <div className="hero-visual">
             <div className="visual-meta visual-meta-top"><span>VISUAL_001</span><span>640×426</span></div>
             <div className="image-frame">
-              <img src="/manus-storage/lust-dev-wordmark_3f303b42.jpg" alt="Lettres LUST en lumière rouge sur fond noir" />
+              <img src={`${import.meta.env.BASE_URL}lust-hero.svg`} alt="Composition graphique LUST DEV sur fond bleu nuit" />
               <div className="image-scanline" aria-hidden="true" />
               <span className="image-stamp">LUST / SIGNAL</span>
             </div>
@@ -224,7 +250,7 @@ export default function Home() {
             <div className="profile-copy">
               <p className="lead-copy">LUST DEV est un portfolio indépendant centré sur le développement, les bots et les outils qui rendent le numérique plus simple et plus expressif.</p>
               <p>Le travail est visible sur GitHub, dans des dépôts publics et dans une communauté qui se prolonge sur YouTube, WhatsApp et Telegram. Une identité personnelle, un travail ouvert et plusieurs façons de rester connecté.</p>
-              <a className="inline-arrow-link" href={links.github} target="_blank" rel="noreferrer">
+              <a className="inline-arrow-link" href={links.github} target="_blank" rel="noopener noreferrer">
                 Parcourir l’écosystème public <ArrowUpRight size={17} aria-hidden="true" />
               </a>
             </div>
@@ -301,7 +327,7 @@ export default function Home() {
           </div>
           <div className="project-list">
             {projects.map((project) => (
-              <a className={`project-row ${project.tone}`} href={project.href} target="_blank" rel="noreferrer" key={project.name}>
+              <a className={`project-row ${project.tone}`} href={project.href} target="_blank" rel="noopener noreferrer" key={project.name}>
                 <span className="project-index">{project.index}</span>
                 <span className="project-main">
                   <span className="project-name"><span className="project-symbol"><Code2 size={15} aria-hidden="true" /></span>{project.name}<ArrowUpRight size={20} aria-hidden="true" /></span>
@@ -315,7 +341,7 @@ export default function Home() {
           </div>
           <div className="work-footer">
             <div className="texture-panel" aria-hidden="true" />
-            <a className="button button-outline" href={links.github} target="_blank" rel="noreferrer">
+            <a className="button button-outline" href={links.github} target="_blank" rel="noopener noreferrer">
               Voir les 20 dépôts <Github size={17} aria-hidden="true" />
             </a>
           </div>
@@ -340,7 +366,7 @@ export default function Home() {
               <SocialLink href={links.github} icon={<Github size={19} />} label="GitHub" handle="@LUST-DEV · repositories" />
             </div>
             <div className="network-visual" aria-hidden="true">
-              <img src="/manus-storage/lust-dev-network_8d193b9a.jpg" alt="" />
+              <img src={`${import.meta.env.BASE_URL}lust-network.svg`} alt="" />
               <span className="network-coordinates">48° / 02° / 26°</span>
               <Bot className="network-bot" size={30} strokeWidth={1.2} />
             </div>
@@ -351,7 +377,7 @@ export default function Home() {
           <div className="closing-line" aria-hidden="true" />
           <p className="eyebrow">UNE DERNIÈRE CHOSE</p>
           <h2 id="closing-title">On se retrouve<br /><em>en ligne.</em></h2>
-          <a className="button button-primary" href={links.github} target="_blank" rel="noreferrer">
+          <a className="button button-primary" href={links.github} target="_blank" rel="noopener noreferrer">
             Ouvrir le terrain de jeu <ArrowUpRight size={17} aria-hidden="true" />
           </a>
         </section>

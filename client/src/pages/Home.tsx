@@ -7,8 +7,10 @@ import {
   Code2,
   ExternalLink,
   Github,
+  Mail,
   Menu,
   MessageCircle,
+  Phone,
   Radio,
   Send,
   Moon,
@@ -23,6 +25,8 @@ const links = {
   youtube: "https://youtube.com/channel/UC7R0pFFLu6vSYblJGLQrVCQ?si=nfIhDsGTLOTQX2Af",
   whatsapp: "https://whatsapp.com/channel/0029VbCiqwyBVJl3Jv5T4I15",
   telegram: "https://t.me/yokubo666",
+  email: "mailto:lustdev927@gmail.com",
+  phone: "tel:+18294786326",
 };
 
 const projects = [
@@ -364,6 +368,11 @@ export default function Home() {
               <SocialLink href={links.whatsapp} icon={<MessageCircle size={19} />} label="WhatsApp" handle="Canal LUST DEV" />
               <SocialLink href={links.telegram} icon={<Send size={19} />} label="Telegram" handle="@yokubo666" />
               <SocialLink href={links.github} icon={<Github size={19} />} label="GitHub" handle="@LUST-DEV · repositories" />
+              <div className="contact-card" aria-label="Coordonnées professionnelles">
+                <p className="contact-card-label">CONTACT DIRECT / COLLABORATION</p>
+                <a href={links.email}><Mail size={16} aria-hidden="true" /><span>lustdev927@gmail.com</span></a>
+                <a href={links.phone}><Phone size={16} aria-hidden="true" /><span>+1 829 478 6326</span></a>
+              </div>
             </div>
             <div className="network-visual" aria-hidden="true">
               <img src={`${import.meta.env.BASE_URL}lust-network.svg`} alt="" />

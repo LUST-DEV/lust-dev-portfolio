@@ -1,50 +1,124 @@
 # LUST DEV — Portfolio public
 
-**LUST DEV** est le nom public de **Lusty Joseph**, développeur indépendant haïtien. Ce dépôt présente une identité publique claire, les projets visibles de l’écosystème LUST DEV et les canaux officiels pour suivre son travail.
+> **Du code qui prend position.**
 
-> Du code qui prend position.
+Portfolio personnel de **Lusty Joseph**, connu sous le nom de **LUST DEV** : développeur indépendant haïtien, créateur de bots, d’outils et d’expériences numériques pensées pour être utiles, lisibles et accessibles.
 
-## À propos
+[![Déployer avec Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/LUST-DEV/lust-dev-portfolio)
+[![Licence MIT](https://img.shields.io/badge/license-MIT-20304a.svg)](LICENSE)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.6-3178c6.svg)](https://www.typescriptlang.org/)
+[![React](https://img.shields.io/badge/React-19-61dafb.svg)](https://react.dev/)
 
-LUST DEV construit et partage des expériences numériques avec une approche directe, technique et reconnaissable. Le portfolio met en avant les dépôts publics, les liens communautaires et les points d’entrée qui permettent d’explorer le travail original sur GitHub.
+## Présentation
 
-| Repère | Présentation |
+LUST DEV est un espace public pour explorer des projets open source, des outils d’automatisation et une identité numérique en construction. Le site privilégie une direction artistique éditoriale : typographie nette, labels courts, contrastes doux, animations discrètes et lecture confortable sur mobile comme sur grand écran.
+
+### Repères
+
+| Repère | Détail |
 |---|---|
-| Identité | LUST DEV / LUST-DEV |
-| Profil | Lusty Joseph, 20 ans, né le 28 janvier |
-| Nationalité | Haïtienne |
-| Terrains | Développement, bots, outils, scripts et automatisation |
-| Langages visibles | JavaScript, Python et TypeScript |
-| Format | Portfolio statique responsive, en français |
-| Signature | Ivoire, encre bleue, corail doux et atelier éditorial |
-
-## Compétences techniques
-
-Le portfolio inclut une section dédiée aux technologies utilisées dans l’écosystème LUST DEV : JavaScript, Python, TypeScript, React, Node.js et CSS3. Chaque technologie est accompagnée d’un repère de progression animé, présenté comme un indicateur éditorial plutôt qu’une certification formelle.
-
-## Liens officiels
-
-| Canal | Accès |
-|---|---|
-| GitHub | [github.com/LUST-DEV](https://github.com/LUST-DEV) |
-| YouTube | [Chaîne 欲 𝙇𝙐𝙎𝙏 𝘿𝙀𝙑 望](https://youtube.com/channel/UC7R0pFFLu6vSYblJGLQrVCQ?si=nfIhDsGTLOTQX2Af) |
-| WhatsApp | [Canal ✆『望』 𝙇𝙪𝙨𝙩 𝘿𝙚𝙫 『欲』 ☭⁶⁶⁶](https://whatsapp.com/channel/0029VbCiqwyBVJl3Jv5T4I15) |
-| Telegram | [@yokubo666](https://t.me/yokubo666) |
+| Identité | LUST DEV / Lusty Joseph |
+| Profil | Développeur indépendant haïtien |
+| Terrains | Bots, outils, scripts, automatisation et interfaces web |
+| Technologies | JavaScript, Python, TypeScript, React, Node.js et CSS3 |
+| Interface | React + Vite + TypeScript |
+| Déploiement recommandé | Vercel depuis GitHub |
+| Langue principale | Français |
+| Licence du portfolio | MIT |
 
 ## Projets mis en avant
 
-Le site met en avant **LUST-XMD**, **SavageHackCheck** et **GOKU-MD** comme points d’exploration. La liste complète des dépôts et leur contexte restent disponibles sur le [profil GitHub public](https://github.com/LUST-DEV).
+- **[LUST-XMD](https://github.com/LUST-DEV/LUST-XMD)** — toolkit JavaScript orienté bots et expériences automatisées.
+- **[SavageHackCheck](https://github.com/LUST-DEV/SavageHackCheck)** — utilitaire Python centré sur les scripts et la vérification.
+- **[GOKU-MD](https://github.com/LUST-DEV/GOKU-MD)** — projet open source à explorer dans l’écosystème public LUST DEV.
 
-## Structure
+La liste complète est disponible sur le [profil GitHub de LUST DEV](https://github.com/LUST-DEV).
 
-Le dossier `client/` contient l’interface React du portfolio. Les métadonnées de partage social, la description, le fichier `robots.txt`, le sitemap et le manifeste sont regroupés pour faciliter une indexation correcte. La page est responsive et conçue pour être lisible sur mobile comme sur grand écran.
+## Fonctionnalités du site
 
-## Indexation et visibilité
+- design éditorial responsive avec mode clair et mode sombre ;
+- labels de navigation et cartes de projets raffinés ;
+- pluie de particules et micro-animations accessibles ;
+- prise en charge de `prefers-reduced-motion` ;
+- image Open Graph `1200 × 630` pour les aperçus de liens ;
+- sitemap, robots.txt, canonical URL et données structurées JSON-LD ;
+- bannière de consentement et bouton de gestion des cookies ;
+- aucun service non essentiel chargé avant le consentement ;
+- préparation reCAPTCHA différée pour un futur formulaire de contact ;
+- dépendances de production auditées et sans vulnérabilité connue au dernier contrôle.
 
-Ce dépôt est public et contient des titres, une description, des liens cohérents et des fichiers techniques destinés aux robots d’exploration. L’apparition dans Google dépend ensuite du passage de ses robots, de la fréquence de recrawl, de la disponibilité du site et de l’autorité acquise par les liens externes ; elle ne peut pas être garantie instantanément.
+## Contact professionnel
 
-Pour accélérer la découverte, il est recommandé de conserver le lien du portfolio dans le profil GitHub, la bio YouTube et les descriptions des canaux officiels, puis d’ajouter l’URL publiée dans [Google Search Console](https://search.google.com/search-console/about) afin de demander une indexation.
+- **E-mail :** [lustdev927@gmail.com](mailto:lustdev927@gmail.com)
+- **Téléphone :** [+1 829 478 6326](tel:+18294786326)
+
+## Canaux officiels
+
+| Canal | Lien |
+|---|---|
+| GitHub | [github.com/LUST-DEV](https://github.com/LUST-DEV) |
+| YouTube | [Chaîne LUST DEV](https://youtube.com/channel/UC7R0pFFLu6vSYblJGLQrVCQ?si=nfIhDsGTLOTQX2Af) |
+| WhatsApp | [Canal LUST DEV](https://whatsapp.com/channel/0029VbCiqwyBVJl3Jv5T4I15) |
+| Telegram | [@yokubo666](https://t.me/yokubo666) |
+
+## Installation locale
+
+Pré-requis : Node.js 22 ou version compatible et pnpm 10.
+
+```bash
+git clone https://github.com/LUST-DEV/lust-dev-portfolio.git
+cd lust-dev-portfolio
+pnpm install --frozen-lockfile
+pnpm run dev
+```
+
+Contrôles disponibles :
+
+```bash
+pnpm run check       # vérification TypeScript
+pnpm run build       # build client et serveur
+pnpm audit --prod    # audit des dépendances de production
+```
+
+## Variables d’environnement
+
+Les noms sont documentés dans [`.env.example`](.env.example). Ne publie jamais les valeurs réelles dans GitHub.
+
+| Variable | Exposition | Utilisation |
+|---|---|---|
+| `VITE_RECAPTCHA_SITE_KEY` | Publique | Clé navigateur reCAPTCHA, uniquement lorsqu’un formulaire sera ajouté |
+| `RECAPTCHA_SECRET_KEY` | Serveur uniquement | Vérification backend reCAPTCHA |
+| `VITE_FRONTEND_FORGE_API_KEY` | Publique, à restreindre | Composant Maps éventuel |
+| `VITE_FRONTEND_FORGE_API_URL` | Publique | URL du proxy Maps |
+| `VITE_APP_ID` | Publique | Identifiant d’application éventuel |
+| `VITE_OAUTH_PORTAL_URL` | Publique | Portail OAuth éventuel |
+
+Le secret `RECAPTCHA_SECRET_KEY` ne doit jamais commencer par `VITE_` et ne doit jamais apparaître dans le bundle frontend.
+
+## Déploiement avec Vercel
+
+1. Ouvre [Importer le projet dans Vercel](https://vercel.com/new/clone?repository-url=https://github.com/LUST-DEV/lust-dev-portfolio).
+2. Sélectionne le dépôt `LUST-DEV/lust-dev-portfolio`.
+3. Utilise les paramètres suivants :
+
+```text
+Framework Preset: Vite
+Install Command: pnpm install --frozen-lockfile
+Build Command: pnpm run build
+Output Directory: dist/public
+Production Branch: main
+```
+
+Vercel déploiera automatiquement chaque nouveau push sur `main` et générera des URLs Preview pour les autres branches. Un domaine gratuit `vercel.app` est fourni sans VPS ni achat de domaine.
+
+## Confidentialité et reCAPTCHA
+
+Le site utilise uniquement un cookie nécessaire pour mémoriser le choix de consentement et les préférences d’interface. Aucun Analytics, publicité ou reCAPTCHA n’est chargé avant consentement. La préparation complète est documentée dans [`docs/privacy-and-recaptcha.md`](docs/privacy-and-recaptcha.md).
+
+## Indexation
+
+Le dépôt inclut les signaux techniques nécessaires : `robots.txt`, sitemap, canonical URL, Open Graph, image sociale et JSON-LD. Après le déploiement Vercel, ajoute l’URL publique dans [Google Search Console](https://search.google.com/search-console/about), puis demande l’indexation de la page d’accueil.
 
 ## Licence
 
-Le contenu de ce dépôt est publié comme portfolio personnel de LUST DEV. Les licences des projets présentés restent celles indiquées dans leurs dépôts respectifs.
+Le portfolio est distribué sous licence [MIT](LICENSE). Les projets présentés conservent leurs propres licences et conditions d’utilisation.

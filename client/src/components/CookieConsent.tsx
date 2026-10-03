@@ -62,7 +62,7 @@ export default function CookieConsent() {
   return (
     <aside className="cookie-banner" role="dialog" aria-modal="false" aria-labelledby="cookie-title" aria-describedby="cookie-description">
       <div>
-        <p className="cookie-kicker">CONFIDENTIALITÉ / COOKIES</p>
+        <p className="cookie-kicker">LUST DEV / CONFIDENTIALITÉ / COOKIES</p>
         <h2 id="cookie-title">Un site simple, sans suivi caché.</h2>
         <p id="cookie-description">
           Les cookies nécessaires mémorisent tes préférences. Les services non essentiels, comme l’Analytics ou reCAPTCHA, restent désactivés tant que tu ne les autorises pas.

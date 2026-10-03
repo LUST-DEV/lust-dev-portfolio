@@ -2,7 +2,7 @@
 
 > **Du code qui prend position.**
 
-Portfolio personnel de **Joseph Gregoire**, connu sous le nom de **LUST DEV**, alias **DEV** : développeur indépendant haïtien, créateur de bots, d’outils et d’expériences numériques pensées pour être utiles, lisibles et accessibles.
+Portfolio personnel de **Joseph Lusty Gregoire**, connu sous le nom de **LUST DEV** : développeur indépendant haïtien, créateur de bots, d’outils et d’expériences numériques pensées pour être utiles, lisibles et accessibles.
 
 [![Déployer avec Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/LUST-DEV/lust-dev-portfolio)
 [![Licence MIT](https://img.shields.io/badge/license-MIT-20304a.svg)](LICENSE)
@@ -24,8 +24,8 @@ Le site est un espace public pour explorer ses projets open source, ses outils d
 
 | Repère | Détail |
 |---|---|
-| Identité | LUST DEV / Joseph Gregoire |
-| Alias | DEV · signature : joseph |
+| Identité | LUST DEV / Joseph Lusty Gregoire |
+| Alias | LUST DEV · signature : joseph |
 | Profil | Développeur indépendant haïtien, basé à Delmas |
 | Parcours | Premier projet HTML à 16 ans · Eagle Stream Academy |
 | Terrains | Bots, outils, scripts, automatisation et interfaces web |

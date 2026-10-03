@@ -201,6 +201,22 @@ h2 { font-size: clamp(3.2rem, 6.4vw, 6.5rem); }
 .network-visual img { display: block; width: 100%; height: 100%; min-height: 19rem; object-fit: cover; opacity: .62; filter: saturate(.72); }
 .network-coordinates { position: absolute; z-index: 1; left: .8rem; bottom: .8rem; color: var(--white); font-family: "Space Grotesk", sans-serif; font-size: .56rem; letter-spacing: .12em; }
 .network-bot { position: absolute; z-index: 1; right: 1rem; top: 1rem; color: var(--butter); }
+.network-telemetry { position: absolute; z-index: 3; inset: 3rem .8rem .8rem; display: grid; align-content: end; gap: .35rem; color: #f7f4ef; font-family: "Space Grotesk", sans-serif; }
+.telemetry-row { display: flex; align-items: center; justify-content: space-between; gap: .7rem; padding: .34rem .48rem; border: 1px solid rgba(255,255,255,.12); border-radius: .35rem; background: rgba(6,10,18,.58); backdrop-filter: blur(8px); font-size: .56rem; letter-spacing: .08em; text-transform: uppercase; }
+.telemetry-row span { display: inline-flex; align-items: center; gap: .38rem; color: rgba(247,244,239,.68); }
+.telemetry-row strong { color: #f29486; font-size: .57rem; }
+.telemetry-dot { width: .4rem; height: .4rem; border-radius: 50%; background: #f29486; box-shadow: 0 0 .6rem currentColor; }
+.telemetry-dot.is-online { color: #8de0bb; background: #8de0bb; animation: dot-breathe 1.8s ease-in-out infinite; }
+.telemetry-dot.is-offline { color: #f29486; background: #f29486; }
+.glow-control { position: relative; display: flex; align-items: center; justify-content: center; gap: .55rem; min-height: 3.7rem; overflow: hidden; border: 1px solid rgba(255,255,255,.22); border-radius: .55rem; color: #f7f4ef; background: rgba(3,7,13,.76); font-family: "Space Grotesk", sans-serif; font-size: .53rem; font-weight: 700; letter-spacing: .12em; cursor: pointer; transition: border-color 220ms ease, box-shadow 220ms ease, transform 220ms ease; }
+.glow-control:hover, .glow-control:focus-visible { transform: translateY(-2px); }
+.glow-coral { --glow: #f29486; border-color: rgba(242,148,134,.7); box-shadow: 0 0 1.3rem rgba(242,148,134,.22); }
+.glow-cyan { --glow: #96cbd3; border-color: rgba(150,203,211,.7); box-shadow: 0 0 1.3rem rgba(150,203,211,.22); }
+.glow-gold { --glow: #f0cf8d; border-color: rgba(240,207,141,.7); box-shadow: 0 0 1.3rem rgba(240,207,141,.22); }
+.planet { position: relative; width: 2.5rem; height: 2.5rem; flex: 0 0 auto; overflow: hidden; border: 1px solid color-mix(in srgb, var(--glow), white 24%); border-radius: 50%; background: radial-gradient(circle at 32% 27%, color-mix(in srgb, var(--glow), white 28%), #080d16 58%); box-shadow: inset -.45rem -.25rem .7rem rgba(0,0,0,.75), 0 0 1.1rem var(--glow); animation: planet-float 4s ease-in-out infinite; }
+.planet::before, .planet::after, .planet-grid { position: absolute; content: ""; inset: 10% -25%; border: 1px solid color-mix(in srgb, var(--glow), transparent 35%); border-radius: 50%; transform: rotate(-22deg); }
+.planet::after { inset: -18% 18%; transform: rotate(36deg); border-color: color-mix(in srgb, var(--glow), transparent 52%); }
+.planet-grid { inset: 18% -12%; transform: rotate(18deg); border-color: color-mix(in srgb, var(--glow), transparent 62%); }
 
 .closing-section { position: relative; padding: 9.5rem 1.25rem 10rem; text-align: center; background: var(--ink); }
 .closing-line { width: 2.2rem; height: .25rem; margin: 0 auto 2.4rem; border-radius: 999px; background: var(--coral); animation: line-breathe 3s ease-in-out infinite; }
@@ -381,7 +397,8 @@ h2 { font-size: clamp(3.2rem, 6.4vw, 6.5rem); }
 @media (prefers-reduced-motion: reduce) { .rain-layer { display: none; } .label-chip { animation: none; } }
 
 .cookie-banner { position: fixed; z-index: 30; right: clamp(1rem, 3vw, 2.5rem); bottom: clamp(1rem, 3vw, 2.5rem); left: clamp(1rem, 3vw, 2.5rem); display: flex; align-items: end; justify-content: space-between; gap: 1.5rem; max-width: 62rem; margin: auto; padding: 1.15rem 1.25rem; border: 1px solid var(--line-strong); border-radius: 1rem; color: var(--ink); background: color-mix(in srgb, var(--white), transparent 4%); box-shadow: 0 1rem 3rem rgba(32,48,74,.2); backdrop-filter: blur(20px); animation: cookie-rise 420ms var(--ease-out) both; }
-.cookie-settings-button { position: fixed; z-index: 29; right: 1rem; bottom: 1rem; padding: .45rem .65rem; border: 1px solid var(--line); border-radius: .45rem; color: var(--ink-soft); background: color-mix(in srgb, var(--white), transparent 12%); font-family: "Space Grotesk", sans-serif; font-size: .58rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; cursor: pointer; opacity: .78; }
+.cookie-settings-button { position: fixed; z-index: 29; right: 1rem; bottom: 1rem; display: inline-flex; align-items: center; gap: .4rem; padding: .5rem .68rem; border: 1px solid var(--line-strong); border-radius: .45rem; color: var(--ink-soft); background: color-mix(in srgb, var(--white), transparent 8%); box-shadow: 0 0 .9rem rgba(150,203,211,.08); font-family: "Space Grotesk", sans-serif; font-size: .58rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; cursor: pointer; }
+.cookie-status-dot { width: .38rem; height: .38rem; border-radius: 50%; background: var(--coral); box-shadow: 0 0 .55rem var(--coral); }
 .cookie-settings-button:hover, .cookie-settings-button:focus-visible { color: var(--ink); border-color: var(--coral); opacity: 1; }
 .cookie-kicker { margin: 0 0 .35rem; color: var(--coral-deep); font-family: "Space Grotesk", sans-serif; font-size: .58rem; font-weight: 700; letter-spacing: .12em; }
 .cookie-banner h2 { margin: 0 0 .35rem; font-size: 1.35rem; letter-spacing: -.035em; }
@@ -397,6 +414,7 @@ h2 { font-size: clamp(3.2rem, 6.4vw, 6.5rem); }
 .cookie-button-primary { color: #fffaf5; border-color: var(--coral-deep); background: var(--coral-deep); }
 .cookie-button-primary:hover, .cookie-button-primary:focus-visible { background: var(--ink); }
 @keyframes cookie-rise { from { opacity: 0; transform: translateY(1rem); } to { opacity: 1; transform: translateY(0); } }
+@keyframes planet-float { 0%, 100% { transform: translateY(0) rotate(-3deg); } 50% { transform: translateY(-4px) rotate(3deg); } }
 .theme-dark .cookie-banner { box-shadow: 0 1rem 3rem rgba(0,0,0,.3); }
 .theme-dark .contact-card { background: rgba(17,26,42,.72); }
 @media (max-width: 640px) { .cookie-banner { align-items: stretch; flex-direction: column; gap: 1rem; } .cookie-actions { width: 100%; } .cookie-button { min-width: 0; flex: 1; } }

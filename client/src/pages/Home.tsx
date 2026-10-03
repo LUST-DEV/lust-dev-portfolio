@@ -7,6 +7,8 @@ import {
   Code2,
   ExternalLink,
   Github,
+  Globe2,
+  Gauge,
   Mail,
   Menu,
   MessageCircle,
@@ -119,6 +121,54 @@ function RainParticles() {
           } as React.CSSProperties}
         />
       ))}
+    </div>
+  );
+}
+
+function NetworkTelemetry() {
+  const [latency, setLatency] = useState<number | null>(null);
+  const [online, setOnline] = useState(() => typeof navigator === "undefined" ? true : navigator.onLine);
+  const [glow, setGlow] = useState<"coral" | "cyan" | "gold">("coral");
+
+  useEffect(() => {
+    const updateOnline = () => setOnline(navigator.onLine);
+    window.addEventListener("online", updateOnline);
+    window.addEventListener("offline", updateOnline);
+
+    const measure = async () => {
+      if (!navigator.onLine) {
+        setLatency(null);
+        return;
+      }
+      const started = performance.now();
+      try {
+        await fetch(`${window.location.origin}/?network_probe=${Date.now()}`, { method: "HEAD", cache: "no-store" });
+        setLatency(Math.max(1, Math.round(performance.now() - started)));
+      } catch {
+        setLatency(null);
+      }
+    };
+
+    void measure();
+    const interval = window.setInterval(measure, 30000);
+    return () => {
+      window.clearInterval(interval);
+      window.removeEventListener("online", updateOnline);
+      window.removeEventListener("offline", updateOnline);
+    };
+  }, []);
+
+  const cycleGlow = () => setGlow((current) => current === "coral" ? "cyan" : current === "cyan" ? "gold" : "coral");
+
+  return (
+    <div className="network-telemetry" aria-label="État du réseau et de la session">
+      <div className="telemetry-row"><span><i className={`telemetry-dot ${online ? "is-online" : "is-offline"}`} /> Statut</span><strong>{online ? "EN LIGNE" : "HORS LIGNE"}</strong></div>
+      <div className="telemetry-row"><span><Gauge size={13} aria-hidden="true" /> Latence</span><strong>{latency === null ? "—" : `${latency} ms`}</strong></div>
+      <div className="telemetry-row"><span><Globe2 size={13} aria-hidden="true" /> Session</span><strong>VISITEUR</strong></div>
+      <button className={`glow-control glow-${glow}`} type="button" onClick={cycleGlow} aria-label="Changer la couleur du halo du globe">
+        <span className="planet" aria-hidden="true"><span className="planet-grid" /></span>
+        <span>TOUCH / CHANGE GLOW</span>
+      </button>
     </div>
   );
 }
@@ -378,10 +428,11 @@ export default function Home() {
                 <a href={links.phone}><Phone size={16} aria-hidden="true" /><span>+1 829 478 6326</span></a>
               </div>
             </div>
-            <div className="network-visual" aria-hidden="true">
+            <div className="network-visual">
               <img src={`${import.meta.env.BASE_URL}lust-network.svg`} alt="" />
               <span className="network-coordinates">48° / 02° / 26°</span>
               <Bot className="network-bot" size={30} strokeWidth={1.2} />
+              <NetworkTelemetry />
             </div>
           </div>
         </section>

@@ -32,10 +32,13 @@ function saveConsent(choice: CookieConsentChoice) {
 
 export default function CookieConsent() {
   const [visible, setVisible] = useState(false);
+  const [choice, setChoice] = useState<CookieConsentChoice | null>(null);
   const [showDetails, setShowDetails] = useState(false);
 
   useEffect(() => {
-    setVisible(readConsent() === null);
+    const currentChoice = readConsent();
+    setChoice(currentChoice);
+    setVisible(currentChoice === null);
     const openSettings = () => setVisible(true);
     window.addEventListener("lust:open-cookie-settings", openSettings);
     return () => window.removeEventListener("lust:open-cookie-settings", openSettings);
@@ -44,13 +47,15 @@ export default function CookieConsent() {
   if (!visible) {
     return (
       <button className="cookie-settings-button" type="button" onClick={() => setVisible(true)} aria-label="Gérer les préférences cookies">
-        Cookies
+        <span className="cookie-status-dot" aria-hidden="true" />
+        Cookies · {choice === "all" ? "autorisés" : "nécessaires uniquement"}
       </button>
     );
   }
 
   const choose = (choice: CookieConsentChoice) => {
     saveConsent(choice);
+    setChoice(choice);
     setVisible(false);
   };
 

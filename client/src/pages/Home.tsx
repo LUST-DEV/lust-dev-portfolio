@@ -24,9 +24,11 @@ import {
 
 const links = {
   github: "https://github.com/LUST-DEV",
-  youtube: "https://youtube.com/channel/UC7R0pFFLu6vSYblJGLQrVCQ?si=nfIhDsGTLOTQX2Af",
+  youtube: "https://www.youtube.com/@LUSTDEV",
   whatsapp: "https://whatsapp.com/channel/0029VbCiqwyBVJl3Jv5T4I15",
+  whatsappContact: "https://wa.me/18294786326",
   telegram: "https://t.me/yokubo666",
+  telegramJoseph: "https://t.me/JOSEPHLUSTY",
   email: "mailto:lustdev927@gmail.com",
   phone: "tel:+18294786326",
 };
@@ -125,7 +127,7 @@ function RainParticles() {
   );
 }
 
-function NetworkTelemetry() {
+function NetworkTelemetry({ showPlanet, onTogglePlanet }: { showPlanet: boolean; onTogglePlanet: () => void }) {
   const [latency, setLatency] = useState<number | null>(null);
   const [online, setOnline] = useState(() => typeof navigator === "undefined" ? true : navigator.onLine);
   const [glow, setGlow] = useState<"coral" | "cyan" | "gold">("coral");
@@ -165,9 +167,9 @@ function NetworkTelemetry() {
       <div className="telemetry-row"><span><i className={`telemetry-dot ${online ? "is-online" : "is-offline"}`} /> Statut</span><strong>{online ? "EN LIGNE" : "HORS LIGNE"}</strong></div>
       <div className="telemetry-row"><span><Gauge size={13} aria-hidden="true" /> Latence</span><strong>{latency === null ? "—" : `${latency} ms`}</strong></div>
       <div className="telemetry-row"><span><Globe2 size={13} aria-hidden="true" /> Session</span><strong>VISITEUR</strong></div>
-      <button className={`glow-control glow-${glow}`} type="button" onClick={cycleGlow} aria-label="Changer la couleur du halo du globe">
+      <button className={`glow-control glow-${glow}`} type="button" onClick={() => { onTogglePlanet(); cycleGlow(); }} aria-label="Basculer entre le réseau et la planète Terre">
         <span className="planet" aria-hidden="true"><span className="planet-grid" /></span>
-        <span>TOUCH / CHANGE GLOW</span>
+        <span>{showPlanet ? "TOUCH / NETWORK VIEW" : "TOUCH / PLANET EARTH"}</span>
       </button>
     </div>
   );
@@ -175,6 +177,7 @@ function NetworkTelemetry() {
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [showPlanet, setShowPlanet] = useState(false);
   const [theme, setTheme] = useState<"light" | "dark">(() => {
     if (typeof window === "undefined") return "light";
     const previewTheme = new URLSearchParams(window.location.search).get("theme");
@@ -243,7 +246,7 @@ export default function Home() {
             <p className="eyebrow"><span className="pulse-dot" /> Portfolio personnel · LUST DEV</p>
             <h1 id="hero-title">Des idées qui<br /><em>prennent forme.</em></h1>
             <p className="hero-intro">
-              Lusty Joseph Gregoire, connu sous le nom de LUST DEV et parfois de Valery, crée des outils, des bots et des expériences numériques avec une curiosité constante.
+              Joseph Gregoire, connu sous le nom de LUST DEV — alias DEV, crée des outils, des bots et des expériences numériques avec une curiosité constante.
             </p>
             <div className="hero-tags" aria-label="Domaines d’activité">
               <span className="label-chip">Bots</span>
@@ -300,12 +303,12 @@ export default function Home() {
           <div className="profile-layout">
             <div className="section-heading-block">
               <p className="eyebrow">À PROPOS DE LUST DEV</p>
-              <h2 id="profile-title">Lusty Joseph<br /><span>en clair.</span></h2>
+              <h2 id="profile-title">Joseph<br /><span>en clair.</span></h2>
             </div>
             <div className="profile-copy">
-              <p className="lead-copy">Né en Haïti le 28 janvier, Lusty Joseph Gregoire est passionné par la programmation, la technologie et le hacking éthique.</p>
+              <p className="lead-copy">Né en Haïti le 28 janvier, Joseph Gregoire est passionné par la programmation, la technologie et le hacking éthique.</p>
               <p>À 16 ans, il crée son premier projet HTML à Eagle Stream Academy. Depuis, sa curiosité l’amène à comprendre comment les choses fonctionnent, à apprendre chaque jour et à transformer ses découvertes en projets publics.</p>
-              <p>Connu aussi sous le nom de jeu <strong>Valery</strong>, il construit une identité ouverte entre code, créativité et culture numérique.</p>
+              <p>Connu publiquement sous le nom de <strong>LUST DEV</strong>, alias <strong>DEV</strong>, il construit une identité ouverte entre code, créativité et culture numérique.</p>
               <a className="inline-arrow-link" href={links.github} target="_blank" rel="noopener noreferrer">
                 Parcourir l’écosystème public <ArrowUpRight size={17} aria-hidden="true" />
               </a>
@@ -323,12 +326,12 @@ export default function Home() {
             </div>
             <div className="identity-grid">
               <div><span>Nom</span><strong>Gregoire</strong></div>
-              <div><span>Prénom</span><strong>Lusty Joseph</strong></div>
+              <div><span>Prénom</span><strong>Joseph</strong></div>
               <div><span>Signature</span><strong>joseph</strong></div>
               <div><span>Né le</span><strong>28 janvier</strong></div>
               <div><span>Nationalité</span><strong>Haïtien</strong></div>
               <div><span>Ville</span><strong>Delmas, Haïti</strong></div>
-              <div><span>Alias</span><strong>Valery</strong></div>
+              <div><span>Alias</span><strong>LUST DEV : DEV</strong></div>
             </div>
             <div className="identity-footer"><span>IDENTITY / 001</span><span>EAGLE STREAM ACADEMY · 16 ANS</span><span>BUILDING IN PUBLIC</span></div>
           </div>
@@ -419,8 +422,10 @@ export default function Home() {
             </div>
             <div className="social-list">
               <SocialLink href={links.youtube} icon={<Youtube size={19} />} label="YouTube" handle="@欲LUSTDEV望 · tutoriels" />
-              <SocialLink href={links.whatsapp} icon={<MessageCircle size={19} />} label="WhatsApp" handle="Canal LUST DEV" />
+              <SocialLink href={links.whatsappContact} icon={<MessageCircle size={19} />} label="WhatsApp" handle="Support direct · +1 829 478 6326" />
+              <SocialLink href={links.whatsapp} icon={<MessageCircle size={19} />} label="WhatsApp Channel" handle="Canal LUST DEV" />
               <SocialLink href={links.telegram} icon={<Send size={19} />} label="Telegram" handle="@yokubo666" />
+              <SocialLink href={links.telegramJoseph} icon={<Send size={19} />} label="Telegram Joseph" handle="@JOSEPHLUSTY" />
               <SocialLink href={links.github} icon={<Github size={19} />} label="GitHub" handle="@LUST-DEV · repositories" />
               <div className="contact-card" aria-label="Coordonnées professionnelles">
                 <p className="contact-card-label">CONTACT DIRECT / COLLABORATION</p>
@@ -429,10 +434,11 @@ export default function Home() {
               </div>
             </div>
             <div className="network-visual">
-              <img src={`${import.meta.env.BASE_URL}lust-network.svg`} alt="" />
+              {!showPlanet && <img src={`${import.meta.env.BASE_URL}lust-network.svg`} alt="Réseau LUST DEV" />}
+              {showPlanet && <img className="earth-visual" src={`${import.meta.env.BASE_URL}lust-earth.svg`} alt="Planète Terre stylisée, vue depuis l’espace" />}
               <span className="network-coordinates">48° / 02° / 26°</span>
               <Bot className="network-bot" size={30} strokeWidth={1.2} />
-              <NetworkTelemetry />
+              <NetworkTelemetry showPlanet={showPlanet} onTogglePlanet={() => setShowPlanet((current) => !current)} />
             </div>
           </div>
         </section>

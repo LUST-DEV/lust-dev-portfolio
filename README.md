@@ -2,7 +2,7 @@
 
 > **Du code qui prend position.**
 
-Portfolio personnel de **Lusty Joseph Gregoire**, connu sous le nom de **LUST DEV** et parfois de **Valery** : développeur indépendant haïtien, créateur de bots, d’outils et d’expériences numériques pensées pour être utiles, lisibles et accessibles.
+Portfolio personnel de **Joseph Gregoire**, connu sous le nom de **LUST DEV**, alias **DEV** : développeur indépendant haïtien, créateur de bots, d’outils et d’expériences numériques pensées pour être utiles, lisibles et accessibles.
 
 [![Déployer avec Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/LUST-DEV/lust-dev-portfolio)
 [![Licence MIT](https://img.shields.io/badge/license-MIT-20304a.svg)](LICENSE)
@@ -10,13 +10,13 @@ Portfolio personnel de **Lusty Joseph Gregoire**, connu sous le nom de **LUST DE
 [![React](https://img.shields.io/badge/React-19-61dafb.svg)](https://react.dev/)
 
 [![GitHub — LUST DEV](https://img.shields.io/badge/GitHub-LUST--DEV-181717?logo=github&logoColor=white)](https://github.com/LUST-DEV)
-[![YouTube — LUST DEV](https://img.shields.io/badge/YouTube-LUST--DEV-FF0000?logo=youtube&logoColor=white)](https://youtube.com/channel/UC7R0pFFLu6vSYblJGLQrVCQ?si=nfIhDsGTLOTQX2Af)
+[![YouTube — LUST DEV](https://img.shields.io/badge/YouTube-LUST--DEV-FF0000?logo=youtube&logoColor=white)](https://www.youtube.com/@LUSTDEV)
 [![WhatsApp — Canal LUST DEV](https://img.shields.io/badge/WhatsApp-Canal_LUST_DEV-25D366?logo=whatsapp&logoColor=white)](https://whatsapp.com/channel/0029VbCiqwyBVJl3Jv5T4I15)
 [![Telegram — @yokubo666](https://img.shields.io/badge/Telegram-%40yokubo666-229ED9?logo=telegram&logoColor=white)](https://t.me/yokubo666)
 
 ## Présentation
 
-LUST DEV est né en Haïti, le 28 janvier. À 16 ans, Lusty Joseph Gregoire crée son premier projet HTML à **Eagle Stream Academy**. Passionné par la programmation, la technologie et le hacking éthique, il cherche à comprendre le fonctionnement des choses et apprend chaque jour par la pratique.
+LUST DEV est né en Haïti, le 28 janvier. À 16 ans, Joseph crée son premier projet HTML à **Eagle Stream Academy**. Passionné par la programmation, la technologie et le hacking éthique, il cherche à comprendre le fonctionnement des choses et apprend chaque jour par la pratique.
 
 Le site est un espace public pour explorer ses projets open source, ses outils d’automatisation et son identité numérique. Il privilégie une direction artistique sombre et expressive : typographie nette, labels courts, pluie de particules, effets glow, animations de touches et lecture confortable sur mobile comme sur grand écran.
 
@@ -24,8 +24,8 @@ Le site est un espace public pour explorer ses projets open source, ses outils d
 
 | Repère | Détail |
 |---|---|
-| Identité | LUST DEV / Lusty Joseph Gregoire |
-| Alias | Valery · signature : joseph |
+| Identité | LUST DEV / Joseph Gregoire |
+| Alias | LUST DEV : DEV · signature : joseph |
 | Profil | Développeur indépendant haïtien, basé à Delmas |
 | Parcours | Premier projet HTML à 16 ans · Eagle Stream Academy |
 | Terrains | Bots, outils, scripts, automatisation et interfaces web |
@@ -67,9 +67,10 @@ La liste complète est disponible sur le [profil GitHub de LUST DEV](https://git
 | Canal | Lien |
 |---|---|
 | **GitHub** | [LUST-DEV · repositories](https://github.com/LUST-DEV) |
-| **YouTube** | [LUST DEV · tutoriels et vidéos](https://youtube.com/channel/UC7R0pFFLu6vSYblJGLQrVCQ?si=nfIhDsGTLOTQX2Af) |
-| **WhatsApp** | [Canal LUST DEV · communauté](https://whatsapp.com/channel/0029VbCiqwyBVJl3Jv5T4I15) |
+| **YouTube** | [LUST DEV · tutoriels et vidéos](https://www.youtube.com/@LUSTDEV) |
+| **WhatsApp** | [Support direct · +1 829 478 6326](https://wa.me/18294786326) · [Canal LUST DEV](https://whatsapp.com/channel/0029VbCiqwyBVJl3Jv5T4I15) |
 | **Telegram** | [@yokubo666 · messages directs](https://t.me/yokubo666) |
+| **Telegram Joseph** | [@JOSEPHLUSTY · contact](https://t.me/JOSEPHLUSTY) |
 
 ## Installation locale
 

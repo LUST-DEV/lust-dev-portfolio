@@ -1,5 +1,5 @@
 // Style system: Atelier éditorial — portfolio professionnel, espaces aérés, palette ivoire/encre/corail et interactions discrètes.
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   ArrowDownRight,
   ArrowUpRight,
@@ -123,6 +123,13 @@ function RainParticles() {
           } as React.CSSProperties}
         />
       ))}
+      {Array.from({ length: 9 }, (_, index) => (
+        <span className="falling-star" key={`star-${index}`} style={{
+          "--star-x": `${8 + ((index * 31) % 88)}%`,
+          "--star-delay": `${(index % 7) * -1.8}s`,
+          "--star-duration": `${5.5 + (index % 4) * .9}s`,
+        } as React.CSSProperties} />
+      ))}
     </div>
   );
 }
@@ -178,6 +185,8 @@ function NetworkTelemetry({ showPlanet, onTogglePlanet }: { showPlanet: boolean;
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showPlanet, setShowPlanet] = useState(false);
+  const [earthRotation, setEarthRotation] = useState(0);
+  const dragStart = useRef<{ x: number; rotation: number } | null>(null);
   const [theme, setTheme] = useState<"light" | "dark">(() => {
     if (typeof window === "undefined") return "light";
     const previewTheme = new URLSearchParams(window.location.search).get("theme");
@@ -188,6 +197,15 @@ export default function Home() {
   });
 
   const closeMenu = () => setMenuOpen(false);
+  const startEarthDrag = (event: React.PointerEvent<HTMLImageElement>) => {
+    dragStart.current = { x: event.clientX, rotation: earthRotation };
+    event.currentTarget.setPointerCapture(event.pointerId);
+  };
+  const moveEarth = (event: React.PointerEvent<HTMLImageElement>) => {
+    if (!dragStart.current) return;
+    setEarthRotation(dragStart.current.rotation + (event.clientX - dragStart.current.x) * .55);
+  };
+  const endEarthDrag = () => { dragStart.current = null; };
 
   useEffect(() => {
     window.localStorage.setItem("lust-dev-theme", theme);
@@ -331,7 +349,7 @@ export default function Home() {
               <div><span>Né le</span><strong>28 janvier</strong></div>
               <div><span>Nationalité</span><strong>Haïtien</strong></div>
               <div><span>Ville</span><strong>Delmas, Haïti</strong></div>
-              <div><span>Alias</span><strong>LUST DEV : DEV</strong></div>
+              <div><span>Alias</span><strong>DEV</strong></div>
             </div>
             <div className="identity-footer"><span>IDENTITY / 001</span><span>EAGLE STREAM ACADEMY · 16 ANS</span><span>BUILDING IN PUBLIC</span></div>
           </div>
@@ -435,7 +453,7 @@ export default function Home() {
             </div>
             <div className="network-visual">
               {!showPlanet && <img src={`${import.meta.env.BASE_URL}lust-network.svg`} alt="Réseau LUST DEV" />}
-              {showPlanet && <img className="earth-visual" src={`${import.meta.env.BASE_URL}lust-earth.svg`} alt="Planète Terre stylisée, vue depuis l’espace" />}
+              {showPlanet && <img className="earth-visual" src={`${import.meta.env.BASE_URL}lust-earth.svg`} alt="Planète Terre stylisée, vue depuis l’espace" style={{ transform: `rotate(${earthRotation}deg)` }} onPointerDown={startEarthDrag} onPointerMove={moveEarth} onPointerUp={endEarthDrag} onPointerCancel={endEarthDrag} draggable={false} />}
               <span className="network-coordinates">48° / 02° / 26°</span>
               <Bot className="network-bot" size={30} strokeWidth={1.2} />
               <NetworkTelemetry showPlanet={showPlanet} onTogglePlanet={() => setShowPlanet((current) => !current)} />

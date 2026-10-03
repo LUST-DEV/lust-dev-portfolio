@@ -25,7 +25,7 @@ Le site est un espace public pour explorer ses projets open source, ses outils d
 | Repère | Détail |
 |---|---|
 | Identité | LUST DEV / Joseph Gregoire |
-| Alias | LUST DEV : DEV · signature : joseph |
+| Alias | DEV · signature : joseph |
 | Profil | Développeur indépendant haïtien, basé à Delmas |
 | Parcours | Premier projet HTML à 16 ans · Eagle Stream Academy |
 | Terrains | Bots, outils, scripts, automatisation et interfaces web |

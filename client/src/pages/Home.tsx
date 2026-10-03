@@ -137,6 +137,7 @@ function RainParticles() {
 function NetworkTelemetry({ showPlanet, onTogglePlanet }: { showPlanet: boolean; onTogglePlanet: () => void }) {
   const [latency, setLatency] = useState<number | null>(null);
   const [online, setOnline] = useState(() => typeof navigator === "undefined" ? true : navigator.onLine);
+  const [networkQuality, setNetworkQuality] = useState<"good" | "fair" | "poor">("good");
   const [glow, setGlow] = useState<"coral" | "cyan" | "gold">("coral");
 
   useEffect(() => {
@@ -147,14 +148,18 @@ function NetworkTelemetry({ showPlanet, onTogglePlanet }: { showPlanet: boolean;
     const measure = async () => {
       if (!navigator.onLine) {
         setLatency(null);
+        setNetworkQuality("poor");
         return;
       }
       const started = performance.now();
       try {
         await fetch(`${window.location.origin}/?network_probe=${Date.now()}`, { method: "HEAD", cache: "no-store" });
-        setLatency(Math.max(1, Math.round(performance.now() - started)));
+        const measured = Math.max(1, Math.round(performance.now() - started));
+        setLatency(measured);
+        setNetworkQuality(measured <= 80 ? "good" : measured <= 180 ? "fair" : "poor");
       } catch {
         setLatency(null);
+        setNetworkQuality("poor");
       }
     };
 
@@ -171,13 +176,17 @@ function NetworkTelemetry({ showPlanet, onTogglePlanet }: { showPlanet: boolean;
 
   return (
     <div className="network-telemetry" aria-label="État du réseau et de la session">
-      <div className="telemetry-row"><span><i className={`telemetry-dot ${online ? "is-online" : "is-offline"}`} /> Statut</span><strong>{online ? "EN LIGNE" : "HORS LIGNE"}</strong></div>
-      <div className="telemetry-row"><span><Gauge size={13} aria-hidden="true" /> Latence</span><strong>{latency === null ? "—" : `${latency} ms`}</strong></div>
+      <div className={`telemetry-row quality-${networkQuality}`}><span><i className={`telemetry-dot ${online ? `is-${networkQuality}` : "is-offline"}`} /> Statut</span><strong>{online ? (networkQuality === "poor" ? "RÉSEAU FAIBLE" : networkQuality === "fair" ? "EN LIGNE / MOYEN" : "EN LIGNE") : "HORS LIGNE"}</strong></div>
+      <div className={`telemetry-row quality-${networkQuality}`}><span><Gauge size={13} aria-hidden="true" /> Latence</span><strong>{latency === null ? "—" : `${latency} ms`}</strong></div>
       <div className="telemetry-row"><span><Globe2 size={13} aria-hidden="true" /> Session</span><strong>VISITEUR</strong></div>
       <button className={`glow-control glow-${glow}`} type="button" onClick={() => { onTogglePlanet(); cycleGlow(); }} aria-label="Basculer entre le réseau et la planète Terre">
         <span className="planet" aria-hidden="true"><span className="planet-grid" /></span>
-        <span>{showPlanet ? "TOUCH / NETWORK VIEW" : "TOUCH / PLANET EARTH"}</span>
+        <span>{showPlanet ? "RETOUR RÉSEAU" : "OUVRIR PLANÈTE"}</span>
       </button>
+      <div className="view-switch" role="group" aria-label="Choisir la vue Connect">
+        <button className={!showPlanet ? "is-selected" : ""} type="button" onClick={() => showPlanet && onTogglePlanet()}>RÉSEAU</button>
+        <button className={showPlanet ? "is-selected" : ""} type="button" onClick={() => !showPlanet && onTogglePlanet()}>PLANÈTE</button>
+      </div>
     </div>
   );
 }
@@ -343,15 +352,15 @@ export default function Home() {
               <span className="identity-status"><i /> PROFILE ONLINE</span>
             </div>
             <div className="identity-grid">
-              <div><span>Nom</span><strong>Gregoire</strong></div>
-              <div><span>Prénom</span><strong>Joseph</strong></div>
+              <div><span>Nom</span><strong>Joseph</strong></div>
+              <div><span>Prénom</span><strong>Lusty Gregoire</strong></div>
               <div><span>Signature</span><strong>joseph</strong></div>
               <div><span>Né le</span><strong>28 janvier</strong></div>
               <div><span>Nationalité</span><strong>Haïtien</strong></div>
               <div><span>Ville</span><strong>Delmas, Haïti</strong></div>
-              <div><span>Alias</span><strong>DEV</strong></div>
+              <div><span>Alias</span><strong>LUST DEV</strong></div>
             </div>
-            <div className="identity-footer"><span>IDENTITY / 001</span><span>EAGLE STREAM ACADEMY · 16 ANS</span><span>BUILDING IN PUBLIC</span></div>
+            <div className="identity-footer"><span>IDENTITY / 001</span><span>PREMIER SITE HTML · CRÉÉ À 16 ANS</span><span>BUILDING IN PUBLIC</span></div>
           </div>
         </section>
 

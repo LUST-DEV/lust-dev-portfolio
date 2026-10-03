@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 560" role="img" aria-labelledby="title desc">
+  <title id="title">Planète Terre stylisée</title>
+  <desc id="desc">Une planète Terre bleue et noire vue depuis l’espace avec une atmosphère néon.</desc>
+  <defs>
+    <radialGradient id="space" cx="50%" cy="45%"><stop stop-color="#17263b"/><stop offset="1" stop-color="#03060d"/></radialGradient>
+    <radialGradient id="earth" cx="34%" cy="26%"><stop stop-color="#6dbbc1"/><stop offset=".42" stop-color="#174b63"/><stop offset=".82" stop-color="#071421"/><stop offset="1" stop-color="#02050a"/></radialGradient>
+    <linearGradient id="land" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#8fc68d"/><stop offset=".55" stop-color="#4b7d62"/><stop offset="1" stop-color="#1c3c3e"/></linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="9" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <clipPath id="sphere"><circle cx="350" cy="280" r="184"/></clipPath>
+  </defs>
+  <rect width="700" height="560" fill="url(#space)"/>
+  <g fill="#f7f4ef" opacity=".72"><circle cx="86" cy="86" r="2"/><circle cx="590" cy="88" r="2"/><circle cx="112" cy="420" r="1.5"/><circle cx="604" cy="390" r="1.5"/><circle cx="522" cy="174" r="1.2"/></g>
+  <circle cx="350" cy="280" r="203" fill="none" stroke="#83d7df" stroke-opacity=".22" stroke-width="3" filter="url(#glow)"/>
+  <circle cx="350" cy="280" r="188" fill="url(#earth)" stroke="#98e6e9" stroke-opacity=".72" stroke-width="2"/>
+  <g clip-path="url(#sphere)" opacity=".9">
+    <path d="M180 207c42-30 70-19 85-44l43 8 20 36-24 22-39 5-28 38-42-5-20-30z" fill="url(#land)"/>
+    <path d="M390 158l52 6 34 31-14 31-34 7-21 37-28-18 5-34-26-18z" fill="url(#land)"/>
+    <path d="M413 285l56-20 38 19 6 42-34 21-16 48-37-5-16-35-31-19 12-33z" fill="url(#land)"/>
+    <path d="M247 344l38-21 35 13 17 35-28 24-42-7-33-25z" fill="url(#land)"/>
+    <g fill="none" stroke="#a4edf0" stroke-opacity=".25" stroke-width="2"><ellipse cx="350" cy="280" rx="112" ry="184"/><ellipse cx="350" cy="280" rx="52" ry="184"/><path d="M166 280h368M183 218c105 48 229 48 334 0M183 342c105-48 229-48 334 0"/></g>
+    <path d="M152 194c86 26 185 18 274-11 62-20 102-13 132 8" fill="none" stroke="#f7f4ef" stroke-opacity=".35" stroke-width="12"/>
+  </g>
+  <text x="28" y="44" fill="#f7f4ef" font-family="monospace" font-size="15" letter-spacing="3">EARTH / LUST DEV</text>
+  <text x="28" y="525" fill="#96cbd3" font-family="monospace" font-size="13" letter-spacing="2">PLANET VIEW · TOUCH TO SWITCH</text>
+</svg>

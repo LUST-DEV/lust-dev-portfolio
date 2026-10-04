@@ -50,8 +50,7 @@ La liste complète est disponible sur le [profil GitHub de LUST DEV](https://git
 
 L’ancienne workflow GitHub Pages échouait car GitHub Pages n’était pas activé sur le dépôt. Comme le déploiement cible est Vercel, cette workflow a été remplacée par une CI qui vérifie le typecheck, le build et l’audit des dépendances.
 
-![Capture du workflow GitHub Actions avant correction](docs/github-actions-error.jpg)
-
+!
 ## Fonctionnalités du site
 
 - design éditorial responsive avec mode clair et mode sombre ;

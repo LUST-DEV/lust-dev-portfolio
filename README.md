@@ -2,7 +2,7 @@
 
 > **Du code qui prend position.**
 
-![Emblème LUST DEV](client/public/lust-logo.jpg)
+![Emblème LUST DEV](docs/lust-logo.jpg)
 
 Portfolio personnel de **Joseph Lusty Gregoire**, connu sous le nom de **LUST DEV** : développeur indépendant haïtien, créateur de bots, d’outils et d’expériences numériques pensées pour être utiles, lisibles et accessibles.
 
@@ -79,6 +79,12 @@ L’ancienne workflow GitHub Pages échouait car GitHub Pages n’était pas act
 | **WhatsApp** | [Support direct · +1 829 478 6326](https://wa.me/18294786326) · [Canal LUST DEV](https://whatsapp.com/channel/0029VbCiqwyBVJl3Jv5T4I15) |
 | **Telegram** | [@yokubo666 · messages directs](https://t.me/yokubo666) |
 | **Telegram Joseph** | [@JOSEPHLUSTY · contact](https://t.me/JOSEPHLUSTY) |
+
+## Team Telegram
+
+Les labels **Team Telegram** du site ouvrent les profils publics suivants :
+
+[@NONO_HES](https://t.me/NONO_HES) · [@tresor20001](https://t.me/tresor20001) · [@MCKINGER](https://t.me/MCKINGER) · [@Savage_HackzzzzzzZ](https://t.me/Savage_HackzzzzzzZ) · [@devsubzero_09](https://t.me/devsubzero_09) · [@baek_siyun](https://t.me/baek_siyun) · [@Druzzdev2](https://t.me/Druzzdev2) · [@devxkairo](https://t.me/devxkairo) · [@Dev_Roan](https://t.me/Dev_Roan) · [@Cid_404lost](https://t.me/Cid_404lost) · [@Devmichael00](https://t.me/Devmichael00)
 
 ## Installation locale
 

@@ -18,6 +18,7 @@ import {
   Moon,
   Sun,
   Terminal,
+  UsersRound,
   X,
   Youtube,
 } from "lucide-react";
@@ -73,6 +74,20 @@ const skills = [
   { name: "Python", level: 58, category: "En progression · outils", tone: "sky" },
   { name: "TypeScript", level: 52, category: "En progression · applications", tone: "butter" },
   { name: "React / Node.js", level: 48, category: "En progression · web", tone: "sky" },
+];
+
+const teamMembers = [
+  "NONO_HES",
+  "tresor20001",
+  "MCKINGER",
+  "Savage_HackzzzzzzZ",
+  "devsubzero_09",
+  "baek_siyun",
+  "Druzzdev2",
+  "devxkairo",
+  "Dev_Roan",
+  "Cid_404lost",
+  "Devmichael00",
 ];
 
 function ExternalLabel({ children }: { children: React.ReactNode }) {
@@ -467,6 +482,30 @@ export default function Home() {
               <Bot className="network-bot" size={30} strokeWidth={1.2} />
               <NetworkTelemetry showPlanet={showPlanet} onTogglePlanet={() => setShowPlanet((current) => !current)} />
             </div>
+          </div>
+        </section>
+
+        <section className="team-section content-section" id="team" aria-labelledby="team-title">
+          <div className="section-rail">
+            <span className="section-number">05</span>
+            <span className="section-rail-label">TEAM / TELEGRAM</span>
+          </div>
+          <div className="team-heading-row">
+            <div>
+              <p className="eyebrow"><UsersRound size={15} /> ÉQUIPE PUBLIQUE</p>
+              <h2 id="team-title">LUST DEV<br /><span>team signal.</span></h2>
+            </div>
+            <p className="section-aside">Une équipe de profils créatifs et techniques à retrouver sur Telegram. Chaque label ouvre directement le profil indiqué.</p>
+          </div>
+          <div className="team-grid" aria-label="Membres de la Team Telegram">
+            {teamMembers.map((member, index) => (
+              <a className="team-label" href={`https://t.me/${member}`} target="_blank" rel="noopener noreferrer" key={member}>
+                <span className="team-label-index">{String(index + 1).padStart(2, "0")}</span>
+                <Send size={15} aria-hidden="true" />
+                <span>@{member}</span>
+                <ArrowUpRight size={14} aria-hidden="true" />
+              </a>
+            ))}
           </div>
         </section>
 

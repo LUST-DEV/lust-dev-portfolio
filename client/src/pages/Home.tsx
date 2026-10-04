@@ -483,6 +483,7 @@ export default function Home() {
       <footer className="site-footer">
         <span className="footer-mark">LUST<span>DEV</span></span>
         <span>Independent developer · public by design</span>
+        <span className="footer-legal"><a href="/cgu">CGU</a><a href="/confidentialite">Confidentialité</a></span>
         <a href="#top">Retour en haut <ArrowUpRight size={14} aria-hidden="true" /></a>
       </footer>
     </div>

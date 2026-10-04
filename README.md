@@ -125,7 +125,7 @@ Le secret `RECAPTCHA_SECRET_KEY` ne doit jamais commencer par `VITE_` et ne doit
 
 Dans ton projet Vercel : **Settings → Environment Variables → Add New**. Sélectionne au minimum **Production** et **Preview**, puis redeploie depuis **Deployments → Redeploy**.
 
-- `VITE_GA_MEASUREMENT_ID` : Google Analytics → **Admin → Data collection and modification → Data streams → Web → ton flux → Measurement ID**. Format : `G-XXXXXXXXXX`. Laisse vide si tu ne veux pas Analytics.
+- `VITE_GA_MEASUREMENT_ID` : Google Analytics → **Admin → Data collection and modification → Data streams → Web → ton flux → Measurement ID**. Identifiant configuré : `G-HD46DQXB9H`. Le script est chargé uniquement après l’autorisation des cookies non essentiels.
 - `VITE_RECAPTCHA_SITE_KEY` : [Google reCAPTCHA Admin Console](https://www.google.com/recaptcha/admin) → créer un site → clé **Site key**. À ajouter seulement lorsqu’un formulaire protégé sera activé.
 - `RECAPTCHA_SECRET_KEY` : dans la même fiche reCAPTCHA → clé **Secret key**. Vercel doit la recevoir comme variable serveur privée ; ne la préfixe jamais par `VITE_` et ne la mets jamais dans le README.
 - `VITE_FRONTEND_FORGE_API_KEY` et `VITE_FRONTEND_FORGE_API_URL` : uniquement si la carte est activée ; utilise les valeurs fournies par ton intégration Forge et restreins la clé par domaine.

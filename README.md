@@ -2,6 +2,8 @@
 
 > **Du code qui prend position.**
 
+![Emblème LUST DEV](client/public/lust-logo.jpg)
+
 Portfolio personnel de **Joseph Lusty Gregoire**, connu sous le nom de **LUST DEV** : développeur indépendant haïtien, créateur de bots, d’outils et d’expériences numériques pensées pour être utiles, lisibles et accessibles.
 
 [![Déployer avec Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/LUST-DEV/lust-dev-portfolio)
@@ -43,6 +45,12 @@ Le site est un espace public pour explorer ses projets open source, ses outils d
 - **[GOKU-MD](https://github.com/LUST-DEV/GOKU-MD)** — projet open source à explorer dans l’écosystème public LUST DEV.
 
 La liste complète est disponible sur le [profil GitHub de LUST DEV](https://github.com/LUST-DEV).
+
+## Vérification GitHub Actions
+
+L’ancienne workflow GitHub Pages échouait car GitHub Pages n’était pas activé sur le dépôt. Comme le déploiement cible est Vercel, cette workflow a été remplacée par une CI qui vérifie le typecheck, le build et l’audit des dépendances.
+
+![Capture du workflow GitHub Actions avant correction](docs/github-actions-error.jpg)
 
 ## Fonctionnalités du site
 
@@ -103,8 +111,21 @@ Les noms sont documentés dans [`.env.example`](.env.example). Ne publie jamais 
 | `VITE_FRONTEND_FORGE_API_URL` | Publique | URL du proxy Maps |
 | `VITE_APP_ID` | Publique | Identifiant d’application éventuel |
 | `VITE_OAUTH_PORTAL_URL` | Publique | Portail OAuth éventuel |
+| `VITE_GA_MEASUREMENT_ID` | Publique | Google Analytics 4, chargé uniquement après consentement |
 
 Le secret `RECAPTCHA_SECRET_KEY` ne doit jamais commencer par `VITE_` et ne doit jamais apparaître dans le bundle frontend.
+
+### Où trouver et ajouter les variables dans Vercel
+
+Dans ton projet Vercel : **Settings → Environment Variables → Add New**. Sélectionne au minimum **Production** et **Preview**, puis redeploie depuis **Deployments → Redeploy**.
+
+- `VITE_GA_MEASUREMENT_ID` : Google Analytics → **Admin → Data collection and modification → Data streams → Web → ton flux → Measurement ID**. Format : `G-XXXXXXXXXX`. Laisse vide si tu ne veux pas Analytics.
+- `VITE_RECAPTCHA_SITE_KEY` : [Google reCAPTCHA Admin Console](https://www.google.com/recaptcha/admin) → créer un site → clé **Site key**. À ajouter seulement lorsqu’un formulaire protégé sera activé.
+- `RECAPTCHA_SECRET_KEY` : dans la même fiche reCAPTCHA → clé **Secret key**. Vercel doit la recevoir comme variable serveur privée ; ne la préfixe jamais par `VITE_` et ne la mets jamais dans le README.
+- `VITE_FRONTEND_FORGE_API_KEY` et `VITE_FRONTEND_FORGE_API_URL` : uniquement si la carte est activée ; utilise les valeurs fournies par ton intégration Forge et restreins la clé par domaine.
+- `VITE_APP_ID` et `VITE_OAUTH_PORTAL_URL` : uniquement si la connexion OAuth est activée ; récupère-les depuis le fournisseur OAuth concerné.
+
+La connexion Vercel/GitHub ne nécessite **aucune variable API** : Vercel utilise son intégration GitHub. Le domaine Vercel fonctionne sans VPS.
 
 ## Déploiement avec Vercel
 

@@ -4,8 +4,10 @@
   "buildCommand": "pnpm run build",
   "outputDirectory": "dist/public",
   "cleanUrls": true,
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/" }
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/(?:\\.env(?:\\..*)?|server/.*|src/.*)$", "status": 404 },
+    { "src": "/(.*)", "dest": "/" }
   ],
   "headers": [
     { "source": "/(.*)", "headers": [

@@ -19,13 +19,18 @@ export async function verifyRecaptchaToken(token: string, remoteIp?: string) {
   const body = new URLSearchParams({ secret, response: token });
   if (remoteIp) body.set("remoteip", remoteIp);
 
-  const response = await fetch(RECAPTCHA_VERIFY_URL, {
-    method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body,
-  });
+  try {
+    const response = await fetch(RECAPTCHA_VERIFY_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body,
+    });
 
-  if (!response.ok) return { success: false, reason: "recaptcha_request_failed" } as const;
-  const result = (await response.json()) as RecaptchaVerification;
-  return result;
+    if (!response.ok) return { success: false, reason: "recaptcha_request_failed" } as const;
+    const result = (await response.json()) as RecaptchaVerification;
+    if (typeof result.success !== "boolean") return { success: false, reason: "recaptcha_invalid_response" } as const;
+    return result;
+  } catch {
+    return { success: false, reason: "recaptcha_request_failed" } as const;
+  }
 }

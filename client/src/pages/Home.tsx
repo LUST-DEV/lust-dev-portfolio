@@ -1,5 +1,6 @@
 // Style system: Atelier éditorial — portfolio professionnel, espaces aérés, palette ivoire/encre/corail et interactions discrètes.
 import { useEffect, useRef, useState } from "react";
+import { Link } from "wouter";
 import {
   ArrowDownRight,
   ArrowUpRight,
@@ -522,7 +523,7 @@ export default function Home() {
       <footer className="site-footer">
         <span className="footer-mark">LUST<span>DEV</span></span>
         <span>Independent developer · public by design</span>
-        <span className="footer-legal"><a href="/cgu">CGU</a><a href="/confidentialite">Confidentialité</a></span>
+        <span className="footer-legal"><Link href="/cgu">CGU</Link><Link href="/confidentialite">Confidentialité</Link></span>
         <a href="#top">Retour en haut <ArrowUpRight size={14} aria-hidden="true" /></a>
       </footer>
     </div>

@@ -255,16 +255,26 @@ h2 { font-size: clamp(3.2rem, 6.4vw, 6.5rem); }
 .loader-line { width: 11rem; height: 2px; overflow: hidden; background: rgba(247,244,239,.16); }
 .loader-line span { display: block; width: 42%; height: 100%; background: #f29486; box-shadow: 0 0 1rem #f29486; animation: loader-progress 900ms ease-in-out infinite; }
 .site-loader p { margin: 0; color: rgba(247,244,239,.62); font-family: "Space Grotesk", sans-serif; font-size: .58rem; letter-spacing: .14em; }
-.legal-page { min-height: 100vh; padding: 7rem 1.25rem 5rem; background: radial-gradient(circle at 85% 0%, rgba(215,235,238,.7), transparent 26rem), var(--paper); }
-.legal-shell { max-width: 50rem; margin: 0 auto; }
-.legal-back { display: inline-flex; align-items: center; gap: .4rem; margin-bottom: 3rem; color: var(--ink-soft); font-family: "Space Grotesk", sans-serif; font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.legal-page { min-height: 100vh; padding: 2rem 1.25rem 5rem; background: radial-gradient(circle at 85% 0%, rgba(215,235,238,.7), transparent 26rem), var(--paper); }
+.legal-shell { max-width: 54rem; margin: 0 auto; }
+.legal-topbar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 6.5rem; }
+.legal-back { display: inline-flex; align-items: center; gap: .4rem; color: var(--ink-soft); font-family: "Space Grotesk", sans-serif; font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; transition: color 180ms var(--ease-out), transform 180ms var(--ease-out); }
+.legal-back:hover, .legal-back:focus-visible { color: var(--coral-deep); transform: translateX(-3px); }
+.legal-status { display: inline-flex; align-items: center; gap: .45rem; color: var(--sky-deep); font-family: "Space Grotesk", sans-serif; font-size: .58rem; font-weight: 700; letter-spacing: .12em; }
+.legal-status i { width: .42rem; height: .42rem; border-radius: 50%; background: var(--sky-deep); box-shadow: 0 0 .7rem var(--sky-deep); }
+.legal-header { animation: reveal-up 600ms var(--ease-out) both; }
 .legal-page h1 { max-width: 48rem; margin-bottom: 1.25rem; font-size: clamp(3rem, 8vw, 7rem); }
 .legal-intro { max-width: 38rem; color: var(--ink-soft); font-size: 1.1rem; line-height: 1.6; }
 .legal-updated { color: var(--coral-deep); font-family: "Space Grotesk", sans-serif; font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; }
-.legal-page section { max-width: 48rem; margin-top: 3rem; padding-top: 1.2rem; border-top: 1px solid var(--line); }
+.legal-index { display: flex; flex-wrap: wrap; align-items: center; gap: .55rem .7rem; margin: 4.2rem 0 1rem; padding: 1rem; border: 1px solid var(--line); border-radius: .85rem; background: color-mix(in srgb, var(--white), transparent 10%); box-shadow: .35rem .4rem 0 color-mix(in srgb, var(--sky), transparent 55%); }
+.legal-index-title { display: inline-flex; align-items: center; gap: .35rem; width: 100%; color: var(--coral-deep); font-family: "Space Grotesk", sans-serif; font-size: .6rem; font-weight: 700; letter-spacing: .12em; }
+.legal-index a { padding: .42rem .55rem; border: 1px solid var(--line); border-radius: 999px; color: var(--ink-soft); font-family: "Space Grotesk", sans-serif; font-size: .61rem; letter-spacing: .03em; transition: color 180ms var(--ease-out), border-color 180ms var(--ease-out), transform 180ms var(--ease-out); }
+.legal-index a:hover, .legal-index a:focus-visible { color: var(--coral-deep); border-color: var(--coral); transform: translateY(-2px); }
+.legal-page section { max-width: 48rem; margin-top: 3rem; padding-top: 1.2rem; border-top: 1px solid var(--line); animation: reveal-up 550ms var(--ease-out) both; scroll-margin-top: 1.5rem; }
 .legal-page h2 { margin-bottom: .7rem; font-size: 1.35rem; letter-spacing: -.03em; }
 .legal-page section p { color: var(--ink-soft); line-height: 1.7; }
 .legal-page section a { color: var(--coral-deep); text-decoration: underline; text-underline-offset: .2em; }
+.legal-top-link { display: inline-flex; align-items: center; gap: .4rem; margin-top: 3.2rem; color: var(--coral-deep); font-family: "Space Grotesk", sans-serif; font-size: .66rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
 @keyframes loader-progress { from { transform: translateX(-140%); } to { transform: translateX(360%); } }
 @keyframes loader-out { to { opacity: 0; visibility: hidden; } }
 

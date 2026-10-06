@@ -5,7 +5,7 @@
   "outputDirectory": "dist/public",
   "cleanUrls": true,
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/(.*)", "destination": "/" }
   ],
   "headers": [
     { "source": "/(.*)", "headers": [

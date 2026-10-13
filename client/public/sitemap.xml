@@ -1,14 +1,99 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://lust-dev-portfolio.zone.id/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lust-dev-portfolio.zone.id/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://lust-dev-portfolio.zone.id/en" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://lust-dev-portfolio.zone.id/es" />
+    <xhtml:link rel="alternate" hreflang="ht" href="https://lust-dev-portfolio.zone.id/ht" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lust-dev-portfolio.zone.id/" />
+  </url>
+  <url>
+    <loc>https://lust-dev-portfolio.zone.id/en</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lust-dev-portfolio.zone.id/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://lust-dev-portfolio.zone.id/en" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://lust-dev-portfolio.zone.id/es" />
+    <xhtml:link rel="alternate" hreflang="ht" href="https://lust-dev-portfolio.zone.id/ht" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lust-dev-portfolio.zone.id/en" />
+  </url>
+  <url>
+    <loc>https://lust-dev-portfolio.zone.id/es</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lust-dev-portfolio.zone.id/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://lust-dev-portfolio.zone.id/en" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://lust-dev-portfolio.zone.id/es" />
+    <xhtml:link rel="alternate" hreflang="ht" href="https://lust-dev-portfolio.zone.id/ht" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lust-dev-portfolio.zone.id/es" />
+  </url>
+  <url>
+    <loc>https://lust-dev-portfolio.zone.id/ht</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lust-dev-portfolio.zone.id/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://lust-dev-portfolio.zone.id/en" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://lust-dev-portfolio.zone.id/es" />
+    <xhtml:link rel="alternate" hreflang="ht" href="https://lust-dev-portfolio.zone.id/ht" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lust-dev-portfolio.zone.id/ht" />
   </url>
   <url>
     <loc>https://lust-dev-portfolio.zone.id/cgu</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lust-dev-portfolio.zone.id/cgu" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://lust-dev-portfolio.zone.id/en/cgu" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://lust-dev-portfolio.zone.id/es/cgu" />
+    <xhtml:link rel="alternate" hreflang="ht" href="https://lust-dev-portfolio.zone.id/ht/cgu" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lust-dev-portfolio.zone.id/cgu" />
+  </url>
+  <url>
+    <loc>https://lust-dev-portfolio.zone.id/en/cgu</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lust-dev-portfolio.zone.id/cgu" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://lust-dev-portfolio.zone.id/en/cgu" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://lust-dev-portfolio.zone.id/es/cgu" />
+    <xhtml:link rel="alternate" hreflang="ht" href="https://lust-dev-portfolio.zone.id/ht/cgu" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lust-dev-portfolio.zone.id/cgu" />
+  </url>
+  <url>
+    <loc>https://lust-dev-portfolio.zone.id/es/cgu</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lust-dev-portfolio.zone.id/cgu" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://lust-dev-portfolio.zone.id/en/cgu" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://lust-dev-portfolio.zone.id/es/cgu" />
+    <xhtml:link rel="alternate" hreflang="ht" href="https://lust-dev-portfolio.zone.id/ht/cgu" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lust-dev-portfolio.zone.id/cgu" />
+  </url>
+  <url>
+    <loc>https://lust-dev-portfolio.zone.id/ht/cgu</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lust-dev-portfolio.zone.id/cgu" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://lust-dev-portfolio.zone.id/en/cgu" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://lust-dev-portfolio.zone.id/es/cgu" />
+    <xhtml:link rel="alternate" hreflang="ht" href="https://lust-dev-portfolio.zone.id/ht/cgu" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lust-dev-portfolio.zone.id/cgu" />
   </url>
   <url>
     <loc>https://lust-dev-portfolio.zone.id/confidentialite</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lust-dev-portfolio.zone.id/confidentialite" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://lust-dev-portfolio.zone.id/en/confidentialite" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://lust-dev-portfolio.zone.id/es/confidentialite" />
+    <xhtml:link rel="alternate" hreflang="ht" href="https://lust-dev-portfolio.zone.id/ht/confidentialite" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lust-dev-portfolio.zone.id/confidentialite" />
+  </url>
+  <url>
+    <loc>https://lust-dev-portfolio.zone.id/en/confidentialite</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lust-dev-portfolio.zone.id/confidentialite" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://lust-dev-portfolio.zone.id/en/confidentialite" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://lust-dev-portfolio.zone.id/es/confidentialite" />
+    <xhtml:link rel="alternate" hreflang="ht" href="https://lust-dev-portfolio.zone.id/ht/confidentialite" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lust-dev-portfolio.zone.id/confidentialite" />
+  </url>
+  <url>
+    <loc>https://lust-dev-portfolio.zone.id/es/confidentialite</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lust-dev-portfolio.zone.id/confidentialite" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://lust-dev-portfolio.zone.id/en/confidentialite" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://lust-dev-portfolio.zone.id/es/confidentialite" />
+    <xhtml:link rel="alternate" hreflang="ht" href="https://lust-dev-portfolio.zone.id/ht/confidentialite" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lust-dev-portfolio.zone.id/confidentialite" />
+  </url>
+  <url>
+    <loc>https://lust-dev-portfolio.zone.id/ht/confidentialite</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lust-dev-portfolio.zone.id/confidentialite" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://lust-dev-portfolio.zone.id/en/confidentialite" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://lust-dev-portfolio.zone.id/es/confidentialite" />
+    <xhtml:link rel="alternate" hreflang="ht" href="https://lust-dev-portfolio.zone.id/ht/confidentialite" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lust-dev-portfolio.zone.id/confidentialite" />
   </url>
 </urlset>

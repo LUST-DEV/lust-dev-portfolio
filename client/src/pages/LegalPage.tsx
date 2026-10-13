@@ -1,8 +1,6 @@
 import { useEffect } from "react";
 import { ArrowLeft, ArrowUp, List, ShieldCheck } from "lucide-react";
-import { Link } from "wouter";
-import { useLanguage } from "@/contexts/LanguageContext";
-import LanguageSelector from "@/components/LanguageSelector";
+import { localizedPath, useLanguage } from "@/contexts/LanguageContext";
 
 type LegalKind = "terms" | "privacy";
 type LegalSection = { title: string; body: string };
@@ -43,7 +41,7 @@ function renderBody(text: string) {
 }
 
 export default function LegalPage({ kind }: { kind: LegalKind }) {
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
   const page = content[kind];
 
   useEffect(() => {
@@ -54,8 +52,7 @@ export default function LegalPage({ kind }: { kind: LegalKind }) {
     <main className="legal-page" id="top">
       <div className="legal-shell">
         <nav className="legal-topbar" aria-label={t("Navigation légale")}>
-          <Link href="/" className="legal-back"><ArrowLeft size={16} /> {t("Retour au portfolio")}</Link>
-          <LanguageSelector />
+          <a href={localizedPath("/", language)} className="legal-back"><ArrowLeft size={16} /> {t("Retour au portfolio")}</a>
           <span className="legal-status"><i /> {t("DOCUMENT PUBLIC")}</span>
         </nav>
         <header className="legal-header">

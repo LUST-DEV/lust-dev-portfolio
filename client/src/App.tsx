@@ -17,8 +17,17 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
+      <Route path="/en" component={Home} />
+      <Route path="/es" component={Home} />
+      <Route path="/ht" component={Home} />
       <Route path="/cgu" component={() => <LegalPage kind="terms" />} />
       <Route path="/confidentialite" component={() => <LegalPage kind="privacy" />} />
+      <Route path="/en/cgu" component={() => <LegalPage kind="terms" />} />
+      <Route path="/en/confidentialite" component={() => <LegalPage kind="privacy" />} />
+      <Route path="/es/cgu" component={() => <LegalPage kind="terms" />} />
+      <Route path="/es/confidentialite" component={() => <LegalPage kind="privacy" />} />
+      <Route path="/ht/cgu" component={() => <LegalPage kind="terms" />} />
+      <Route path="/ht/confidentialite" component={() => <LegalPage kind="privacy" />} />
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
     </Switch>

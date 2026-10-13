@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useRef, useState } from "react";
 
 type Theme = "light" | "dark";
 
@@ -21,23 +21,27 @@ export function ThemeProvider({
   defaultTheme = "light",
   switchable = false,
 }: ThemeProviderProps) {
-  const [theme, setTheme] = useState<Theme>(() => {
-    if (switchable) {
-      if (typeof window === "undefined") return defaultTheme;
-      const previewTheme = new URLSearchParams(window.location.search).get("theme");
-      if (previewTheme === "light" || previewTheme === "dark") return previewTheme;
-      try {
-        const stored = window.localStorage.getItem("lust-dev-theme");
-        if (stored === "light" || stored === "dark") return stored;
-      } catch {
-        // Keep the site usable when browser storage is unavailable.
-      }
-    }
-    return defaultTheme;
-  });
+  const [theme, setTheme] = useState<Theme>(defaultTheme);
+  const preferenceInitialized = useRef(false);
 
   useEffect(() => {
     const root = document.documentElement;
+    if (switchable && !preferenceInitialized.current) {
+      preferenceInitialized.current = true;
+      const previewTheme = new URLSearchParams(window.location.search).get("theme");
+      let preferredTheme: string | null = previewTheme;
+      if (preferredTheme !== "light" && preferredTheme !== "dark") {
+        try {
+          preferredTheme = window.localStorage.getItem("lust-dev-theme");
+        } catch {
+          // Keep the site usable when browser storage is unavailable.
+        }
+      }
+      if ((preferredTheme === "light" || preferredTheme === "dark") && preferredTheme !== theme) {
+        setTheme(preferredTheme);
+        return;
+      }
+    }
     root.classList.toggle("dark", theme === "dark");
     root.classList.toggle("theme-dark", theme === "dark");
     root.style.colorScheme = theme;

@@ -6,6 +6,7 @@ import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import CookieConsent from "./components/CookieConsent";
 import Analytics from "./components/Analytics";
+import GlobalParticles from "./components/GlobalParticles";
 import SiteLoader from "./components/SiteLoader";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
@@ -26,14 +27,19 @@ function Router() {
 export default function App() {
   return (
     <ErrorBoundary>
-      <ThemeProvider defaultTheme="light">
-        <TooltipProvider>
-          <Toaster />
-          <SiteLoader />
-          <Router />
-          <CookieConsent />
-          <Analytics />
-        </TooltipProvider>
+      <ThemeProvider defaultTheme="dark" switchable>
+        <div className="app-root">
+          <GlobalParticles />
+          <div className="app-content">
+            <TooltipProvider>
+              <Toaster />
+              <SiteLoader />
+              <Router />
+              <CookieConsent />
+              <Analytics />
+            </TooltipProvider>
+          </div>
+        </div>
       </ThemeProvider>
     </ErrorBoundary>
   );

@@ -2,6 +2,13 @@
 
 ## À faire
 
+## Harmonisation des thèmes et de l’animation
+
+- [x] Utiliser une seule couche de particules sur l’accueil, les pages légales et les autres routes existantes; conserver les clics, la sélection de texte et le défilement.
+- [x] Harmoniser les couleurs en mode clair Sky Blue et en mode sombre Blue Night; synchroniser les couleurs des particules avec le thème partagé et persister le thème lors de la navigation.
+- [x] Réduire les particules sur mobile et respecter `prefers-reduced-motion` en conservant un fond adapté au thème.
+- [x] Vérifier les types, le build, les routes et le comportement de la couche; ne pas ajouter reCAPTCHA à un site sans connexion ni formulaire protégé.
+
 ## Nouvelle refonte — direction professionnelle
 
 - [x] Remplacer le vocabulaire hacker/terminal par une esthétique web professionnelle, éditoriale et accueillante.

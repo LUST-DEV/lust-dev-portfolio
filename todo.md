@@ -2,6 +2,13 @@
 
 ## À faire
 
+## Langues, README et sitemap
+
+- [x] Ajouter un sélecteur de langue dans le site pour français, anglais, espagnol et créole haïtien, avec mémorisation du choix, détection initiale de la langue du navigateur et mise à jour de `lang` sur le document.
+- [x] Traduire les textes visibles de l’accueil, des pages légales et de la bannière de cookies dans les langues du sélecteur, sans changer les liens ou les données de contact.
+- [x] Simplifier le README en retirant les variables d’environnement, les consignes Search Console et les détails techniques non nécessaires; conserver une courte présentation, l’équipe Telegram, le favicon/logo, les liens publics, le démarrage local, le sitemap et la licence.
+- [x] Vérifier que le sitemap public reste cohérent avec les routes canoniques, le lien sitemap fonctionne, et les contrôles et le build passent.
+
 ## Harmonisation des thèmes et de l’animation
 
 - [x] Utiliser une seule couche de particules sur l’accueil, les pages légales et les autres routes existantes; conserver les clics, la sélection de texte et le défilement.

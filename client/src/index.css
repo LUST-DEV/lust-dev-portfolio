@@ -64,6 +64,10 @@ button { font: inherit; }
 .theme-toggle:active { transform: scale(.97); }
 .theme-toggle-icon { display: grid; place-items: center; width: 1.35rem; height: 1.35rem; border-radius: 50%; color: var(--coral-deep); background: var(--sky); }
 .menu-toggle { display: none; border: 0; color: var(--ink); background: transparent; }
+.language-picker { position: relative; display: inline-flex; align-items: center; }
+.language-picker select { min-height: 2.35rem; padding: .45rem 1.8rem .45rem .7rem; appearance: none; border: 1px solid var(--line-strong); border-radius: 999px; color: var(--ink-soft); background: var(--paper); font-family: "Space Grotesk", sans-serif; font-size: .62rem; font-weight: 700; letter-spacing: .04em; cursor: pointer; }
+.language-picker::after { position: absolute; right: .65rem; content: "⌄"; color: var(--coral-deep); pointer-events: none; }
+.language-picker select:focus-visible { outline: 3px solid var(--coral); outline-offset: 3px; }
 
 .hero-section { position: relative; display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(22rem, .95fr); gap: clamp(2.5rem, 8vw, 9rem); min-height: 47rem; padding: 11.5rem clamp(1.25rem, 9vw, 11rem) 7rem; isolation: isolate; }
 .hero-backdrop { position: absolute; z-index: -3; inset: 0; background: linear-gradient(90deg, rgba(243,248,255,.98) 0%, rgba(243,248,255,.86) 43%, rgba(243,248,255,.2) 100%), url("/lust-hero.svg") 73% center / cover; opacity: .9; }
@@ -355,6 +359,7 @@ h2 { font-size: clamp(3.2rem, 6.4vw, 6.5rem); }
 }
 
 @media (max-width: 640px) {
+  .legal-topbar { flex-wrap: wrap; margin-bottom: 4rem; }
   .site-header { padding: 1rem 1.25rem; }
   .menu-toggle { display: block; }
   .main-nav { position: absolute; top: calc(100% + 1px); right: 0; left: 0; display: none; flex-direction: column; align-items: stretch; gap: 0; padding: .65rem 1.25rem 1rem; border-bottom: 1px solid var(--line); background: rgba(247,244,239,.98); }
@@ -405,6 +410,8 @@ h2 { font-size: clamp(3.2rem, 6.4vw, 6.5rem); }
 .site-footer { border-top: 1px solid var(--line); }
 
 @media (max-width: 900px) {
+  .main-nav { gap: .55rem; font-size: .58rem; }
+  .nav-symbol { display: none; }
   .site-header { position: fixed; }
   .section-rail { position: static; margin-bottom: 2rem; }
   .identity-grid { grid-template-columns: repeat(3, 1fr); }

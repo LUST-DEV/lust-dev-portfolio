@@ -2,6 +2,8 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "wouter";
 import { useTheme } from "@/contexts/ThemeContext";
+import { useLanguage } from "@/contexts/LanguageContext";
+import LanguageSelector from "@/components/LanguageSelector";
 import {
   ArrowDownRight,
   ArrowUpRight,
@@ -125,6 +127,7 @@ function SocialLink({
 }
 
 function NetworkTelemetry({ showPlanet, onTogglePlanet }: { showPlanet: boolean; onTogglePlanet: () => void }) {
+  const { t } = useLanguage();
   const [latency, setLatency] = useState<number | null>(null);
   const [online, setOnline] = useState(() => typeof navigator === "undefined" ? true : navigator.onLine);
   const [networkQuality, setNetworkQuality] = useState<"good" | "fair" | "poor">("good");
@@ -165,17 +168,17 @@ function NetworkTelemetry({ showPlanet, onTogglePlanet }: { showPlanet: boolean;
   const cycleGlow = () => setGlow((current) => current === "coral" ? "cyan" : current === "cyan" ? "gold" : "coral");
 
   return (
-    <div className="network-telemetry" aria-label="État du réseau et de la session">
-      <div className={`telemetry-row quality-${networkQuality}`}><span><i className={`telemetry-dot ${online ? `is-${networkQuality}` : "is-offline"}`} /> Statut</span><strong>{online ? (networkQuality === "poor" ? "RÉSEAU FAIBLE" : networkQuality === "fair" ? "EN LIGNE / MOYEN" : "EN LIGNE") : "HORS LIGNE"}</strong></div>
-      <div className={`telemetry-row quality-${networkQuality}`}><span><Gauge size={13} aria-hidden="true" /> Latence</span><strong>{latency === null ? "—" : `${latency} ms`}</strong></div>
-      <div className="telemetry-row"><span><Globe2 size={13} aria-hidden="true" /> Session</span><strong>VISITEUR</strong></div>
-      <button className={`glow-control glow-${glow}`} type="button" onClick={() => { onTogglePlanet(); cycleGlow(); }} aria-label="Basculer entre le réseau et la planète Terre">
+    <div className="network-telemetry" aria-label={t("État du réseau et de la session")}>
+      <div className={`telemetry-row quality-${networkQuality}`}><span><i className={`telemetry-dot ${online ? `is-${networkQuality}` : "is-offline"}`} /> {t("Statut")}</span><strong>{online ? (networkQuality === "poor" ? t("RÉSEAU FAIBLE") : networkQuality === "fair" ? t("EN LIGNE / MOYEN") : t("EN LIGNE")) : t("HORS LIGNE")}</strong></div>
+      <div className={`telemetry-row quality-${networkQuality}`}><span><Gauge size={13} aria-hidden="true" /> {t("Latence")}</span><strong>{latency === null ? "—" : `${latency} ms`}</strong></div>
+      <div className="telemetry-row"><span><Globe2 size={13} aria-hidden="true" /> {t("Session")}</span><strong>{t("VISITEUR")}</strong></div>
+      <button className={`glow-control glow-${glow}`} type="button" onClick={() => { onTogglePlanet(); cycleGlow(); }} aria-label={t("Basculer entre le réseau et la planète Terre")}>
         <span className="planet" aria-hidden="true"><span className="planet-grid" /></span>
-        <span>{showPlanet ? "RETOUR RÉSEAU" : "OUVRIR PLANÈTE"}</span>
+        <span>{showPlanet ? t("RETOUR RÉSEAU") : t("OUVRIR PLANÈTE")}</span>
       </button>
-      <div className="view-switch" role="group" aria-label="Choisir la vue Connect">
-        <button className={!showPlanet ? "is-selected" : ""} type="button" onClick={() => showPlanet && onTogglePlanet()}>RÉSEAU</button>
-        <button className={showPlanet ? "is-selected" : ""} type="button" onClick={() => !showPlanet && onTogglePlanet()}>PLANÈTE</button>
+      <div className="view-switch" role="group" aria-label={t("Choisir la vue Connect")}>
+        <button className={!showPlanet ? "is-selected" : ""} type="button" onClick={() => showPlanet && onTogglePlanet()}>{t("RÉSEAU")}</button>
+        <button className={showPlanet ? "is-selected" : ""} type="button" onClick={() => !showPlanet && onTogglePlanet()}>{t("PLANÈTE")}</button>
       </div>
     </div>
   );
@@ -183,6 +186,8 @@ function NetworkTelemetry({ showPlanet, onTogglePlanet }: { showPlanet: boolean;
 
 export default function Home() {
   const { theme, toggleTheme } = useTheme();
+  const { t } = useLanguage();
+  useEffect(() => { document.title = t("Joseph Lusty Gregoire — LUST DEV"); }, [t]);
   const [menuOpen, setMenuOpen] = useState(false);
   const [showPlanet, setShowPlanet] = useState(false);
   const [earthRotation, setEarthRotation] = useState(0);
@@ -205,7 +210,7 @@ export default function Home() {
       <div className="ambient ambient-two" aria-hidden="true" />
 
       <header className="site-header">
-        <a className="brand-lockup" href="#top" onClick={closeMenu} aria-label="LUST DEV, revenir en haut">
+        <a className="brand-lockup" href="#top" onClick={closeMenu} aria-label={t("LUST DEV, revenir en haut")}>
           <span className="brand-badge"><img src={`${import.meta.env.BASE_URL}lust-mark.svg`} alt="" className="brand-mark" /></span>
           <span className="brand-wordmark">LUST<span>DEV</span></span>
         </a>
@@ -218,14 +223,14 @@ export default function Home() {
           onClick={() => setMenuOpen((value) => !value)}
         >
           {menuOpen ? <X size={20} /> : <Menu size={20} />}
-          <span className="sr-only">Ouvrir le menu</span>
+          <span className="sr-only">{t("Ouvrir le menu")}</span>
         </button>
 
-        <nav id="main-navigation" className={menuOpen ? "main-nav is-open" : "main-nav"} aria-label="Navigation principale">
-          <a href="#profile" onClick={closeMenu}><span className="nav-symbol" aria-hidden="true">◌</span>Profil</a>
-          <a href="#skills" onClick={closeMenu}><span className="nav-symbol" aria-hidden="true">◎</span>Compétences</a>
-          <a href="#work" onClick={closeMenu}><span className="nav-symbol" aria-hidden="true">✦</span>Projets</a>
-          <a href="#network" onClick={closeMenu}><span className="nav-symbol" aria-hidden="true">↗</span>Liens</a>
+        <nav id="main-navigation" className={menuOpen ? "main-nav is-open" : "main-nav"} aria-label={t("Navigation principale")}>
+          <a href="#profile" onClick={closeMenu}><span className="nav-symbol" aria-hidden="true">◌</span>{t("Profil")}</a>
+          <a href="#skills" onClick={closeMenu}><span className="nav-symbol" aria-hidden="true">◎</span>{t("Compétences")}</a>
+          <a href="#work" onClick={closeMenu}><span className="nav-symbol" aria-hidden="true">✦</span>{t("Projets")}</a>
+          <a href="#network" onClick={closeMenu}><span className="nav-symbol" aria-hidden="true">↗</span>{t("Liens")}</a>
           <a className="nav-contact" href={links.github} target="_blank" rel="noopener noreferrer" onClick={closeMenu}>
             GitHub <ArrowUpRight size={15} aria-hidden="true" />
           </a>
@@ -233,12 +238,13 @@ export default function Home() {
             className="theme-toggle"
             type="button"
             onClick={() => toggleTheme?.()}
-            aria-label={theme === "light" ? "Activer le mode sombre" : "Activer le mode clair"}
-            title={theme === "light" ? "Activer le mode sombre" : "Activer le mode clair"}
+            aria-label={theme === "light" ? t("Activer le mode sombre") : t("Activer le mode clair")}
+            title={theme === "light" ? t("Activer le mode sombre") : t("Activer le mode clair")}
           >
             <span className="theme-toggle-icon" aria-hidden="true">{theme === "light" ? <Moon size={15} /> : <Sun size={15} />}</span>
-            <span>{theme === "light" ? "Sombre" : "Clair"}</span>
+            <span>{theme === "light" ? t("Sombre") : t("Clair")}</span>
           </button>
+          <LanguageSelector />
         </nav>
       </header>
 
@@ -247,116 +253,116 @@ export default function Home() {
           <div className="hero-backdrop" aria-hidden="true" />
           <div className="hero-gridline" aria-hidden="true" />
           <div className="hero-copy">
-            <p className="eyebrow"><span className="pulse-dot" /> Portfolio personnel · LUST DEV</p>
-            <h1 id="hero-title">Des idées qui<br /><em>prennent forme.</em></h1>
+            <p className="eyebrow"><span className="pulse-dot" /> {t("Portfolio personnel · LUST DEV")}</p>
+            <h1 id="hero-title">{t("Des idées qui")}<br /><em>{t("prennent forme.")}</em></h1>
             <p className="hero-intro">
-              Joseph Gregoire, connu sous le nom de LUST DEV — alias DEV, crée des outils, des bots et des expériences numériques avec une curiosité constante.
+              {t("Joseph Gregoire, connu sous le nom de LUST DEV — alias DEV, crée des outils, des bots et des expériences numériques avec une curiosité constante.")}
             </p>
-            <div className="hero-tags" aria-label="Domaines d’activité">
+            <div className="hero-tags" aria-label={t("Domaines d’activité")}>
               <span className="label-chip">Bots</span>
-              <span className="label-chip">Automation</span>
-              <span className="label-chip">Open source</span>
-              <span className="label-chip">Ethical hacking</span>
+              <span className="label-chip">{t("Automation")}</span>
+              <span className="label-chip">{t("Open source")}</span>
+              <span className="label-chip">{t("Ethical hacking")}</span>
             </div>
             <div className="hero-actions">
               <a className="button button-primary" href="#work">
-                Explorer le terrain <ArrowDownRight size={17} aria-hidden="true" />
+                {t("Explorer le terrain")} <ArrowDownRight size={17} aria-hidden="true" />
               </a>
               <a className="text-link" href={links.github} target="_blank" rel="noopener noreferrer">
-                Voir le profil GitHub <ArrowUpRight size={16} aria-hidden="true" />
+                {t("Voir le profil GitHub")} <ArrowUpRight size={16} aria-hidden="true" />
               </a>
             </div>
-            <div className="hero-signal-bars" aria-label="Signal LUST DEV animé">
+            <div className="hero-signal-bars" aria-label={t("Signal LUST DEV animé")}>
               <span style={{ "--bar-height": "42%", "--bar-delay": "0ms" } as React.CSSProperties} />
               <span style={{ "--bar-height": "78%", "--bar-delay": "120ms" } as React.CSSProperties} />
               <span style={{ "--bar-height": "56%", "--bar-delay": "240ms" } as React.CSSProperties} />
               <span style={{ "--bar-height": "92%", "--bar-delay": "360ms" } as React.CSSProperties} />
               <span style={{ "--bar-height": "66%", "--bar-delay": "480ms" } as React.CSSProperties} />
-              <small>CREATIVE SIGNAL / LUST DEV</small>
+              <small>{t("CREATIVE SIGNAL / LUST DEV")}</small>
             </div>
           </div>
 
           <div className="hero-visual">
             <div className="visual-meta visual-meta-top"><span>VISUAL_001</span><span>640×426</span></div>
             <div className="image-frame">
-              <img src={`${import.meta.env.BASE_URL}lust-hero.svg`} alt="Composition graphique LUST DEV sur fond bleu nuit" />
+              <img src={`${import.meta.env.BASE_URL}lust-hero.svg`} alt={t("Composition graphique LUST DEV sur fond bleu nuit")} />
               <div className="image-scanline" aria-hidden="true" />
-              <span className="image-stamp">LUST / SIGNAL</span>
+              <span className="image-stamp">{t("LUST / SIGNAL")}</span>
             </div>
-            <div className="visual-meta visual-meta-bottom"><span>MADE WITH INTENTION</span><span>© LUST DEV</span></div>
+            <div className="visual-meta visual-meta-bottom"><span>{t("MADE WITH INTENTION")}</span><span>© LUST DEV</span></div>
           </div>
 
           <div className="hero-index" aria-hidden="true">LD / 2026</div>
         </section>
 
-        <section className="ticker" aria-label="Résumé de l’activité publique">
+        <section className="ticker" aria-label={t("Résumé de l’activité publique")}>
           <div className="ticker-track">
-            <span>OPEN SOURCE</span><i />
-            <span>BOT MAKER</span><i />
-            <span>TOOLS & AUTOMATION</span><i />
-            <span>PUBLIC BY DESIGN</span><i />
-            <span>OPEN SOURCE</span><i />
+            <span>{t("OPEN SOURCE")}</span><i />
+            <span>{t("BOT MAKER")}</span><i />
+            <span>{t("TOOLS & AUTOMATION")}</span><i />
+            <span>{t("PUBLIC BY DESIGN")}</span><i />
+            <span>{t("OPEN SOURCE")}</span><i />
           </div>
         </section>
 
         <section className="profile-section content-section" id="profile" aria-labelledby="profile-title">
           <div className="section-rail">
             <span className="section-number">01</span>
-            <span className="section-rail-label">PROFILE / À PROPOS</span>
+            <span className="section-rail-label">{t("PROFILE / À PROPOS")}</span>
           </div>
           <div className="profile-layout">
             <div className="section-heading-block">
-              <p className="eyebrow">À PROPOS DE LUST DEV</p>
-              <h2 id="profile-title">Joseph<br /><span>en clair.</span></h2>
+              <p className="eyebrow">{t("À PROPOS DE LUST DEV")}</p>
+              <h2 id="profile-title">Joseph<br /><span>{t("en clair.")}</span></h2>
             </div>
             <div className="profile-copy">
-              <p className="lead-copy">Né en Haïti le 28 janvier, Joseph Gregoire est passionné par la programmation, la technologie et le hacking éthique.</p>
-              <p>À 16 ans, il crée son premier projet HTML à Eagle Stream Academy. Depuis, sa curiosité l’amène à comprendre comment les choses fonctionnent, à apprendre chaque jour et à transformer ses découvertes en projets publics.</p>
-              <p>Connu publiquement sous le nom de <strong>LUST DEV</strong>, alias <strong>DEV</strong>, il construit une identité ouverte entre code, créativité et culture numérique.</p>
+              <p className="lead-copy">{t("Né en Haïti le 28 janvier, Joseph Gregoire est passionné par la programmation, la technologie et le hacking éthique.")}</p>
+              <p>{t("À 16 ans, il crée son premier projet HTML à Eagle Stream Academy. Depuis, sa curiosité l’amène à comprendre comment les choses fonctionnent, à apprendre chaque jour et à transformer ses découvertes en projets publics.")}</p>
+              <p>{t("Connu publiquement sous le nom de")} <strong>LUST DEV</strong>, {t("alias")} <strong>DEV</strong>, {t("il construit une identité ouverte entre code, créativité et culture numérique.")}</p>
               <a className="inline-arrow-link" href={links.github} target="_blank" rel="noopener noreferrer">
-                Parcourir l’écosystème public <ArrowUpRight size={17} aria-hidden="true" />
+                {t("Parcourir l’écosystème public")} <ArrowUpRight size={17} aria-hidden="true" />
               </a>
             </div>
           </div>
-          <div className="profile-data" aria-label="Repères publics">
-            <div><strong>20</strong><span>dépôts publics visibles</span></div>
-            <div><strong>03</strong><span>langages fondamentaux</span></div>
-            <div><strong>04</strong><span>canaux officiels</span></div>
+          <div className="profile-data" aria-label={t("Repères publics")}>
+            <div><strong>20</strong><span>{t("dépôts publics visibles")}</span></div>
+            <div><strong>03</strong><span>{t("langages fondamentaux")}</span></div>
+            <div><strong>04</strong><span>{t("canaux officiels")}</span></div>
           </div>
           <div className="identity-panel" aria-labelledby="identity-title">
             <div className="identity-heading">
-              <p className="eyebrow" id="identity-title">// fiche personnelle</p>
-              <span className="identity-status"><i /> PROFILE ONLINE</span>
+              <p className="eyebrow" id="identity-title">// {t("fiche personnelle")}</p>
+              <span className="identity-status"><i /> {t("PROFILE ONLINE")}</span>
             </div>
             <div className="identity-grid">
-              <div><span>Nom</span><strong>Joseph</strong></div>
-              <div><span>Prénom</span><strong>Lusty Gregoire</strong></div>
-              <div><span>Signature</span><strong>joseph</strong></div>
-              <div><span>Né le</span><strong>28 janvier</strong></div>
-              <div><span>Nationalité</span><strong>Haïtien</strong></div>
-              <div><span>Ville</span><strong>Delmas, Haïti</strong></div>
-              <div><span>Alias</span><strong>LUST DEV</strong></div>
+              <div><span>{t("Nom")}</span><strong>Joseph</strong></div>
+              <div><span>{t("Prénom")}</span><strong>Lusty Gregoire</strong></div>
+              <div><span>{t("Signature")}</span><strong>joseph</strong></div>
+              <div><span>{t("Né le")}</span><strong>{t("28 janvier")}</strong></div>
+              <div><span>{t("Nationalité")}</span><strong>{t("Haïtien")}</strong></div>
+              <div><span>{t("Ville")}</span><strong>{t("Delmas, Haïti")}</strong></div>
+              <div><span>{t("Alias")}</span><strong>LUST DEV</strong></div>
             </div>
-            <div className="identity-footer"><span>IDENTITY / 001</span><span>PREMIER SITE HTML · CRÉÉ À 16 ANS</span><span>BUILDING IN PUBLIC</span></div>
+            <div className="identity-footer"><span>{t("IDENTITY / 001")}</span><span>{t("PREMIER SITE HTML · CRÉÉ À 16 ANS")}</span><span>{t("BUILDING IN PUBLIC")}</span></div>
           </div>
         </section>
 
         <section className="skills-section content-section" id="skills" aria-labelledby="skills-title">
           <div className="section-rail">
             <span className="section-number">02</span>
-            <span className="section-rail-label">STACK / COMPÉTENCES</span>
+            <span className="section-rail-label">{t("STACK / COMPÉTENCES")}</span>
           </div>
           <div className="skills-heading-row">
             <div>
-              <p className="eyebrow">COMPÉTENCES TECHNIQUES</p>
-              <h2 id="skills-title">Une stack<br /><span>en construction.</span></h2>
+              <p className="eyebrow">{t("COMPÉTENCES TECHNIQUES")}</p>
+              <h2 id="skills-title">{t("Une stack")}<br /><span>{t("en construction.")}</span></h2>
             </div>
             <div className="skills-intro">
-              <p>HTML, CSS et JavaScript forment le socle maîtrisé. Python, TypeScript, React et Node.js avancent au rythme d’un apprentissage quotidien.</p>
-              <span className="skills-note"><span className="skills-note-dot" /> Socle maîtrisé · reste en progression</span>
+              <p>{t("HTML, CSS et JavaScript forment le socle maîtrisé. Python, TypeScript, React et Node.js avancent au rythme d’un apprentissage quotidien.")}</p>
+              <span className="skills-note"><span className="skills-note-dot" /> {t("Socle maîtrisé · reste en progression")}</span>
             </div>
           </div>
-          <div className="skills-grid" aria-label="Compétences techniques et niveaux de progression">
+          <div className="skills-grid" aria-label={t("Compétences techniques et niveaux de progression")}>
             {skills.map((skill, index) => (
               <article className={`skill-card ${skill.tone}`} key={skill.name} style={{ "--skill-level": `${skill.level}%`, "--skill-delay": `${index * 90}ms` } as React.CSSProperties}>
                 <div className="skill-card-top">
@@ -364,15 +370,15 @@ export default function Home() {
                     <span className="skill-symbol" aria-hidden="true"><Code2 size={16} /></span>
                     <div>
                       <h3>{skill.name}</h3>
-                      <p>{skill.category}</p>
+                      <p>{t(skill.category)}</p>
                     </div>
                   </div>
                   <strong>{skill.level}<small>%</small></strong>
                 </div>
-                <div className="skill-track" role="progressbar" aria-label={`${skill.name} : repère de progression`} aria-valuemin={0} aria-valuemax={100} aria-valuenow={skill.level}>
+                <div className="skill-track" role="progressbar" aria-label={`${skill.name}${t(" : repère de progression")}`} aria-valuemin={0} aria-valuemax={100} aria-valuenow={skill.level}>
                   <span className="skill-fill" />
                 </div>
-                <div className="skill-card-foot"><span>{skill.level >= 80 ? "Base solide" : "En progression"}</span><span>0{index + 1}</span></div>
+                <div className="skill-card-foot"><span>{skill.level >= 80 ? t("Base solide") : t("En progression")}</span><span>0{index + 1}</span></div>
               </article>
             ))}
           </div>
@@ -381,14 +387,14 @@ export default function Home() {
         <section className="work-section content-section" id="work" aria-labelledby="work-title">
           <div className="section-rail">
             <span className="section-number">03</span>
-            <span className="section-rail-label">WORK / PROJETS</span>
+            <span className="section-rail-label">{t("WORK / PROJETS")}</span>
           </div>
           <div className="work-heading-row">
             <div>
-              <p className="eyebrow">PROJETS SÉLECTIONNÉS</p>
-              <h2 id="work-title">Des projets<br /><span>qui avancent.</span></h2>
+              <p className="eyebrow">{t("PROJETS SÉLECTIONNÉS")}</p>
+              <h2 id="work-title">{t("Des projets")}<br /><span>{t("qui avancent.")}</span></h2>
             </div>
-            <p className="section-aside">Une sélection de projets visibles sur le profil GitHub public de LUST DEV. Ouvrir chaque fiche pour lire le code, l’historique et le contexte.</p>
+            <p className="section-aside">{t("Une sélection de projets visibles sur le profil GitHub public de LUST DEV. Ouvrir chaque fiche pour lire le code, l’historique et le contexte.")}</p>
           </div>
           <div className="project-list">
             {projects.map((project) => (
@@ -396,18 +402,18 @@ export default function Home() {
                 <span className="project-index">{project.index}</span>
                 <span className="project-main">
                   <span className="project-name"><span className="project-symbol"><Code2 size={15} aria-hidden="true" /></span>{project.name}<ArrowUpRight size={20} aria-hidden="true" /></span>
-                  <span className="project-type">{project.type}</span>
+                  <span className="project-type">{t(project.type)}</span>
                 </span>
-                <span className="project-description">{project.description}</span>
-                <span className="project-proof">// {project.proof}</span>
-                <span className="project-open"><ExternalLink size={17} aria-hidden="true" /> Open repo</span>
+                <span className="project-description">{t(project.description)}</span>
+                <span className="project-proof">// {t(project.proof)}</span>
+                <span className="project-open"><ExternalLink size={17} aria-hidden="true" /> {t("Open repo")}</span>
               </a>
             ))}
           </div>
           <div className="work-footer">
             <div className="texture-panel" aria-hidden="true" />
             <a className="button button-outline" href={links.github} target="_blank" rel="noopener noreferrer">
-              Voir les 20 dépôts <Github size={17} aria-hidden="true" />
+              {t("Voir les 20 dépôts")} <Github size={17} aria-hidden="true" />
             </a>
           </div>
         </section>
@@ -415,31 +421,31 @@ export default function Home() {
         <section className="network-section content-section" id="network" aria-labelledby="network-title">
           <div className="section-rail">
             <span className="section-number">04</span>
-            <span className="section-rail-label">CONNECT / LIENS</span>
+            <span className="section-rail-label">{t("CONNECT / LIENS")}</span>
           </div>
           <div className="network-layout">
             <div className="network-copy">
-              <p className="eyebrow">RESTER CONNECTÉ</p>
-              <h2 id="network-title">Choisir<br /><span>son canal.</span></h2>
-              <p>Retrouver LUST DEV selon son rythme : tutoriels vidéo, mises à jour communautaires ou conversations directes.</p>
-              <div className="network-signature"><Radio size={16} /> <span>04 CANAUX PUBLICS</span></div>
+              <p className="eyebrow">{t("RESTER CONNECTÉ")}</p>
+              <h2 id="network-title">{t("Choisir")}<br /><span>{t("son canal.")}</span></h2>
+              <p>{t("Retrouver LUST DEV selon son rythme : tutoriels vidéo, mises à jour communautaires ou conversations directes.")}</p>
+              <div className="network-signature"><Radio size={16} /> <span>{t("04 CANAUX PUBLICS")}</span></div>
             </div>
             <div className="social-list">
-              <SocialLink href={links.youtube} icon={<Youtube size={19} />} label="YouTube" handle="@欲LUSTDEV望 · tutoriels" />
-              <SocialLink href={links.whatsappContact} icon={<MessageCircle size={19} />} label="WhatsApp" handle="Support direct · +1 829 478 6326" />
-              <SocialLink href={links.whatsapp} icon={<MessageCircle size={19} />} label="WhatsApp Channel" handle="Canal LUST DEV" />
+              <SocialLink href={links.youtube} icon={<Youtube size={19} />} label="YouTube" handle={t("@欲LUSTDEV望 · tutoriels")} />
+              <SocialLink href={links.whatsappContact} icon={<MessageCircle size={19} />} label="WhatsApp" handle={t("Support direct · +1 829 478 6326")} />
+              <SocialLink href={links.whatsapp} icon={<MessageCircle size={19} />} label={t("WhatsApp Channel")} handle={t("Canal LUST DEV")} />
               <SocialLink href={links.telegram} icon={<Send size={19} />} label="Telegram" handle="@yokubo666" />
               <SocialLink href={links.telegramJoseph} icon={<Send size={19} />} label="Telegram Joseph" handle="@JOSEPHLUSTY" />
-              <SocialLink href={links.github} icon={<Github size={19} />} label="GitHub" handle="@LUST-DEV · repositories" />
-              <div className="contact-card" aria-label="Coordonnées professionnelles">
-                <p className="contact-card-label">CONTACT DIRECT / COLLABORATION</p>
+              <SocialLink href={links.github} icon={<Github size={19} />} label="GitHub" handle={t("@LUST-DEV · repositories")} />
+              <div className="contact-card" aria-label={t("Coordonnées professionnelles")}>
+                <p className="contact-card-label">{t("CONTACT DIRECT / COLLABORATION")}</p>
                 <a href={links.email}><Mail size={16} aria-hidden="true" /><span>lustdev927@gmail.com</span></a>
                 <a href={links.phone}><Phone size={16} aria-hidden="true" /><span>+1 829 478 6326</span></a>
               </div>
             </div>
             <div className="network-visual">
-              {!showPlanet && <img src={`${import.meta.env.BASE_URL}lust-network.svg`} alt="Réseau LUST DEV" />}
-              {showPlanet && <img className="earth-visual" src={`${import.meta.env.BASE_URL}lust-earth.svg`} alt="Planète Terre stylisée, vue depuis l’espace" style={{ transform: `rotate(${earthRotation}deg)` }} onPointerDown={startEarthDrag} onPointerMove={moveEarth} onPointerUp={endEarthDrag} onPointerCancel={endEarthDrag} draggable={false} />}
+              {!showPlanet && <img src={`${import.meta.env.BASE_URL}lust-network.svg`} alt={t("Réseau LUST DEV")} />}
+              {showPlanet && <img className="earth-visual" src={`${import.meta.env.BASE_URL}lust-earth.svg`} alt={t("Planète Terre stylisée, vue depuis l’espace")} style={{ transform: `rotate(${earthRotation}deg)` }} onPointerDown={startEarthDrag} onPointerMove={moveEarth} onPointerUp={endEarthDrag} onPointerCancel={endEarthDrag} draggable={false} />}
               <span className="network-coordinates">48° / 02° / 26°</span>
               <Bot className="network-bot" size={30} strokeWidth={1.2} />
               <NetworkTelemetry showPlanet={showPlanet} onTogglePlanet={() => setShowPlanet((current) => !current)} />
@@ -450,16 +456,16 @@ export default function Home() {
         <section className="team-section content-section" id="team" aria-labelledby="team-title">
           <div className="section-rail">
             <span className="section-number">05</span>
-            <span className="section-rail-label">TEAM / TELEGRAM</span>
+            <span className="section-rail-label">{t("TEAM / TELEGRAM")}</span>
           </div>
           <div className="team-heading-row">
             <div>
-              <p className="eyebrow"><UsersRound size={15} /> ÉQUIPE PUBLIQUE</p>
-              <h2 id="team-title">LUST DEV<br /><span>team signal.</span></h2>
+              <p className="eyebrow"><UsersRound size={15} /> {t("ÉQUIPE PUBLIQUE")}</p>
+              <h2 id="team-title">LUST DEV<br /><span>{t("team signal.")}</span></h2>
             </div>
-            <p className="section-aside">Une équipe de profils créatifs et techniques à retrouver sur Telegram. Chaque label ouvre directement le profil indiqué.</p>
+            <p className="section-aside">{t("Une équipe de profils créatifs et techniques à retrouver sur Telegram. Chaque label ouvre directement le profil indiqué.")}</p>
           </div>
-          <div className="team-grid" aria-label="Membres de la Team Telegram">
+          <div className="team-grid" aria-label={t("Membres de la Team Telegram")}>
             {teamMembers.map((member, index) => (
               <a className="team-label" href={`https://t.me/${member}`} target="_blank" rel="noopener noreferrer" key={member}>
                 <span className="team-label-index">{String(index + 1).padStart(2, "0")}</span>
@@ -473,19 +479,19 @@ export default function Home() {
 
         <section className="closing-section" aria-labelledby="closing-title">
           <div className="closing-line" aria-hidden="true" />
-          <p className="eyebrow">UNE DERNIÈRE CHOSE</p>
-          <h2 id="closing-title">On se retrouve<br /><em>en ligne.</em></h2>
+          <p className="eyebrow">{t("UNE DERNIÈRE CHOSE")}</p>
+          <h2 id="closing-title">{t("On se retrouve")}<br /><em>{t("en ligne.")}</em></h2>
           <a className="button button-primary" href={links.github} target="_blank" rel="noopener noreferrer">
-            Ouvrir le terrain de jeu <ArrowUpRight size={17} aria-hidden="true" />
+            {t("Ouvrir le terrain de jeu")} <ArrowUpRight size={17} aria-hidden="true" />
           </a>
         </section>
       </main>
 
       <footer className="site-footer">
         <span className="footer-mark">LUST<span>DEV</span></span>
-        <span>Independent developer · public by design</span>
-        <span className="footer-legal"><Link href="/cgu">CGU</Link><Link href="/confidentialite">Confidentialité</Link></span>
-        <a href="#top">Retour en haut <ArrowUpRight size={14} aria-hidden="true" /></a>
+        <span>{t("Independent developer · public by design")}</span>
+        <span className="footer-legal"><Link href="/cgu">{t("CGU")}</Link><Link href="/confidentialite">{t("Confidentialité")}</Link><a href="/sitemap.xml">{t("Sitemap")}</a></span>
+        <a href="#top">{t("Retour en haut")} <ArrowUpRight size={14} aria-hidden="true" /></a>
       </footer>
     </div>
   );

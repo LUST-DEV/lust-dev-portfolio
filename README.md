@@ -11,7 +11,7 @@
 </p>
 
 <p align="center">
-  <a href="https://lust-dev-portfolio.vercel.app/"><img src="https://img.shields.io/badge/site-live-8de0bb?style=for-the-badge&labelColor=090909" alt="Site en ligne" /></a>
+  <a href="https://lust-dev-portfolio.zone.id/"><img src="https://img.shields.io/badge/site-live-8de0bb?style=for-the-badge&labelColor=090909" alt="Site en ligne" /></a>
   <a href="https://github.com/LUST-DEV/lust-dev-portfolio/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/LUST-DEV/lust-dev-portfolio/ci.yml?branch=main&style=for-the-badge&label=CI" alt="Statut CI" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-f0cf8d?style=for-the-badge&labelColor=090909" alt="Licence MIT" /></a>
 </p>
@@ -25,7 +25,7 @@
 
 ## Accès rapide
 
-- [Site public](https://lust-dev-portfolio.vercel.app/)
+- [Site public](https://lust-dev-portfolio.zone.id/)
 - [Projets GitHub](https://github.com/LUST-DEV)
 - [Variables d’environnement](#variables-denvironnement)
 - [Déploiement Vercel](#déploiement-avec-vercel)
@@ -63,7 +63,7 @@ Ce portfolio est une interface éditoriale responsive pour présenter les projet
 - section **Team Telegram** avec labels et profils directs ;
 - bannière de consentement cookies et préférences réouvrables ;
 - Analytics chargé uniquement après consentement non essentiel ;
-- pages [CGU](https://lust-dev-portfolio.vercel.app/cgu) et [confidentialité](https://lust-dev-portfolio.vercel.app/confidentialite) ;
+- pages [CGU](https://lust-dev-portfolio.zone.id/cgu) et [confidentialité](https://lust-dev-portfolio.zone.id/confidentialite) ;
 - robots.txt, sitemap, canonical URL et données structurées JSON-LD ;
 - support de `prefers-reduced-motion` pour l’accessibilité.
 
@@ -157,29 +157,27 @@ Chaque push sur `main` déclenche le déploiement Vercel. Aucun VPS n’est néc
 
 ## Indexation Google
 
-Le site public est : [lust-dev-portfolio.vercel.app](https://lust-dev-portfolio.vercel.app/).
+Le site public est : [lust-dev-portfolio.zone.id](https://lust-dev-portfolio.zone.id/).
 
 Les signaux SEO actifs sont :
 
-- `robots.txt` avec sitemap Vercel ;
-- sitemap XML sur le domaine canonique ;
-- canonical URL Vercel ;
+- `robots.txt` qui autorise l’exploration et annonce le sitemap du nouveau domaine ;
+- sitemap XML cohérent avec les canonicals des trois pages publiques ;
+- canonicals auto-référents sur le nouveau domaine ;
 - Open Graph et Twitter Card ;
 - image sociale PNG ;
 - données structurées `WebSite` et `Person` ;
 - balise Google Search Console.
 
-Pour demander l’indexation :
+Pour transférer et demander l’indexation du nouveau domaine :
 
 1. ouvre [Google Search Console](https://search.google.com/search-console/about) ;
-2. ajoute la propriété URL prefix `https://lust-dev-portfolio.vercel.app/` ;
-3. vérifie la propriété avec la balise déjà présente ;
-4. ouvre **Inspection de l’URL** ;
-5. saisis `https://lust-dev-portfolio.vercel.app/` ;
-6. clique sur **Demander une indexation** ;
-7. dans **Sitemaps**, ajoute `sitemap.xml`.
+2. ajoute la propriété URL prefix `https://lust-dev-portfolio.zone.id/` et vérifie-la avec la méthode proposée par Search Console ;
+3. vérifie aussi l’ancienne propriété, puis utilise **Changement d’adresse** si l’outil est proposé pour ce déplacement ;
+4. dans la propriété du nouveau domaine, ouvre **Sitemaps** et soumets `https://lust-dev-portfolio.zone.id/sitemap.xml` ;
+5. utilise **Inspection de l’URL** sur la page d’accueil et les pages légales, puis demande une indexation si nécessaire.
 
-L’indexation dépend ensuite du crawl de Google et ne peut pas être garantie instantanément par le dépôt seul.
+L’ancien domaine Vercel redirige en 308 vers le nouveau pour conserver les chemins et les signaux de liens. Google peut prendre plusieurs semaines pour traiter un déplacement ; l’indexation ne peut pas être garantie instantanément.
 
 ## Sécurité et confidentialité
 

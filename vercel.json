@@ -6,6 +6,12 @@
   "cleanUrls": true,
   "redirects": [
     {
+      "source": "/",
+      "has": [{ "type": "host", "value": "lust-dev-portfolio\\.vercel\\.app" }],
+      "destination": "https://lust-dev-portfolio.zone.id/",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [{ "type": "host", "value": "lust-dev-portfolio\\.vercel\\.app" }],
       "destination": "https://lust-dev-portfolio.zone.id/:path*",

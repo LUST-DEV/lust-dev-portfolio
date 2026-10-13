@@ -23,22 +23,31 @@ export function ThemeProvider({
 }: ThemeProviderProps) {
   const [theme, setTheme] = useState<Theme>(() => {
     if (switchable) {
-      const stored = localStorage.getItem("theme");
-      return (stored as Theme) || defaultTheme;
+      if (typeof window === "undefined") return defaultTheme;
+      const previewTheme = new URLSearchParams(window.location.search).get("theme");
+      if (previewTheme === "light" || previewTheme === "dark") return previewTheme;
+      try {
+        const stored = window.localStorage.getItem("lust-dev-theme");
+        if (stored === "light" || stored === "dark") return stored;
+      } catch {
+        // Keep the site usable when browser storage is unavailable.
+      }
     }
     return defaultTheme;
   });
 
   useEffect(() => {
     const root = document.documentElement;
-    if (theme === "dark") {
-      root.classList.add("dark");
-    } else {
-      root.classList.remove("dark");
-    }
+    root.classList.toggle("dark", theme === "dark");
+    root.classList.toggle("theme-dark", theme === "dark");
+    root.style.colorScheme = theme;
 
     if (switchable) {
-      localStorage.setItem("theme", theme);
+      try {
+        window.localStorage.setItem("lust-dev-theme", theme);
+      } catch {
+        // Theme still works for the current page when storage is unavailable.
+      }
     }
   }, [theme, switchable]);
 

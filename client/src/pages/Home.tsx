@@ -1,6 +1,7 @@
 // Style system: Atelier éditorial — portfolio professionnel, espaces aérés, palette ivoire/encre/corail et interactions discrètes.
 import { useEffect, useRef, useState } from "react";
 import { Link } from "wouter";
+import { useTheme } from "@/contexts/ThemeContext";
 import {
   ArrowDownRight,
   ArrowUpRight,
@@ -123,33 +124,6 @@ function SocialLink({
   );
 }
 
-function RainParticles() {
-  return (
-    <div className="rain-layer" aria-hidden="true">
-      {Array.from({ length: 42 }, (_, index) => (
-        <span
-          className="rain-drop"
-          key={index}
-          style={{
-            "--rain-x": `${(index * 37) % 100}%`,
-            "--rain-delay": `${(index % 13) * -0.42}s`,
-            "--rain-duration": `${3.6 + (index % 7) * 0.38}s`,
-            "--rain-length": `${12 + (index % 5) * 7}px`,
-            "--rain-opacity": `${0.16 + (index % 4) * 0.08}`,
-          } as React.CSSProperties}
-        />
-      ))}
-      {Array.from({ length: 9 }, (_, index) => (
-        <span className="falling-star" key={`star-${index}`} style={{
-          "--star-x": `${8 + ((index * 31) % 88)}%`,
-          "--star-delay": `${(index % 7) * -1.8}s`,
-          "--star-duration": `${5.5 + (index % 4) * .9}s`,
-        } as React.CSSProperties} />
-      ))}
-    </div>
-  );
-}
-
 function NetworkTelemetry({ showPlanet, onTogglePlanet }: { showPlanet: boolean; onTogglePlanet: () => void }) {
   const [latency, setLatency] = useState<number | null>(null);
   const [online, setOnline] = useState(() => typeof navigator === "undefined" ? true : navigator.onLine);
@@ -208,18 +182,11 @@ function NetworkTelemetry({ showPlanet, onTogglePlanet }: { showPlanet: boolean;
 }
 
 export default function Home() {
+  const { theme, toggleTheme } = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
   const [showPlanet, setShowPlanet] = useState(false);
   const [earthRotation, setEarthRotation] = useState(0);
   const dragStart = useRef<{ x: number; rotation: number } | null>(null);
-  const [theme, setTheme] = useState<"light" | "dark">(() => {
-    if (typeof window === "undefined") return "light";
-    const previewTheme = new URLSearchParams(window.location.search).get("theme");
-    if (previewTheme === "light" || previewTheme === "dark") return previewTheme;
-    const savedTheme = window.localStorage.getItem("lust-dev-theme");
-    if (savedTheme === "light" || savedTheme === "dark") return savedTheme;
-    return "dark";
-  });
 
   const closeMenu = () => setMenuOpen(false);
   const startEarthDrag = (event: React.PointerEvent<HTMLImageElement>) => {
@@ -232,16 +199,10 @@ export default function Home() {
   };
   const endEarthDrag = () => { dragStart.current = null; };
 
-  useEffect(() => {
-    window.localStorage.setItem("lust-dev-theme", theme);
-    document.documentElement.style.colorScheme = theme;
-  }, [theme]);
-
   return (
     <div className={`site-shell theme-${theme}`}>
       <div className="ambient ambient-one" aria-hidden="true" />
       <div className="ambient ambient-two" aria-hidden="true" />
-      <RainParticles />
 
       <header className="site-header">
         <a className="brand-lockup" href="#top" onClick={closeMenu} aria-label="LUST DEV, revenir en haut">
@@ -271,7 +232,7 @@ export default function Home() {
           <button
             className="theme-toggle"
             type="button"
-            onClick={() => setTheme((currentTheme) => currentTheme === "light" ? "dark" : "light")}
+            onClick={() => toggleTheme?.()}
             aria-label={theme === "light" ? "Activer le mode sombre" : "Activer le mode clair"}
             title={theme === "light" ? "Activer le mode sombre" : "Activer le mode clair"}
           >

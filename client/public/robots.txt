@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://lust-dev-portfolio.vercel.app/sitemap.xml
+Sitemap: https://lust-dev-portfolio.zone.id/sitemap.xml

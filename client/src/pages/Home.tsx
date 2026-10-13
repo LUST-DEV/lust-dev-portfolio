@@ -1,9 +1,7 @@
 // Style system: Atelier éditorial — portfolio professionnel, espaces aérés, palette ivoire/encre/corail et interactions discrètes.
 import { useEffect, useRef, useState } from "react";
-import { Link } from "wouter";
 import { useTheme } from "@/contexts/ThemeContext";
-import { useLanguage } from "@/contexts/LanguageContext";
-import LanguageSelector from "@/components/LanguageSelector";
+import { localizedPath, useLanguage } from "@/contexts/LanguageContext";
 import {
   ArrowDownRight,
   ArrowUpRight,
@@ -129,12 +127,13 @@ function SocialLink({
 function NetworkTelemetry({ showPlanet, onTogglePlanet }: { showPlanet: boolean; onTogglePlanet: () => void }) {
   const { t } = useLanguage();
   const [latency, setLatency] = useState<number | null>(null);
-  const [online, setOnline] = useState(() => typeof navigator === "undefined" ? true : navigator.onLine);
+  const [online, setOnline] = useState(true);
   const [networkQuality, setNetworkQuality] = useState<"good" | "fair" | "poor">("good");
   const [glow, setGlow] = useState<"coral" | "cyan" | "gold">("coral");
 
   useEffect(() => {
     const updateOnline = () => setOnline(navigator.onLine);
+    updateOnline();
     window.addEventListener("online", updateOnline);
     window.addEventListener("offline", updateOnline);
 
@@ -186,8 +185,14 @@ function NetworkTelemetry({ showPlanet, onTogglePlanet }: { showPlanet: boolean;
 
 export default function Home() {
   const { theme, toggleTheme } = useTheme();
-  const { t } = useLanguage();
-  useEffect(() => { document.title = t("Joseph Lusty Gregoire — LUST DEV"); }, [t]);
+  const { language, t } = useLanguage();
+  const pageTitle = {
+    fr: "Joseph Lusty Gregoire — LUST DEV",
+    en: "Joseph Lusty Gregoire — LUST DEV | Developer Portfolio",
+    es: "Joseph Lusty Gregoire — LUST DEV | Portafolio",
+    ht: "Joseph Lusty Gregoire — LUST DEV | Pòtfèy",
+  }[language];
+  useEffect(() => { document.title = pageTitle; }, [pageTitle]);
   const [menuOpen, setMenuOpen] = useState(false);
   const [showPlanet, setShowPlanet] = useState(false);
   const [earthRotation, setEarthRotation] = useState(0);
@@ -231,8 +236,8 @@ export default function Home() {
           <a href="#skills" onClick={closeMenu}><span className="nav-symbol" aria-hidden="true">◎</span>{t("Compétences")}</a>
           <a href="#work" onClick={closeMenu}><span className="nav-symbol" aria-hidden="true">✦</span>{t("Projets")}</a>
           <a href="#network" onClick={closeMenu}><span className="nav-symbol" aria-hidden="true">↗</span>{t("Liens")}</a>
-          <a className="nav-contact" href={links.github} target="_blank" rel="noopener noreferrer" onClick={closeMenu}>
-            GitHub <ArrowUpRight size={15} aria-hidden="true" />
+          <a className="nav-contact" href={links.github} target="_blank" rel="noopener noreferrer" onClick={closeMenu} aria-label="GitHub LUST DEV">
+            <Github size={15} aria-hidden="true" /> GitHub LUST DEV <ArrowUpRight size={15} aria-hidden="true" />
           </a>
           <button
             className="theme-toggle"
@@ -244,7 +249,6 @@ export default function Home() {
             <span className="theme-toggle-icon" aria-hidden="true">{theme === "light" ? <Moon size={15} /> : <Sun size={15} />}</span>
             <span>{theme === "light" ? t("Sombre") : t("Clair")}</span>
           </button>
-          <LanguageSelector />
         </nav>
       </header>
 
@@ -490,7 +494,7 @@ export default function Home() {
       <footer className="site-footer">
         <span className="footer-mark">LUST<span>DEV</span></span>
         <span>{t("Independent developer · public by design")}</span>
-        <span className="footer-legal"><Link href="/cgu">{t("CGU")}</Link><Link href="/confidentialite">{t("Confidentialité")}</Link><a href="/sitemap.xml">{t("Sitemap")}</a></span>
+        <span className="footer-legal"><a href={localizedPath("/cgu", language)}>{t("CGU")}</a><a href={localizedPath("/confidentialite", language)}>{t("Confidentialité")}</a><a href="/sitemap.xml">{t("Sitemap")}</a></span>
         <a href="#top">{t("Retour en haut")} <ArrowUpRight size={14} aria-hidden="true" /></a>
       </footer>
     </div>

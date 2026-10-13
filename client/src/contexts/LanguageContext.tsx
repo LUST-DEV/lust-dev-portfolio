@@ -1,4 +1,5 @@
-import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
+import { createContext, useContext, useEffect, useMemo, type ReactNode } from "react";
+import { useLocation } from "wouter";
 
 export const languageCodes = ["fr", "en", "es", "ht"] as const;
 export type Language = (typeof languageCodes)[number];
@@ -210,48 +211,31 @@ const copy: Record<string, readonly [string, string, string, string]> = {
 
 interface LanguageContextValue {
   language: Language;
-  setLanguage: (language: Language) => void;
   t: (source: string) => string;
 }
 
 const LanguageContext = createContext<LanguageContextValue | null>(null);
-const STORAGE_KEY = "lust-dev-language";
 
-function matchLanguage(value: string | null | undefined): Language | null {
-  const code = value?.toLowerCase().split(/[-_]/)[0];
-  return languageCodes.find((language) => language === code) ?? null;
+export function languageFromPath(path: string): Language {
+  const segment = path.split("/").filter(Boolean)[0];
+  return segment === "en" || segment === "es" || segment === "ht" ? segment : "fr";
 }
 
-function initialLanguage(): Language {
-  if (typeof window === "undefined") return "fr";
-  try {
-    const stored = matchLanguage(window.localStorage.getItem(STORAGE_KEY));
-    if (stored) return stored;
-  } catch {
-    // Use the browser's language when storage is unavailable.
-  }
-  for (const preferred of window.navigator.languages ?? [window.navigator.language]) {
-    const detected = matchLanguage(preferred);
-    if (detected) return detected;
-  }
-  return "fr";
+export function localizedPath(path: string, language: Language): string {
+  const normalized = path.startsWith("/") ? path : `/${path}`;
+  return language === "fr" ? normalized : `/${language}${normalized === "/" ? "" : normalized}`;
 }
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguage] = useState<Language>(initialLanguage);
+  const [location] = useLocation();
+  const language = languageFromPath(location);
 
   useEffect(() => {
     document.documentElement.lang = language;
-    try {
-      window.localStorage.setItem(STORAGE_KEY, language);
-    } catch {
-      // Language still works for the current page when storage is unavailable.
-    }
   }, [language]);
 
   const value = useMemo<LanguageContextValue>(() => ({
     language,
-    setLanguage,
     t: (source) => copy[source]?.[languageIndex[language]] ?? source,
   }), [language]);
 

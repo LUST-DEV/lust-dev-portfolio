@@ -9,6 +9,7 @@ import Analytics from "./components/Analytics";
 import GlobalParticles from "./components/GlobalParticles";
 import SiteLoader from "./components/SiteLoader";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import { LanguageProvider } from "./contexts/LanguageContext";
 import Home from "./pages/Home";
 import LegalPage from "./pages/LegalPage";
 
@@ -27,20 +28,22 @@ function Router() {
 export default function App() {
   return (
     <ErrorBoundary>
-      <ThemeProvider defaultTheme="dark" switchable>
-        <div className="app-root">
-          <GlobalParticles />
-          <div className="app-content">
-            <TooltipProvider>
-              <Toaster />
-              <SiteLoader />
-              <Router />
-              <CookieConsent />
-              <Analytics />
-            </TooltipProvider>
+      <LanguageProvider>
+        <ThemeProvider defaultTheme="dark" switchable>
+          <div className="app-root">
+            <GlobalParticles />
+            <div className="app-content">
+              <TooltipProvider>
+                <Toaster />
+                <SiteLoader />
+                <Router />
+                <CookieConsent />
+                <Analytics />
+              </TooltipProvider>
+            </div>
           </div>
-        </div>
-      </ThemeProvider>
+        </ThemeProvider>
+      </LanguageProvider>
     </ErrorBoundary>
   );
 }

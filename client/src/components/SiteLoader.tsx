@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function SiteLoader() {
+  const { t } = useLanguage();
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
@@ -18,10 +20,10 @@ export default function SiteLoader() {
   if (!visible) return null;
 
   return (
-    <div className="site-loader" role="status" aria-live="polite" aria-label="Chargement de LUST DEV">
+    <div className="site-loader" role="status" aria-live="polite" aria-label={t("Chargement de LUST DEV")}>
       <div className="loader-mark">L<span>DEV</span></div>
       <div className="loader-line"><span /></div>
-      <p>INITIALISATION / LUST DEV</p>
+      <p>{t("INITIALISATION / LUST DEV")}</p>
     </div>
   );
 }

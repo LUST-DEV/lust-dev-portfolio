@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const CONSENT_COOKIE = "lust_cookie_consent";
 const CONSENT_MAX_AGE = 60 * 60 * 24 * 180;
@@ -31,6 +32,7 @@ function saveConsent(choice: CookieConsentChoice) {
 }
 
 export default function CookieConsent() {
+  const { t } = useLanguage();
   const [visible, setVisible] = useState(false);
   const [choice, setChoice] = useState<CookieConsentChoice | null>(null);
   const [showDetails, setShowDetails] = useState(false);
@@ -46,9 +48,9 @@ export default function CookieConsent() {
 
   if (!visible) {
     return (
-      <button className="cookie-settings-button" type="button" onClick={() => setVisible(true)} aria-label="Gérer les préférences cookies">
+      <button className="cookie-settings-button" type="button" onClick={() => setVisible(true)} aria-label={t("Gérer les préférences cookies")}>
         <span className="cookie-status-dot" aria-hidden="true" />
-        Cookies · {choice === "all" ? "autorisés" : "nécessaires uniquement"}
+        Cookies · {choice === "all" ? t("autorisés") : t("nécessaires uniquement")}
       </button>
     );
   }
@@ -62,28 +64,20 @@ export default function CookieConsent() {
   return (
     <aside className="cookie-banner" role="dialog" aria-modal="false" aria-labelledby="cookie-title" aria-describedby="cookie-description">
       <div>
-        <p className="cookie-kicker">LUST DEV / CONFIDENTIALITÉ / COOKIES</p>
-        <h2 id="cookie-title">Un site simple, sans suivi caché.</h2>
-        <p id="cookie-description">
-          Les cookies nécessaires mémorisent tes préférences. Les services non essentiels, comme l’Analytics ou reCAPTCHA, restent désactivés tant que tu ne les autorises pas.
-        </p>
+        <p className="cookie-kicker">{t("LUST DEV / CONFIDENTIALITÉ / COOKIES")}</p>
+        <h2 id="cookie-title">{t("Un site simple, sans suivi caché.")}</h2>
+        <p id="cookie-description">{t("Les cookies nécessaires mémorisent tes préférences. Les services non essentiels, comme l’Analytics ou reCAPTCHA, restent désactivés tant que tu ne les autorises pas.")}</p>
         {showDetails && (
           <div className="cookie-details">
-            <p><strong>Nécessaires :</strong> consentement et préférences d’interface. Ils permettent au site de fonctionner.</p>
-            <p><strong>Non essentiels :</strong> aucun service de mesure, publicité ou reCAPTCHA n’est chargé actuellement.</p>
+            <p>{t("Nécessaires : consentement et préférences d’interface. Ils permettent au site de fonctionner.")}</p>
+            <p>{t("Non essentiels : aucun service de mesure, publicité ou reCAPTCHA n’est chargé actuellement.")}</p>
           </div>
         )}
       </div>
       <div className="cookie-actions">
-        <button className="cookie-button cookie-button-muted" type="button" onClick={() => setShowDetails((current) => !current)}>
-          {showDetails ? "Masquer" : "Détails"}
-        </button>
-        <button className="cookie-button cookie-button-muted" type="button" onClick={() => choose("necessary")}>
-          Refuser
-        </button>
-        <button className="cookie-button cookie-button-primary" type="button" onClick={() => choose("all")}>
-          Autoriser
-        </button>
+        <button className="cookie-button cookie-button-muted" type="button" onClick={() => setShowDetails((current) => !current)}>{t(showDetails ? "Masquer" : "Détails")}</button>
+        <button className="cookie-button cookie-button-muted" type="button" onClick={() => choose("necessary")}>{t("Refuser")}</button>
+        <button className="cookie-button cookie-button-primary" type="button" onClick={() => choose("all")}>{t("Autoriser")}</button>
       </div>
     </aside>
   );

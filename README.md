@@ -4,7 +4,9 @@
   </a>
 </p>
 
-<h1 align="center">LUST DEV</h1>
+<h1 align="center">
+  <a href="https://lust-dev-portfolio.zone.id/"><img src="assets/lust-dev-title.gif" alt="LUST DEV — titre animé dans un cadre bleu" width="720"></a>
+</h1>
 <p align="center">Portfolio de Joseph Lusty Gregoire — développement, projets et outils numériques.</p>
 
 <p align="center">

@@ -11,7 +11,9 @@
 </a>
 
 </div>
-<p align="center">Portfolio de Joseph Lusty Gregoire — développement, projets et outils numériques.</p>
+<p align="center">
+  <img src="assets/portfolio-tagline-gradient.svg" alt="Portfolio de Joseph Lusty Gregoire — développement, projets et outils numériques." width="520" height="72">
+</p>
 
 <p align="center">
   <a href="https://lust-dev-portfolio.zone.id/"><img src="https://img.shields.io/badge/Portfolio-Visiter-286BB7?style=for-the-badge&logo=vercel&logoColor=white" alt="Visiter le portfolio"></a>

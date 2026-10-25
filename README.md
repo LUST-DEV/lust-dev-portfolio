@@ -4,9 +4,13 @@
   </a>
 </p>
 
-<h1 align="center">
-  <a href="https://lust-dev-portfolio.zone.id/"><img src="assets/lust-dev-title.gif" alt="LUST DEV - DEV OF SINS, titre rouge cramoisi avec animation de frappe, sans cadre" width="720"></a>
-</h1>
+<div align="center">
+
+<a href="https://lust-dev-portfolio.zone.id/">
+  <img src="https://readme-typing-svg.demolab.com?font=Space+Grotesk&amp;weight=700&amp;size=42&amp;duration=2800&amp;pause=1100&amp;color=DC143C&amp;center=true&amp;vCenter=true&amp;width=850&amp;height=70&amp;lines=LUST+DEV+-+DEV+OF+SINS" alt="LUST DEV - DEV OF SINS, titre rouge cramoisi avec effet de frappe" />
+</a>
+
+</div>
 <p align="center">Portfolio de Joseph Lusty Gregoire — développement, projets et outils numériques.</p>
 
 <p align="center">

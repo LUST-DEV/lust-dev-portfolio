@@ -5,7 +5,7 @@
 </p>
 
 <h1 align="center">
-  <a href="https://lust-dev-portfolio.zone.id/"><img src="assets/lust-dev-title.gif" alt="LUST DEV — DEV OF SINS, titre animé rouge cramoisi" width="720"></a>
+  <a href="https://lust-dev-portfolio.zone.id/"><img src="assets/lust-dev-title.gif" alt="LUST DEV - DEV OF SINS, titre rouge cramoisi avec animation de frappe, sans cadre" width="720"></a>
 </h1>
 <p align="center">Portfolio de Joseph Lusty Gregoire — développement, projets et outils numériques.</p>
 

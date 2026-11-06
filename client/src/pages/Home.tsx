@@ -8,6 +8,7 @@ import {
   Bot,
   Code2,
   ExternalLink,
+  GitBranch,
   Github,
   Globe2,
   Gauge,
@@ -16,7 +17,9 @@ import {
   MessageCircle,
   Phone,
   Radio,
+  Rocket,
   Send,
+  Sparkles,
   Moon,
   Sun,
   Terminal,
@@ -234,6 +237,8 @@ export default function Home() {
         <nav id="main-navigation" className={menuOpen ? "main-nav is-open" : "main-nav"} aria-label={t("Navigation principale")}>
           <a href="#profile" onClick={closeMenu}><span className="nav-symbol" aria-hidden="true">◌</span>{t("Profil")}</a>
           <a href="#skills" onClick={closeMenu}><span className="nav-symbol" aria-hidden="true">◎</span>{t("Compétences")}</a>
+          <a href="#stats" onClick={closeMenu}><span className="nav-symbol" aria-hidden="true">◈</span>{t("Stats")}</a>
+          <a href="#why-me" onClick={closeMenu}><span className="nav-symbol" aria-hidden="true">✦</span>{t("Why Me")}</a>
           <a href="#work" onClick={closeMenu}><span className="nav-symbol" aria-hidden="true">✦</span>{t("Projets")}</a>
           <a href="#network" onClick={closeMenu}><span className="nav-symbol" aria-hidden="true">↗</span>{t("Liens")}</a>
           <a className="nav-contact" href={links.github} target="_blank" rel="noopener noreferrer" onClick={closeMenu} aria-label="GitHub LUST DEV">
@@ -388,9 +393,83 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="work-section content-section" id="work" aria-labelledby="work-title">
+        <section className="stats-section content-section" id="stats" aria-labelledby="stats-title">
           <div className="section-rail">
             <span className="section-number">03</span>
+            <span className="section-rail-label">{t("STATS / ACTIVITÉ")}</span>
+          </div>
+          <div className="stats-heading-row">
+            <div>
+              <p className="eyebrow"><Github size={15} /> {t("ACTIVITÉ PUBLIQUE")}</p>
+              <h2 id="stats-title">GitHub<br /><span>{t("en mouvement.")}</span></h2>
+            </div>
+            <p className="section-aside">{t("Des statistiques lisibles pour suivre les dépôts, les langages et la régularité du travail public de LUST DEV.")}</p>
+          </div>
+          <div className="stats-layout">
+            <article className="stats-panel github-stats-panel">
+              <div className="stats-panel-heading">
+                <div><span className="stats-kicker">01</span><h3>GitHub Stats</h3></div>
+                <Github size={18} aria-hidden="true" />
+              </div>
+              <div className="stats-images stats-images-duo">
+                <img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=LUST-DEV&theme=tokyonight" alt={t("Statistiques GitHub de LUST DEV")} loading="lazy" />
+                <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=LUST-DEV&theme=tokyonight" alt={t("Langages utilisés dans les dépôts LUST DEV")} loading="lazy" />
+              </div>
+            </article>
+            <article className="stats-panel dev-stats-panel">
+              <div className="stats-panel-heading">
+                <div><span className="stats-kicker">02</span><h3>Dev Stats</h3></div>
+                <Code2 size={18} aria-hidden="true" />
+              </div>
+              <div className="stats-images">
+                <img src="https://streak-stats.demolab.com/?user=LUST-DEV&theme=tokyonight&hide_border=true" alt={t("Régularité des contributions GitHub")} loading="lazy" />
+              </div>
+              <div className="dev-metrics">
+                <div><strong>06</strong><span>{t("technologies suivies")}</span></div>
+                <div><strong>03</strong><span>{t("projets mis en avant")}</span></div>
+                <div><strong>04</strong><span>{t("langues du site")}</span></div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section className="why-section content-section" id="why-me" aria-labelledby="why-title">
+          <div className="section-rail">
+            <span className="section-number">04</span>
+            <span className="section-rail-label">WHY ME / VALEUR</span>
+          </div>
+          <div className="why-heading-row">
+            <div>
+              <p className="eyebrow"><Sparkles size={15} /> {t("POURQUOI LUST DEV")}</p>
+              <h2 id="why-title">Why<br /><span>{t("me.")}</span></h2>
+            </div>
+            <p className="section-aside">{t("Une manière de travailler basée sur la curiosité, la clarté et la création de projets réellement utilisables.")}</p>
+          </div>
+          <div className="why-grid">
+            <article className="why-card why-card-coral">
+              <span className="why-icon"><Code2 size={22} aria-hidden="true" /></span>
+              <span className="why-index">01</span>
+              <h3>{t("Code utile")}</h3>
+              <p>{t("Des solutions simples, propres et pensées pour résoudre de vrais problèmes.")}</p>
+            </article>
+            <article className="why-card why-card-sky">
+              <span className="why-icon"><GitBranch size={22} aria-hidden="true" /></span>
+              <span className="why-index">02</span>
+              <h3>{t("Esprit open source")}</h3>
+              <p>{t("Je construis, documente et partage des projets réutilisables.")}</p>
+            </article>
+            <article className="why-card why-card-butter">
+              <span className="why-icon"><Rocket size={22} aria-hidden="true" /></span>
+              <span className="why-index">03</span>
+              <h3>{t("Construire vite")}</h3>
+              <p>{t("De l’idée au prototype fonctionnel avec une approche pragmatique.")}</p>
+            </article>
+          </div>
+        </section>
+
+        <section className="work-section content-section" id="work" aria-labelledby="work-title">
+          <div className="section-rail">
+            <span className="section-number">05</span>
             <span className="section-rail-label">{t("WORK / PROJETS")}</span>
           </div>
           <div className="work-heading-row">
@@ -424,7 +503,7 @@ export default function Home() {
 
         <section className="network-section content-section" id="network" aria-labelledby="network-title">
           <div className="section-rail">
-            <span className="section-number">04</span>
+            <span className="section-number">06</span>
             <span className="section-rail-label">{t("CONNECT / LIENS")}</span>
           </div>
           <div className="network-layout">
@@ -459,7 +538,7 @@ export default function Home() {
 
         <section className="team-section content-section" id="team" aria-labelledby="team-title">
           <div className="section-rail">
-            <span className="section-number">05</span>
+            <span className="section-number">07</span>
             <span className="section-rail-label">{t("TEAM / TELEGRAM")}</span>
           </div>
           <div className="team-heading-row">

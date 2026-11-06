@@ -1,0 +1,16 @@
+{
+  "routes": [
+    { "path": "/", "title": "LUST DEV — Portfolio" },
+    { "path": "/en", "title": "LUST DEV — Portfolio" },
+    { "path": "/es", "title": "LUST DEV — Portafolio" },
+    { "path": "/ht", "title": "LUST DEV — Pòtfèy" },
+    { "path": "/cgu", "title": "LUST DEV — Conditions générales" },
+    { "path": "/en/cgu", "title": "LUST DEV — Terms of Use" },
+    { "path": "/es/cgu", "title": "LUST DEV — Términos de uso" },
+    { "path": "/ht/cgu", "title": "LUST DEV — Kondisyon itilizasyon" },
+    { "path": "/confidentialite", "title": "LUST DEV — Confidentialité" },
+    { "path": "/en/confidentialite", "title": "LUST DEV — Privacy Policy" },
+    { "path": "/es/confidentialite", "title": "LUST DEV — Privacidad" },
+    { "path": "/ht/confidentialite", "title": "LUST DEV — Konfidansyalite" }
+  ]
+}

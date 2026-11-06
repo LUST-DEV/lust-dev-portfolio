@@ -4,7 +4,11 @@
   </a>
 
   <h1>LUST DEV · DEV OF SINS</h1>
-  <p><strong>Portfolio personnel, projets numériques et outils open source.</strong></p>
+  <p><strong>Joseph Lusty Gregoire · développeur indépendant · créateur de LUST DEV</strong></p>
+
+  <p>
+    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=18&duration=3200&pause=900&color=286BB7&center=true&vCenter=true&width=680&lines=Construire+des+outils+utiles;Explorer+le+web+et+la+cybers%C3%A9curit%C3%A9;Partager+des+projets+open+source" alt="Présentation animée de LUST DEV">
+  </p>
 
   <p>
     <a href="https://lust-dev-portfolio.zone.id/"><img src="https://img.shields.io/badge/Portfolio-Visiter-286BB7?style=for-the-badge&logo=vercel&logoColor=white" alt="Visiter le portfolio"></a>
@@ -22,6 +26,7 @@
     </tr>
   </table>
   <p><img src="assets/language.svg" width="20" height="20" alt="Langues" valign="middle"> <sub><a href="https://lust-dev-portfolio.zone.id/">FR</a> · <a href="https://lust-dev-portfolio.zone.id/en">EN</a> · <a href="https://lust-dev-portfolio.zone.id/es">ES</a> · <a href="https://lust-dev-portfolio.zone.id/ht">HT</a></sub></p>
+  <p><img src="https://komarev.com/ghpvc/?username=LUST-DEV&label=Visites&color=286BB7&style=flat-square" alt="Visites du profil GitHub LUST DEV"></p>
 </div>
 
 <div align="center">
@@ -35,6 +40,33 @@
 Le projet est conçu pour être rapide, responsive et accessible, avec une expérience disponible en plusieurs langues. Il sert également de base pour expérimenter des interfaces web, des animations et des outils numériques modernes.
 
 <a href="https://lust-dev-portfolio.zone.id/"><strong>→ Visiter le portfolio officiel</strong></a>
+
+## À propos de moi
+
+> Je suis **Joseph Lusty Gregoire**, connu publiquement sous le nom de **LUST DEV** — alias **DEV**. Je construis des outils, des bots et des expériences numériques avec une curiosité constante.
+
+Mon approche mélange développement web, expérimentation créative, automatisation et culture open source. Je préfère les projets utiles, lisibles et capables d’évoluer avec les personnes qui les utilisent.
+
+## Domaines d’exploration
+
+<table>
+  <tr>
+    <td width="33%" align="center"><strong>Web development</strong><br><sub>Interfaces, sites et expériences responsive.</sub></td>
+    <td width="33%" align="center"><strong>Cyber sécurité</strong><br><sub>Curiosité pour la sécurité, la confidentialité et les systèmes.</sub></td>
+    <td width="33%" align="center"><strong>Open source</strong><br><sub>Apprendre, documenter et partager des outils réutilisables.</sub></td>
+  </tr>
+</table>
+
+## Activité GitHub
+
+<p align="center">
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=LUST-DEV&theme=tokyonight" height="180" alt="Statistiques GitHub de LUST DEV">
+  <img src="https://streak-stats.demolab.com/?user=LUST-DEV&theme=tokyonight&hide_border=true" height="180" alt="Régularité des contributions GitHub de LUST DEV">
+</p>
+
+<p align="center">
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=LUST-DEV&theme=tokyonight" height="180" alt="Langages utilisés dans les dépôts LUST DEV">
+</p>
 
 ## Points forts
 

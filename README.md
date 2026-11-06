@@ -12,12 +12,13 @@
     <a href="https://github.com/LUST-DEV/lust-dev-portfolio/actions"><img src="https://img.shields.io/github/actions/workflow/status/LUST-DEV/lust-dev-portfolio/ci.yml?style=for-the-badge&logo=githubactions&logoColor=white&label=Build" alt="État du build"></a>
   </p>
 
-  <p>
-    <a href="https://lust-dev-portfolio.zone.id/">Français</a> ·
-    <a href="https://lust-dev-portfolio.zone.id/en">English</a> ·
-    <a href="https://lust-dev-portfolio.zone.id/es">Español</a> ·
-    <a href="https://lust-dev-portfolio.zone.id/ht">Kreyòl ayisyen</a>
+  <p><strong>Sites officiels :</strong>
+    <a href="https://lust-dev-portfolio.zone.id/">Portfolio</a> ·
+    <a href="https://github.com/LUST-DEV">GitHub</a> ·
+    <a href="https://www.youtube.com/@LUSTDEV">YouTube</a> ·
+    <a href="https://t.me/yokubo666">Telegram</a>
   </p>
+  <p><sub><a href="https://lust-dev-portfolio.zone.id/">FR</a> · <a href="https://lust-dev-portfolio.zone.id/en">EN</a> · <a href="https://lust-dev-portfolio.zone.id/es">ES</a> · <a href="https://lust-dev-portfolio.zone.id/ht">HT</a></sub></p>
 </div>
 
 <div align="center">
@@ -30,7 +31,7 @@
 
 Le projet est conçu pour être rapide, responsive et accessible, avec une expérience disponible en plusieurs langues. Il sert également de base pour expérimenter des interfaces web, des animations et des outils numériques modernes.
 
-<a href="https://lust-dev-portfolio.zone.id/"><strong>→ Ouvrir le portfolio en ligne</strong></a>
+<a href="https://lust-dev-portfolio.zone.id/"><strong>→ Visiter le portfolio officiel</strong></a>
 
 ## Points forts
 
@@ -69,7 +70,7 @@ Le projet est conçu pour être rapide, responsive et accessible, avec une expé
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" width="46" height="46" alt="GitHub" />
 </p>
 
-<p align="center"><sub>React 19 · TypeScript · Vite · Tailwind CSS · Express · Framer Motion · Radix UI</sub></p>
+<p align="center"><sub>React 19 · TypeScript · Vite · Tailwind CSS · Express · Lucide · Sonner</sub></p>
 
 ## Démarrage rapide
 
@@ -100,22 +101,6 @@ Le serveur de développement est ensuite disponible sur l’adresse indiquée pa
 | `pnpm run check` | Vérifie les types TypeScript sans émettre de fichiers. |
 | `pnpm run format` | Formate le projet avec Prettier. |
 
-## Configuration facultative
-
-Copiez le fichier d’exemple avant de lancer le projet :
-
-```bash
-cp .env.example .env
-```
-
-La variable suivante est disponible :
-
-```env
-VITE_GA_MEASUREMENT_ID=
-```
-
-Google Analytics 4 ne se charge qu’après le consentement de l’utilisateur pour les cookies non essentiels.
-
 ## Structure principale
 
 ```text
@@ -134,23 +119,23 @@ Chaque nom redirige vers le profil Telegram correspondant.
 
 <table>
   <tr>
-    <td align="center"><a href="https://t.me/NONO_HES"><img src="https://www.google.com/s2/favicons?domain=t.me&sz=64" width="34" height="34" alt="Telegram"><br><strong>@NONO_HES</strong></a></td>
-    <td align="center"><a href="https://t.me/tresor20001"><img src="https://www.google.com/s2/favicons?domain=t.me&sz=64" width="34" height="34" alt="Telegram"><br><strong>@tresor20001</strong></a></td>
-    <td align="center"><a href="https://t.me/MCKINGER"><img src="https://www.google.com/s2/favicons?domain=t.me&sz=64" width="34" height="34" alt="Telegram"><br><strong>@MCKINGER</strong></a></td>
+    <td align="center"><a href="https://t.me/NONO_HES"><img src="assets/telegram.svg" width="34" height="34" alt="Telegram"><br><strong>@NONO_HES</strong></a></td>
+    <td align="center"><a href="https://t.me/tresor20001"><img src="assets/telegram.svg" width="34" height="34" alt="Telegram"><br><strong>@tresor20001</strong></a></td>
+    <td align="center"><a href="https://t.me/MCKINGER"><img src="assets/telegram.svg" width="34" height="34" alt="Telegram"><br><strong>@MCKINGER</strong></a></td>
   </tr>
   <tr>
-    <td align="center"><a href="https://t.me/Savage_HackzzzzzzZ"><img src="https://www.google.com/s2/favicons?domain=t.me&sz=64" width="34" height="34" alt="Telegram"><br><strong>@Savage_HackzzzzzzZ</strong></a></td>
-    <td align="center"><a href="https://t.me/devsubzero_09"><img src="https://www.google.com/s2/favicons?domain=t.me&sz=64" width="34" height="34" alt="Telegram"><br><strong>@devsubzero_09</strong></a></td>
-    <td align="center"><a href="https://t.me/baek_siyun"><img src="https://www.google.com/s2/favicons?domain=t.me&sz=64" width="34" height="34" alt="Telegram"><br><strong>@baek_siyun</strong></a></td>
+    <td align="center"><a href="https://t.me/Savage_HackzzzzzzZ"><img src="assets/telegram.svg" width="34" height="34" alt="Telegram"><br><strong>@Savage_HackzzzzzzZ</strong></a></td>
+    <td align="center"><a href="https://t.me/devsubzero_09"><img src="assets/telegram.svg" width="34" height="34" alt="Telegram"><br><strong>@devsubzero_09</strong></a></td>
+    <td align="center"><a href="https://t.me/baek_siyun"><img src="assets/telegram.svg" width="34" height="34" alt="Telegram"><br><strong>@baek_siyun</strong></a></td>
   </tr>
   <tr>
-    <td align="center"><a href="https://t.me/Druzzdev2"><img src="https://www.google.com/s2/favicons?domain=t.me&sz=64" width="34" height="34" alt="Telegram"><br><strong>@Druzzdev2</strong></a></td>
-    <td align="center"><a href="https://t.me/devxkairo"><img src="https://www.google.com/s2/favicons?domain=t.me&sz=64" width="34" height="34" alt="Telegram"><br><strong>@devxkairo</strong></a></td>
-    <td align="center"><a href="https://t.me/Dev_Roan"><img src="https://www.google.com/s2/favicons?domain=t.me&sz=64" width="34" height="34" alt="Telegram"><br><strong>@Dev_Roan</strong></a></td>
+    <td align="center"><a href="https://t.me/Druzzdev2"><img src="assets/telegram.svg" width="34" height="34" alt="Telegram"><br><strong>@Druzzdev2</strong></a></td>
+    <td align="center"><a href="https://t.me/devxkairo"><img src="assets/telegram.svg" width="34" height="34" alt="Telegram"><br><strong>@devxkairo</strong></a></td>
+    <td align="center"><a href="https://t.me/Dev_Roan"><img src="assets/telegram.svg" width="34" height="34" alt="Telegram"><br><strong>@Dev_Roan</strong></a></td>
   </tr>
   <tr>
-    <td align="center"><a href="https://t.me/Cid_404lost"><img src="https://www.google.com/s2/favicons?domain=t.me&sz=64" width="34" height="34" alt="Telegram"><br><strong>@Cid_404lost</strong></a></td>
-    <td align="center"><a href="https://t.me/Devmichael00"><img src="https://www.google.com/s2/favicons?domain=t.me&sz=64" width="34" height="34" alt="Telegram"><br><strong>@Devmichael00</strong></a></td>
+    <td align="center"><a href="https://t.me/Cid_404lost"><img src="assets/telegram.svg" width="34" height="34" alt="Telegram"><br><strong>@Cid_404lost</strong></a></td>
+    <td align="center"><a href="https://t.me/Devmichael00"><img src="assets/telegram.svg" width="34" height="34" alt="Telegram"><br><strong>@Devmichael00</strong></a></td>
     <td></td>
   </tr>
 </table>

@@ -12,13 +12,16 @@
     <a href="https://github.com/LUST-DEV/lust-dev-portfolio/actions"><img src="https://img.shields.io/github/actions/workflow/status/LUST-DEV/lust-dev-portfolio/ci.yml?style=for-the-badge&logo=githubactions&logoColor=white&label=Build" alt="État du build"></a>
   </p>
 
-  <p><strong>Sites officiels :</strong>
-    <a href="https://lust-dev-portfolio.zone.id/">Portfolio</a> ·
-    <a href="https://github.com/LUST-DEV">GitHub</a> ·
-    <a href="https://www.youtube.com/@LUSTDEV">YouTube</a> ·
-    <a href="https://t.me/yokubo666">Telegram</a>
-  </p>
-  <p><sub><a href="https://lust-dev-portfolio.zone.id/">FR</a> · <a href="https://lust-dev-portfolio.zone.id/en">EN</a> · <a href="https://lust-dev-portfolio.zone.id/es">ES</a> · <a href="https://lust-dev-portfolio.zone.id/ht">HT</a></sub></p>
+  <p><strong>Sites officiels</strong></p>
+  <table>
+    <tr>
+      <td align="center"><a href="https://lust-dev-portfolio.zone.id/"><img src="assets/portfolio.svg" width="38" height="38" alt="Portfolio"><br><sub>Portfolio</sub></a></td>
+      <td align="center"><a href="https://github.com/LUST-DEV"><img src="assets/github.svg" width="38" height="38" alt="GitHub"><br><sub>GitHub</sub></a></td>
+      <td align="center"><a href="https://www.youtube.com/@LUSTDEV"><img src="assets/youtube.svg" width="38" height="38" alt="YouTube"><br><sub>YouTube</sub></a></td>
+      <td align="center"><a href="https://t.me/yokubo666"><img src="assets/telegram.svg" width="38" height="38" alt="Telegram"><br><sub>Telegram</sub></a></td>
+    </tr>
+  </table>
+  <p><img src="assets/language.svg" width="20" height="20" alt="Langues" valign="middle"> <sub><a href="https://lust-dev-portfolio.zone.id/">FR</a> · <a href="https://lust-dev-portfolio.zone.id/en">EN</a> · <a href="https://lust-dev-portfolio.zone.id/es">ES</a> · <a href="https://lust-dev-portfolio.zone.id/ht">HT</a></sub></p>
 </div>
 
 <div align="center">

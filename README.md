@@ -1,56 +1,84 @@
-<p align="center">
+<div align="center">
   <a href="https://lust-dev-portfolio.zone.id/">
-    <img src="client/public/lust-mark.svg" alt="Logo LUST DEV" width="104" height="104">
+    <img src="client/public/lust-mark.svg" alt="Logo LUST DEV" width="112" height="112">
   </a>
-</p>
+
+  <h1>LUST DEV · DEV OF SINS</h1>
+  <p><strong>Portfolio personnel, projets numériques et outils open source.</strong></p>
+
+  <p>
+    <a href="https://lust-dev-portfolio.zone.id/"><img src="https://img.shields.io/badge/Portfolio-Visiter-286BB7?style=for-the-badge&logo=vercel&logoColor=white" alt="Visiter le portfolio"></a>
+    <a href="https://github.com/LUST-DEV"><img src="https://img.shields.io/badge/GitHub-LUST--DEV-181717?style=for-the-badge&logo=github&logoColor=white" alt="Profil GitHub LUST DEV"></a>
+    <a href="https://github.com/LUST-DEV/lust-dev-portfolio/actions"><img src="https://img.shields.io/github/actions/workflow/status/LUST-DEV/lust-dev-portfolio/ci.yml?style=for-the-badge&logo=githubactions&logoColor=white&label=Build" alt="État du build"></a>
+  </p>
+
+  <p>
+    <a href="https://lust-dev-portfolio.zone.id/">Français</a> ·
+    <a href="https://lust-dev-portfolio.zone.id/en">English</a> ·
+    <a href="https://lust-dev-portfolio.zone.id/es">Español</a> ·
+    <a href="https://lust-dev-portfolio.zone.id/ht">Kreyòl ayisyen</a>
+  </p>
+</div>
 
 <div align="center">
-
-<a href="https://lust-dev-portfolio.zone.id/">
-  <img src="https://readme-typing-svg.demolab.com?font=Space+Grotesk&amp;weight=700&amp;size=42&amp;duration=2800&amp;pause=1100&amp;color=DC143C&amp;center=true&amp;vCenter=true&amp;width=850&amp;height=70&amp;lines=LUST+DEV+-+DEV+OF+SINS" alt="LUST DEV - DEV OF SINS, titre rouge cramoisi avec effet de frappe" />
-</a>
-
+  <img src="assets/portfolio-tagline-gradient.svg" alt="LUST DEV — développement, projets et outils numériques" width="620" height="86">
 </div>
-<p align="center">
-  <img src="assets/portfolio-tagline-gradient.svg" alt="Portfolio de Joseph Lusty Gregoire — développement, projets et outils numériques." width="520" height="72">
-</p>
+
+## À propos du projet
+
+**LUST DEV Portfolio** est le site vitrine de LUST DEV. Il présente le profil, les compétences, les projets publics, l’équipe Telegram et les différents moyens de contact.
+
+Le projet est conçu pour être rapide, responsive et accessible, avec une expérience disponible en plusieurs langues. Il sert également de base pour expérimenter des interfaces web, des animations et des outils numériques modernes.
+
+<a href="https://lust-dev-portfolio.zone.id/"><strong>→ Ouvrir le portfolio en ligne</strong></a>
+
+## Points forts
+
+<table>
+  <tr>
+    <td width="50%">
+      <strong>Interface moderne</strong><br>
+      Design responsive, animations soignées et composants réutilisables.
+    </td>
+    <td width="50%">
+      <strong>Multilingue</strong><br>
+      Contenu disponible en français, anglais, espagnol et créole haïtien.
+    </td>
+  </tr>
+  <tr>
+    <td width="50%">
+      <strong>Pages optimisées</strong><br>
+      Métadonnées par route, sitemap et structure adaptée au référencement.
+    </td>
+    <td width="50%">
+      <strong>Expérience accessible</strong><br>
+      Navigation claire, responsive design et gestion du consentement analytique.
+    </td>
+  </tr>
+</table>
+
+## Stack technique
 
 <p align="center">
-  <a href="https://lust-dev-portfolio.zone.id/"><img src="https://img.shields.io/badge/Portfolio-Visiter-286BB7?style=for-the-badge&logo=vercel&logoColor=white" alt="Visiter le portfolio"></a>
-  <a href="https://github.com/LUST-DEV"><img src="https://img.shields.io/badge/GitHub-Profil_LUST--DEV-181717?style=for-the-badge&logo=github&logoColor=white" alt="Profil GitHub LUST DEV"></a>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="46" height="46" alt="React" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" width="46" height="46" alt="TypeScript" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg" width="46" height="46" alt="Vite" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" width="46" height="46" alt="Tailwind CSS" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" width="46" height="46" alt="Node.js" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" width="46" height="46" alt="Express" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" width="46" height="46" alt="GitHub" />
 </p>
 
-<p align="center">
-  <a href="https://www.youtube.com/@LUSTDEV"><img src="https://img.shields.io/badge/YouTube-LUST_DEV-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="YouTube LUST DEV"></a>
-  <a href="https://whatsapp.com/channel/0029VbCiqwyBVJl3Jv5T4I15"><img src="https://img.shields.io/badge/WhatsApp-Canal-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" alt="Canal WhatsApp"></a>
-  <a href="https://wa.me/18294786326"><img src="https://img.shields.io/badge/WhatsApp-Contact_direct-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" alt="WhatsApp direct"></a>
-  <a href="https://t.me/yokubo666"><img src="https://img.shields.io/badge/Telegram-Contact-26A5E4?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram LUST DEV"></a>
-  <a href="https://t.me/JOSEPHLUSTY"><img src="https://img.shields.io/badge/Telegram-JOSEPHLUSTY-26A5E4?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram JOSEPHLUSTY"></a>
-  <a href="mailto:lustdev927@gmail.com"><img src="https://img.shields.io/badge/E--mail-Contacter-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Envoyer un e-mail"></a>
-</p>
+<p align="center"><sub>React 19 · TypeScript · Vite · Tailwind CSS · Express · Framer Motion · Radix UI</sub></p>
 
-Le site présente le profil, les compétences, les projets publics, l’équipe Telegram et les moyens de contacter LUST DEV. Les pages sont disponibles en [français](https://lust-dev-portfolio.zone.id/), [anglais](https://lust-dev-portfolio.zone.id/en), [espagnol](https://lust-dev-portfolio.zone.id/es) et [créole haïtien](https://lust-dev-portfolio.zone.id/ht).
+## Démarrage rapide
 
-## Team Telegram
+### Prérequis
 
-Chaque nom est un lien direct vers son profil Telegram.
+- Node.js 20 ou version supérieure
+- pnpm 10 ou version supérieure
 
-|  |  |  |
-|:---:|:---:|:---:|
-| [![Telegram](https://img.shields.io/badge/Telegram-26A5E4?style=flat-square&logo=telegram&logoColor=white)](https://t.me/NONO_HES)<br>[@NONO_HES](https://t.me/NONO_HES) | [![Telegram](https://img.shields.io/badge/Telegram-26A5E4?style=flat-square&logo=telegram&logoColor=white)](https://t.me/tresor20001)<br>[@tresor20001](https://t.me/tresor20001) | [![Telegram](https://img.shields.io/badge/Telegram-26A5E4?style=flat-square&logo=telegram&logoColor=white)](https://t.me/MCKINGER)<br>[@MCKINGER](https://t.me/MCKINGER) |
-| [![Telegram](https://img.shields.io/badge/Telegram-26A5E4?style=flat-square&logo=telegram&logoColor=white)](https://t.me/Savage_HackzzzzzzZ)<br>[@Savage_HackzzzzzzZ](https://t.me/Savage_HackzzzzzzZ) | [![Telegram](https://img.shields.io/badge/Telegram-26A5E4?style=flat-square&logo=telegram&logoColor=white)](https://t.me/devsubzero_09)<br>[@devsubzero_09](https://t.me/devsubzero_09) | [![Telegram](https://img.shields.io/badge/Telegram-26A5E4?style=flat-square&logo=telegram&logoColor=white)](https://t.me/baek_siyun)<br>[@baek_siyun](https://t.me/baek_siyun) |
-| [![Telegram](https://img.shields.io/badge/Telegram-26A5E4?style=flat-square&logo=telegram&logoColor=white)](https://t.me/Druzzdev2)<br>[@Druzzdev2](https://t.me/Druzzdev2) | [![Telegram](https://img.shields.io/badge/Telegram-26A5E4?style=flat-square&logo=telegram&logoColor=white)](https://t.me/devxkairo)<br>[@devxkairo](https://t.me/devxkairo) | [![Telegram](https://img.shields.io/badge/Telegram-26A5E4?style=flat-square&logo=telegram&logoColor=white)](https://t.me/Dev_Roan)<br>[@Dev_Roan](https://t.me/Dev_Roan) |
-| [![Telegram](https://img.shields.io/badge/Telegram-26A5E4?style=flat-square&logo=telegram&logoColor=white)](https://t.me/Cid_404lost)<br>[@Cid_404lost](https://t.me/Cid_404lost) | [![Telegram](https://img.shields.io/badge/Telegram-26A5E4?style=flat-square&logo=telegram&logoColor=white)](https://t.me/Devmichael00)<br>[@Devmichael00](https://t.me/Devmichael00) |  |
-
-## Pages et liens utiles
-
-<p>
-  <a href="https://lust-dev-portfolio.zone.id/sitemap.xml"><img src="https://img.shields.io/badge/Sitemap-XML-536A84?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Sitemap XML"></a>
-  <a href="https://lust-dev-portfolio.zone.id/cgu"><img src="https://img.shields.io/badge/Conditions-Lire-536A84?style=for-the-badge&logo=readthedocs&logoColor=white" alt="Conditions d’utilisation"></a>
-  <a href="https://lust-dev-portfolio.zone.id/confidentialite"><img src="https://img.shields.io/badge/Confidentialité-Lire-536A84?style=for-the-badge&logo=shield&logoColor=white" alt="Politique de confidentialité"></a>
-</p>
-
-## Lancer le projet
+### Installation
 
 ```bash
 git clone https://github.com/LUST-DEV/lust-dev-portfolio.git
@@ -59,6 +87,93 @@ pnpm install --frozen-lockfile
 pnpm run dev
 ```
 
-Le contrôle TypeScript et le build de production sont disponibles avec `pnpm run check` et `pnpm run build`.
+Le serveur de développement est ensuite disponible sur l’adresse indiquée par Vite, généralement `http://localhost:5173`.
 
-[![Licence MIT](https://img.shields.io/badge/Licence-MIT-286BB7?style=flat-square)](LICENSE)
+## Commandes disponibles
+
+| Commande | Description |
+|:---|:---|
+| `pnpm run dev` | Lance le serveur de développement Vite. |
+| `pnpm run build` | Génère le build de production et les métadonnées des routes. |
+| `pnpm run start` | Démarre le serveur compilé. |
+| `pnpm run preview` | Prévisualise le build de production. |
+| `pnpm run check` | Vérifie les types TypeScript sans émettre de fichiers. |
+| `pnpm run format` | Formate le projet avec Prettier. |
+
+## Configuration facultative
+
+Copiez le fichier d’exemple avant de lancer le projet :
+
+```bash
+cp .env.example .env
+```
+
+La variable suivante est disponible :
+
+```env
+VITE_GA_MEASUREMENT_ID=
+```
+
+Google Analytics 4 ne se charge qu’après le consentement de l’utilisateur pour les cookies non essentiels.
+
+## Structure principale
+
+```text
+├── client/          # Interface React et pages du portfolio
+├── server/          # Serveur Express et sécurité
+├── shared/          # Constantes partagées entre client et serveur
+├── scripts/         # Génération des métadonnées de routes
+├── assets/          # Ressources visuelles du README
+├── docs/            # Documentation et captures utiles
+└── client/public/   # Ressources publiques du client
+```
+
+## Équipe Telegram
+
+Chaque nom redirige vers le profil Telegram correspondant.
+
+<table>
+  <tr>
+    <td align="center"><a href="https://t.me/NONO_HES"><img src="https://www.google.com/s2/favicons?domain=t.me&sz=64" width="34" height="34" alt="Telegram"><br><strong>@NONO_HES</strong></a></td>
+    <td align="center"><a href="https://t.me/tresor20001"><img src="https://www.google.com/s2/favicons?domain=t.me&sz=64" width="34" height="34" alt="Telegram"><br><strong>@tresor20001</strong></a></td>
+    <td align="center"><a href="https://t.me/MCKINGER"><img src="https://www.google.com/s2/favicons?domain=t.me&sz=64" width="34" height="34" alt="Telegram"><br><strong>@MCKINGER</strong></a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://t.me/Savage_HackzzzzzzZ"><img src="https://www.google.com/s2/favicons?domain=t.me&sz=64" width="34" height="34" alt="Telegram"><br><strong>@Savage_HackzzzzzzZ</strong></a></td>
+    <td align="center"><a href="https://t.me/devsubzero_09"><img src="https://www.google.com/s2/favicons?domain=t.me&sz=64" width="34" height="34" alt="Telegram"><br><strong>@devsubzero_09</strong></a></td>
+    <td align="center"><a href="https://t.me/baek_siyun"><img src="https://www.google.com/s2/favicons?domain=t.me&sz=64" width="34" height="34" alt="Telegram"><br><strong>@baek_siyun</strong></a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://t.me/Druzzdev2"><img src="https://www.google.com/s2/favicons?domain=t.me&sz=64" width="34" height="34" alt="Telegram"><br><strong>@Druzzdev2</strong></a></td>
+    <td align="center"><a href="https://t.me/devxkairo"><img src="https://www.google.com/s2/favicons?domain=t.me&sz=64" width="34" height="34" alt="Telegram"><br><strong>@devxkairo</strong></a></td>
+    <td align="center"><a href="https://t.me/Dev_Roan"><img src="https://www.google.com/s2/favicons?domain=t.me&sz=64" width="34" height="34" alt="Telegram"><br><strong>@Dev_Roan</strong></a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://t.me/Cid_404lost"><img src="https://www.google.com/s2/favicons?domain=t.me&sz=64" width="34" height="34" alt="Telegram"><br><strong>@Cid_404lost</strong></a></td>
+    <td align="center"><a href="https://t.me/Devmichael00"><img src="https://www.google.com/s2/favicons?domain=t.me&sz=64" width="34" height="34" alt="Telegram"><br><strong>@Devmichael00</strong></a></td>
+    <td></td>
+  </tr>
+</table>
+
+## Liens utiles
+
+<p align="center">
+  <a href="https://lust-dev-portfolio.zone.id/sitemap.xml"><img src="https://img.shields.io/badge/Sitemap-XML-536A84?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Sitemap XML"></a>
+  <a href="https://lust-dev-portfolio.zone.id/cgu"><img src="https://img.shields.io/badge/Conditions-Lire-536A84?style=for-the-badge&logo=readthedocs&logoColor=white" alt="Conditions d’utilisation"></a>
+  <a href="https://lust-dev-portfolio.zone.id/confidentialite"><img src="https://img.shields.io/badge/Confidentialité-Lire-536A84?style=for-the-badge&logo=shield&logoColor=white" alt="Politique de confidentialité"></a>
+</p>
+
+## Contact
+
+<p align="center">
+  <a href="https://www.youtube.com/@LUSTDEV"><img src="https://img.shields.io/badge/YouTube-LUST_DEV-FF0000?style=flat-square&logo=youtube&logoColor=white" alt="YouTube LUST DEV"></a>
+  <a href="https://whatsapp.com/channel/0029VbCiqwyBVJl3Jv5T4I15"><img src="https://img.shields.io/badge/WhatsApp-Canal-25D366?style=flat-square&logo=whatsapp&logoColor=white" alt="Canal WhatsApp"></a>
+  <a href="https://wa.me/18294786326"><img src="https://img.shields.io/badge/WhatsApp-Contact_direct-25D366?style=flat-square&logo=whatsapp&logoColor=white" alt="WhatsApp direct"></a>
+  <a href="https://t.me/yokubo666"><img src="https://img.shields.io/badge/Telegram-Contact-26A5E4?style=flat-square&logo=telegram&logoColor=white" alt="Telegram LUST DEV"></a>
+  <a href="https://t.me/JOSEPHLUSTY"><img src="https://img.shields.io/badge/Telegram-JOSEPHLUSTY-26A5E4?style=flat-square&logo=telegram&logoColor=white" alt="Telegram JOSEPHLUSTY"></a>
+  <a href="mailto:lustdev927@gmail.com"><img src="https://img.shields.io/badge/E--mail-Contacter-D14836?style=flat-square&logo=gmail&logoColor=white" alt="Envoyer un e-mail"></a>
+</p>
+
+<p align="center"><sub>Construire des outils utiles · partager le code · faire progresser les idées.</sub></p>
+
+<p align="center"><a href="LICENSE"><img src="https://img.shields.io/badge/Licence-MIT-286BB7?style=flat-square" alt="Licence MIT"></a></p>

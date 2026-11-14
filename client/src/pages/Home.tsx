@@ -246,9 +246,14 @@ export default function Home() {
 
     let lastScrollY = window.scrollY;
     let scrollDirection: "up" | "down" = "down";
+    let scrollFrame = 0;
     const updateScrollDirection = () => {
-      scrollDirection = window.scrollY < lastScrollY ? "up" : "down";
-      lastScrollY = window.scrollY;
+      if (scrollFrame) return;
+      scrollFrame = window.requestAnimationFrame(() => {
+        scrollDirection = window.scrollY < lastScrollY ? "up" : "down";
+        lastScrollY = window.scrollY;
+        scrollFrame = 0;
+      });
     };
     window.addEventListener("scroll", updateScrollDirection, { passive: true });
 
@@ -276,6 +281,7 @@ export default function Home() {
     return () => {
       observer.disconnect();
       window.removeEventListener("scroll", updateScrollDirection);
+      if (scrollFrame) window.cancelAnimationFrame(scrollFrame);
     };
   }, []);
 

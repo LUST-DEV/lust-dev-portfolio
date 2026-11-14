@@ -834,3 +834,23 @@ h2 { font-size: clamp(3.2rem, 6.4vw, 6.5rem); }
 @media (prefers-reduced-motion: reduce) {
   [data-scroll-fade], [data-scroll-fade].is-fade-visible, [data-scroll-fade].is-fade-leaving, [data-scroll-fade].is-fade-entering-up.is-from-left, [data-scroll-fade].is-fade-entering-up.is-from-right { opacity: 1; transform: none; filter: none; transition: none; }
 }
+
+
+/* Smoothness pass: keep scroll animations on the compositor and avoid filter-heavy repaints. */
+html { scroll-behavior: smooth; scroll-padding-top: 5.5rem; }
+.project-row[data-scroll-project], [data-scroll-fade] { will-change: opacity, transform; backface-visibility: hidden; }
+.project-row[data-scroll-project] { transform: translate3d(0, 1.5rem, 0) scale(.99); transition: opacity 500ms var(--ease-out), transform 560ms var(--ease-out), border-color 220ms var(--ease-out), box-shadow 220ms var(--ease-out); filter: none; }
+.project-row[data-scroll-project].is-project-visible { transform: translate3d(0, 0, 0) scale(1); filter: none; }
+.project-row[data-scroll-project].is-project-leaving { transform: translate3d(0, -1.2rem, 0) scale(.99); filter: none; }
+.project-row[data-scroll-project].is-entering-up.is-from-left { transform: translate3d(-3rem, 0, 0) scale(.99); }
+.project-row[data-scroll-project].is-entering-up.is-from-right { transform: translate3d(3rem, 0, 0) scale(.99); }
+.project-row[data-scroll-project].is-entering-up.is-project-visible { transform: translate3d(0, 0, 0) scale(1); }
+[data-scroll-fade] { transform: translate3d(0, 1.5rem, 0) scale(.99); transition: opacity 500ms var(--ease-out), transform 560ms var(--ease-out); filter: none; }
+[data-scroll-fade].is-fade-visible { transform: translate3d(0, 0, 0) scale(1); filter: none; }
+[data-scroll-fade].is-fade-leaving { transform: translate3d(0, -1rem, 0) scale(.99); filter: none; }
+[data-scroll-fade].is-fade-entering-up.is-from-left { transform: translate3d(-2.25rem, 0, 0) scale(.99); }
+[data-scroll-fade].is-fade-entering-up.is-from-right { transform: translate3d(2.25rem, 0, 0) scale(.99); }
+[data-scroll-fade].is-fade-entering-up.is-fade-visible { transform: translate3d(0, 0, 0) scale(1); }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}

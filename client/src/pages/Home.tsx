@@ -20,6 +20,12 @@ import {
   Rocket,
   Send,
   Sparkles,
+  FileCode2,
+  Palette,
+  Braces,
+  Atom,
+  Server,
+  ShieldCheck,
   Moon,
   Sun,
   Terminal,
@@ -72,13 +78,37 @@ const projects = [
   },
 ];
 
-const skills = [
-  { name: "HTML5", level: 92, category: "Structure · accessibilité", tone: "coral" },
-  { name: "CSS3", level: 90, category: "Design · animations", tone: "butter" },
-  { name: "JavaScript", level: 88, category: "Langage · scripting", tone: "coral" },
-  { name: "Python", level: 58, category: "En progression · outils", tone: "sky" },
-  { name: "TypeScript", level: 52, category: "En progression · applications", tone: "butter" },
-  { name: "React / Node.js", level: 48, category: "En progression · web", tone: "sky" },
+const skillCategories = [
+  {
+    name: "Frontend",
+    status: "01 / MAÎTRISÉ",
+    description: "Des interfaces accessibles, structurées et animées avec intention.",
+    tone: "coral",
+    icon: <Code2 size={20} aria-hidden="true" />,
+    skills: [
+      { name: "HTML", icon: <FileCode2 size={15} aria-hidden="true" /> },
+      { name: "CSS", icon: <Palette size={15} aria-hidden="true" /> },
+      { name: "JavaScript", icon: <Braces size={15} aria-hidden="true" /> },
+      { name: "TypeScript", icon: <FileCode2 size={15} aria-hidden="true" /> },
+      { name: "React", icon: <Atom size={15} aria-hidden="true" /> },
+    ],
+  },
+  {
+    name: "Backend",
+    status: "02 / EN COURS",
+    description: "Je construis progressivement mes bases côté serveur pour comprendre le produit dans son ensemble.",
+    tone: "sky",
+    icon: <Server size={20} aria-hidden="true" />,
+    progress: 42,
+  },
+  {
+    name: "Cybersécurité",
+    status: "03 / EN COURS",
+    description: "Une nouvelle dimension de mon parcours : concevoir des expériences sûres par défaut.",
+    tone: "butter",
+    icon: <ShieldCheck size={20} aria-hidden="true" />,
+    progress: 24,
+  },
 ];
 
 const teamMembers = [
@@ -200,6 +230,33 @@ export default function Home() {
   const [showPlanet, setShowPlanet] = useState(false);
   const [earthRotation, setEarthRotation] = useState(0);
   const dragStart = useRef<{ x: number; rotation: number } | null>(null);
+
+  useEffect(() => {
+    const projectRows = Array.from(document.querySelectorAll<HTMLElement>("[data-scroll-project]"));
+    if (!projectRows.length) return;
+
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reducedMotion) {
+      projectRows.forEach((row) => row.classList.add("is-project-visible"));
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const row = entry.target as HTMLElement;
+        if (entry.isIntersecting && entry.intersectionRatio > 0.2) {
+          row.classList.remove("is-project-leaving");
+          row.classList.add("is-project-visible");
+        } else if (!entry.isIntersecting && row.classList.contains("is-project-visible")) {
+          row.classList.remove("is-project-visible");
+          row.classList.add("is-project-leaving");
+        }
+      });
+    }, { threshold: [0, 0.2, 0.55], rootMargin: "-10% 0px -16% 0px" });
+
+    projectRows.forEach((row) => observer.observe(row));
+    return () => observer.disconnect();
+  }, []);
 
   const closeMenu = () => setMenuOpen(false);
   const startEarthDrag = (event: React.PointerEvent<HTMLImageElement>) => {
@@ -367,27 +424,34 @@ export default function Home() {
               <h2 id="skills-title">{t("Une stack")}<br /><span>{t("en construction.")}</span></h2>
             </div>
             <div className="skills-intro">
-              <p>{t("HTML, CSS et JavaScript forment le socle maîtrisé. Python, TypeScript, React et Node.js avancent au rythme d’un apprentissage quotidien.")}</p>
+              <p>{t("HTML, CSS, JavaScript, TypeScript et React forment le socle frontend. Backend et cybersécurité avancent au rythme d’un apprentissage quotidien.")}</p>
               <span className="skills-note"><span className="skills-note-dot" /> {t("Socle maîtrisé · reste en progression")}</span>
             </div>
           </div>
-          <div className="skills-grid" aria-label={t("Compétences techniques et niveaux de progression")}>
-            {skills.map((skill, index) => (
-              <article className={`skill-card ${skill.tone}`} key={skill.name} style={{ "--skill-level": `${skill.level}%`, "--skill-delay": `${index * 90}ms` } as React.CSSProperties}>
-                <div className="skill-card-top">
-                  <div className="skill-title-wrap">
-                    <span className="skill-symbol" aria-hidden="true"><Code2 size={16} /></span>
-                    <div>
-                      <h3>{skill.name}</h3>
-                      <p>{t(skill.category)}</p>
-                    </div>
+          <div className="skills-category-grid" aria-label={t("Compétences techniques et niveaux de progression")}>
+            {skillCategories.map((category, index) => (
+              <article className={`skill-category-card ${category.tone} ${category.progress ? "is-progress" : "is-mastered"}`} key={category.name}>
+                <div className="skill-category-top">
+                  <span className="skill-category-icon">{category.icon}</span>
+                  <div>
+                    <p>{t(category.status)}</p>
+                    <h3>{t(category.name)}</h3>
                   </div>
-                  <strong>{skill.level}<small>%</small></strong>
+                  <span className="skill-category-index">0{index + 1}</span>
                 </div>
-                <div className="skill-track" role="progressbar" aria-label={`${skill.name}${t(" : repère de progression")}`} aria-valuemin={0} aria-valuemax={100} aria-valuenow={skill.level}>
-                  <span className="skill-fill" />
-                </div>
-                <div className="skill-card-foot"><span>{skill.level >= 80 ? t("Base solide") : t("En progression")}</span><span>0{index + 1}</span></div>
+                <p className="skill-category-description">{t(category.description)}</p>
+                {category.skills ? (
+                  <div className="skill-chip-list">
+                    {category.skills.map((skill) => <span className="skill-chip" key={skill.name}>{skill.icon}{skill.name}</span>)}
+                  </div>
+                ) : (
+                  <>
+                    <div className="category-progress" role="progressbar" aria-label={`${category.name} : ${t("en progression")}`} aria-valuemin={0} aria-valuemax={100} aria-valuenow={category.progress}>
+                      <span style={{ width: `${category.progress}%` }} />
+                    </div>
+                    <div className="category-progress-label"><span>In progress</span><span>{category.progress}%</span></div>
+                  </>
+                )}
               </article>
             ))}
           </div>
@@ -481,7 +545,7 @@ export default function Home() {
           </div>
           <div className="project-list">
             {projects.map((project) => (
-              <a className={`project-row ${project.tone}`} href={project.href} target="_blank" rel="noopener noreferrer" key={project.name}>
+              <a className={`project-row ${project.tone}`} data-scroll-project href={project.href} target="_blank" rel="noopener noreferrer" key={project.name}>
                 <span className="project-index">{project.index}</span>
                 <span className="project-main">
                   <span className="project-name"><span className="project-symbol"><Code2 size={15} aria-hidden="true" /></span>{project.name}<ArrowUpRight size={20} aria-hidden="true" /></span>

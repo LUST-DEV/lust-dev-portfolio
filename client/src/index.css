@@ -854,3 +854,14 @@ html { scroll-behavior: smooth; scroll-padding-top: 5.5rem; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
+
+
+/* Skill cards: quiet hover that matches the soft scroll reveal. */
+.skill-category-card[data-scroll-fade] { transition: opacity 650ms var(--ease-out), transform 720ms var(--ease-out), border-color 360ms var(--ease-out), box-shadow 360ms var(--ease-out); }
+.skill-category-card[data-scroll-fade]::after { position: absolute; content: ""; inset: 0; pointer-events: none; border-radius: inherit; opacity: 0; background: radial-gradient(circle at 82% 12%, color-mix(in srgb, var(--category-accent), transparent 78%), transparent 35%); transition: opacity 420ms var(--ease-out); }
+.skill-category-card[data-scroll-fade].is-fade-visible:hover { transform: translate3d(0, -.25rem, 0) scale(1.006); border-color: color-mix(in srgb, var(--category-accent), var(--line) 35%); box-shadow: 0 .7rem 1.35rem rgba(32,48,74,.08); }
+.skill-category-card[data-scroll-fade].is-fade-visible:hover::after { opacity: 1; }
+.theme-dark .skill-category-card[data-scroll-fade].is-fade-visible:hover { box-shadow: 0 .7rem 1.35rem rgba(0,0,0,.26); }
+@media (prefers-reduced-motion: reduce) {
+  .skill-category-card[data-scroll-fade], .skill-category-card[data-scroll-fade].is-fade-visible:hover { transition: none; transform: none; }
+}

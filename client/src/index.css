@@ -811,3 +811,26 @@ h2 { font-size: clamp(3.2rem, 6.4vw, 6.5rem); }
   .hero-code-panel, .hero-code-panel:hover { transform: none; }
   .project-row[data-scroll-project].is-entering-up.is-from-left, .project-row[data-scroll-project].is-entering-up.is-from-right, .project-row[data-scroll-project].is-entering-up.is-project-visible { transform: none; }
 }
+
+
+/* Shared scroll fade for the rest of the UI boxes. */
+[data-scroll-fade] { opacity: .16; transform: translateY(2rem) scale(.985); filter: saturate(.68); transition: opacity 680ms var(--ease-out), transform 680ms var(--ease-out), filter 680ms var(--ease-out); }
+[data-scroll-fade].is-fade-visible { opacity: 1; transform: translateY(0) scale(1); filter: saturate(1); }
+[data-scroll-fade].is-fade-leaving { opacity: .12; transform: translateY(-1.55rem) scale(.985); filter: saturate(.45); }
+[data-scroll-fade].is-fade-entering-up.is-from-left { transform: translateX(-3rem) scale(.985); }
+[data-scroll-fade].is-fade-entering-up.is-from-right { transform: translateX(3rem) scale(.985); }
+[data-scroll-fade].is-fade-entering-up.is-fade-visible { transform: translateX(0) scale(1); }
+.skill-category-card[data-scroll-fade]:nth-child(2), .stats-panel[data-scroll-fade]:nth-child(2), .why-card[data-scroll-fade]:nth-child(2) { transition-delay: 90ms; }
+.skill-category-card[data-scroll-fade]:nth-child(3), .why-card[data-scroll-fade]:nth-child(3) { transition-delay: 160ms; }
+.social-link[data-scroll-fade]:nth-child(2), .team-label[data-scroll-fade]:nth-child(2) { transition-delay: 60ms; }
+.social-link[data-scroll-fade]:nth-child(3), .team-label[data-scroll-fade]:nth-child(3) { transition-delay: 120ms; }
+.social-link[data-scroll-fade]:nth-child(4), .team-label[data-scroll-fade]:nth-child(4) { transition-delay: 180ms; }
+.theme-dark [data-scroll-fade] { filter: saturate(.58); }
+.theme-dark [data-scroll-fade].is-fade-visible { filter: saturate(1); }
+@media (max-width: 640px) {
+  [data-scroll-fade].is-fade-entering-up.is-from-left { transform: translateX(-1.5rem) scale(.99); }
+  [data-scroll-fade].is-fade-entering-up.is-from-right { transform: translateX(1.5rem) scale(.99); }
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-scroll-fade], [data-scroll-fade].is-fade-visible, [data-scroll-fade].is-fade-leaving, [data-scroll-fade].is-fade-entering-up.is-from-left, [data-scroll-fade].is-fade-entering-up.is-from-right { opacity: 1; transform: none; filter: none; transition: none; }
+}

@@ -146,7 +146,7 @@ function SocialLink({
   handle: string;
 }) {
   return (
-    <a className="social-link" href={href} target="_blank" rel="noopener noreferrer">
+    <a className="social-link" data-scroll-fade href={href} target="_blank" rel="noopener noreferrer">
       <span className="social-icon">{icon}</span>
       <span>
         <strong>{label}</strong>
@@ -233,11 +233,14 @@ export default function Home() {
 
   useEffect(() => {
     const projectRows = Array.from(document.querySelectorAll<HTMLElement>("[data-scroll-project]"));
-    if (!projectRows.length) return;
+    const fadeTargets = Array.from(document.querySelectorAll<HTMLElement>("[data-scroll-fade]"));
+    const observedTargets = Array.from(new Set([...projectRows, ...fadeTargets]));
+    if (!observedTargets.length) return;
 
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reducedMotion) {
       projectRows.forEach((row) => row.classList.add("is-project-visible"));
+      fadeTargets.forEach((row) => row.classList.add("is-fade-visible"));
       return;
     }
 
@@ -252,21 +255,24 @@ export default function Home() {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         const row = entry.target as HTMLElement;
+        const isProject = row.hasAttribute("data-scroll-project");
+        const visibleClass = isProject ? "is-project-visible" : "is-fade-visible";
+        const leavingClass = isProject ? "is-project-leaving" : "is-fade-leaving";
         if (entry.isIntersecting && entry.intersectionRatio > 0.2) {
           const enteringFromAbove = scrollDirection === "up";
-          row.classList.remove("is-project-leaving", "is-project-visible", "is-entering-up", "is-from-left", "is-from-right");
-          if (enteringFromAbove) {
-            row.classList.add("is-entering-up", row.dataset.projectSide === "left" ? "is-from-left" : "is-from-right");
+          row.classList.remove("is-project-leaving", "is-project-visible", "is-fade-leaving", "is-fade-visible", "is-entering-up", "is-fade-entering-up", "is-from-left", "is-from-right");
+          if (enteringFromAbove && row.dataset.fadeSide) {
+            row.classList.add(isProject ? "is-entering-up" : "is-fade-entering-up", row.dataset.fadeSide === "left" ? "is-from-left" : "is-from-right");
           }
-          window.requestAnimationFrame(() => row.classList.add("is-project-visible"));
-        } else if (!entry.isIntersecting && row.classList.contains("is-project-visible")) {
-          row.classList.remove("is-project-visible", "is-entering-up", "is-from-left", "is-from-right");
-          row.classList.add("is-project-leaving");
+          window.requestAnimationFrame(() => row.classList.add(visibleClass));
+        } else if (!entry.isIntersecting && row.classList.contains(visibleClass)) {
+          row.classList.remove(visibleClass, "is-entering-up", "is-fade-entering-up", "is-from-left", "is-from-right");
+          row.classList.add(leavingClass);
         }
       });
-    }, { threshold: [0, 0.2, 0.55], rootMargin: "-10% 0px -16% 0px" });
+    }, { threshold: [0, 0.2, 0.55], rootMargin: "-8% 0px -12% 0px" });
 
-    projectRows.forEach((row) => observer.observe(row));
+    observedTargets.forEach((row) => observer.observe(row));
     return () => {
       observer.disconnect();
       window.removeEventListener("scroll", updateScrollDirection);
@@ -420,7 +426,7 @@ export default function Home() {
             <div><strong>03</strong><span>{t("langages fondamentaux")}</span></div>
             <div><strong>04</strong><span>{t("canaux officiels")}</span></div>
           </div>
-          <div className="identity-panel" aria-labelledby="identity-title">
+          <div className="identity-panel" data-scroll-fade data-fade-side="right" aria-labelledby="identity-title">
             <div className="identity-heading">
               <p className="eyebrow" id="identity-title">// {t("fiche personnelle")}</p>
               <span className="identity-status"><i /> {t("PROFILE ONLINE")}</span>
@@ -455,7 +461,7 @@ export default function Home() {
           </div>
           <div className="skills-category-grid" aria-label={t("Compétences techniques et niveaux de progression")}>
             {skillCategories.map((category, index) => (
-              <article className={`skill-category-card ${category.tone} ${category.progress ? "is-progress" : "is-mastered"}`} key={category.name}>
+              <article className={`skill-category-card ${category.tone} ${category.progress ? "is-progress" : "is-mastered"}`} data-scroll-fade data-fade-side={index % 2 === 0 ? "left" : "right"} key={category.name}>
                 <div className="skill-category-top">
                   <span className="skill-category-icon">{category.icon}</span>
                   <div>
@@ -495,7 +501,7 @@ export default function Home() {
             <p className="section-aside">{t("Des statistiques lisibles pour suivre les dépôts, les langages et la régularité du travail public de LUST DEV.")}</p>
           </div>
           <div className="stats-layout">
-            <article className="stats-panel github-stats-panel">
+            <article className="stats-panel github-stats-panel" data-scroll-fade data-fade-side="left">
               <div className="stats-panel-heading">
                 <div><span className="stats-kicker">01</span><h3>GitHub Stats</h3></div>
                 <Github size={18} aria-hidden="true" />
@@ -505,7 +511,7 @@ export default function Home() {
                 <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=LUST-DEV&theme=tokyonight" alt={t("Langages utilisés dans les dépôts LUST DEV")} loading="lazy" />
               </div>
             </article>
-            <article className="stats-panel dev-stats-panel">
+            <article className="stats-panel dev-stats-panel" data-scroll-fade data-fade-side="right">
               <div className="stats-panel-heading">
                 <div><span className="stats-kicker">02</span><h3>Dev Stats</h3></div>
                 <Code2 size={18} aria-hidden="true" />
@@ -535,19 +541,19 @@ export default function Home() {
             <p className="section-aside">{t("Une manière de travailler basée sur la curiosité, la clarté et la création de projets réellement utilisables.")}</p>
           </div>
           <div className="why-grid">
-            <article className="why-card why-card-coral">
+            <article className="why-card why-card-coral" data-scroll-fade data-fade-side="left">
               <span className="why-icon"><Code2 size={22} aria-hidden="true" /></span>
               <span className="why-index">01</span>
               <h3>{t("Code utile")}</h3>
               <p>{t("Des solutions simples, propres et pensées pour résoudre de vrais problèmes.")}</p>
             </article>
-            <article className="why-card why-card-sky">
+            <article className="why-card why-card-sky" data-scroll-fade data-fade-side="right">
               <span className="why-icon"><GitBranch size={22} aria-hidden="true" /></span>
               <span className="why-index">02</span>
               <h3>{t("Esprit open source")}</h3>
               <p>{t("Je construis, documente et partage des projets réutilisables.")}</p>
             </article>
-            <article className="why-card why-card-butter">
+            <article className="why-card why-card-butter" data-scroll-fade data-fade-side="left">
               <span className="why-icon"><Rocket size={22} aria-hidden="true" /></span>
               <span className="why-index">03</span>
               <h3>{t("Construire vite")}</h3>
@@ -609,7 +615,7 @@ export default function Home() {
               <SocialLink href={links.telegram} icon={<Send size={19} />} label="Telegram" handle="@yokubo666" />
               <SocialLink href={links.telegramJoseph} icon={<Send size={19} />} label="Telegram Joseph" handle="@JOSEPHLUSTY" />
               <SocialLink href={links.github} icon={<Github size={19} />} label="GitHub" handle={t("@LUST-DEV · repositories")} />
-              <div className="contact-card" aria-label={t("Coordonnées professionnelles")}>
+              <div className="contact-card" data-scroll-fade aria-label={t("Coordonnées professionnelles")}>
                 <p className="contact-card-label">{t("CONTACT DIRECT / COLLABORATION")}</p>
                 <a href={links.email}><Mail size={16} aria-hidden="true" /><span>lustdev927@gmail.com</span></a>
                 <a href={links.phone}><Phone size={16} aria-hidden="true" /><span>+1 829 478 6326</span></a>
@@ -639,7 +645,7 @@ export default function Home() {
           </div>
           <div className="team-grid" aria-label={t("Membres de la Team Telegram")}>
             {teamMembers.map((member, index) => (
-              <a className="team-label" href={`https://t.me/${member}`} target="_blank" rel="noopener noreferrer" key={member}>
+              <a className="team-label" data-scroll-fade data-fade-side={index % 2 === 0 ? "left" : "right"} href={`https://t.me/${member}`} target="_blank" rel="noopener noreferrer" key={member}>
                 <span className="team-label-index">{String(index + 1).padStart(2, "0")}</span>
                 <Send size={15} aria-hidden="true" />
                 <span>@{member}</span>

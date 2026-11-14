@@ -241,21 +241,36 @@ export default function Home() {
       return;
     }
 
+    let lastScrollY = window.scrollY;
+    let scrollDirection: "up" | "down" = "down";
+    const updateScrollDirection = () => {
+      scrollDirection = window.scrollY < lastScrollY ? "up" : "down";
+      lastScrollY = window.scrollY;
+    };
+    window.addEventListener("scroll", updateScrollDirection, { passive: true });
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         const row = entry.target as HTMLElement;
         if (entry.isIntersecting && entry.intersectionRatio > 0.2) {
-          row.classList.remove("is-project-leaving");
-          row.classList.add("is-project-visible");
+          const enteringFromAbove = scrollDirection === "up";
+          row.classList.remove("is-project-leaving", "is-project-visible", "is-entering-up", "is-from-left", "is-from-right");
+          if (enteringFromAbove) {
+            row.classList.add("is-entering-up", row.dataset.projectSide === "left" ? "is-from-left" : "is-from-right");
+          }
+          window.requestAnimationFrame(() => row.classList.add("is-project-visible"));
         } else if (!entry.isIntersecting && row.classList.contains("is-project-visible")) {
-          row.classList.remove("is-project-visible");
+          row.classList.remove("is-project-visible", "is-entering-up", "is-from-left", "is-from-right");
           row.classList.add("is-project-leaving");
         }
       });
     }, { threshold: [0, 0.2, 0.55], rootMargin: "-10% 0px -16% 0px" });
 
     projectRows.forEach((row) => observer.observe(row));
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", updateScrollDirection);
+    };
   }, []);
 
   const closeMenu = () => setMenuOpen(false);
@@ -301,6 +316,11 @@ export default function Home() {
           <a className="nav-contact" href={links.github} target="_blank" rel="noopener noreferrer" onClick={closeMenu} aria-label="GitHub LUST DEV">
             <Github size={15} aria-hidden="true" /> GitHub LUST DEV <ArrowUpRight size={15} aria-hidden="true" />
           </a>
+          <div className="language-switcher" aria-label={t("Choisir la langue")}>
+            {(["fr", "en", "es"] as const).map((code) => (
+              <a className={language === code ? "is-active" : ""} href={localizedPath("/", code)} onClick={closeMenu} key={code}>{code.toUpperCase()}</a>
+            ))}
+          </div>
           <button
             className="theme-toggle"
             type="button"
@@ -354,6 +374,11 @@ export default function Home() {
               <img src={`${import.meta.env.BASE_URL}lust-hero.svg`} alt={t("Composition graphique LUST DEV sur fond bleu nuit")} />
               <div className="image-scanline" aria-hidden="true" />
               <span className="image-stamp">{t("LUST / SIGNAL")}</span>
+            </div>
+            <div className="hero-code-panel" aria-label={t("Aperçu du code")}>
+              <div className="hero-code-top"><span><i /><i /><i /></span><small>experience.tsx</small><b>● live</b></div>
+              <pre><code><span>const</span> experience = {'{'}{`\n  clarity: true,\n  motion: "intentional"\n`}{'}'};</code></pre>
+              <div className="hero-code-foot"><span>✳ crafted with intent</span><span>01 / 03</span></div>
             </div>
             <div className="visual-meta visual-meta-bottom"><span>{t("MADE WITH INTENTION")}</span><span>© LUST DEV</span></div>
           </div>
@@ -449,7 +474,7 @@ export default function Home() {
                     <div className="category-progress" role="progressbar" aria-label={`${category.name} : ${t("en progression")}`} aria-valuemin={0} aria-valuemax={100} aria-valuenow={category.progress}>
                       <span style={{ width: `${category.progress}%` }} />
                     </div>
-                    <div className="category-progress-label"><span>In progress</span><span>{category.progress}%</span></div>
+                    <div className="category-progress-label"><span>{t("In progress")}</span><span>{category.progress}%</span></div>
                   </>
                 )}
               </article>
@@ -545,7 +570,7 @@ export default function Home() {
           </div>
           <div className="project-list">
             {projects.map((project) => (
-              <a className={`project-row ${project.tone}`} data-scroll-project href={project.href} target="_blank" rel="noopener noreferrer" key={project.name}>
+              <a className={`project-row ${project.tone}`} data-scroll-project data-project-side={Number(project.index) % 2 === 0 ? "right" : "left"} href={project.href} target="_blank" rel="noopener noreferrer" key={project.name}>
                 <span className="project-index">{project.index}</span>
                 <span className="project-main">
                   <span className="project-name"><span className="project-symbol"><Code2 size={15} aria-hidden="true" /></span>{project.name}<ArrowUpRight size={20} aria-hidden="true" /></span>

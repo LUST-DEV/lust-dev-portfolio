@@ -775,3 +775,39 @@ h2 { font-size: clamp(3.2rem, 6.4vw, 6.5rem); }
 @media (prefers-reduced-motion: reduce) {
   .project-row[data-scroll-project], .project-row[data-scroll-project].is-project-visible, .project-row[data-scroll-project].is-project-leaving { opacity: 1; transform: none; filter: none; transition: none; }
 }
+
+
+/* UI refinement: hero terminal, language switcher and directional scroll entrances. */
+.language-switcher { display: inline-flex; align-items: center; gap: .18rem; padding: .2rem; border: 1px solid var(--line-strong); border-radius: 999px; background: color-mix(in srgb, var(--white), transparent 16%); }
+.language-switcher a { display: grid; place-items: center; min-width: 1.8rem; min-height: 1.55rem; border-radius: 999px; color: var(--ink-soft); font-family: "Space Grotesk", sans-serif; font-size: .55rem; font-weight: 700; letter-spacing: .05em; }
+.language-switcher a:hover, .language-switcher a:focus-visible, .language-switcher a.is-active { color: var(--ink); background: var(--coral); }
+.theme-dark .language-switcher { background: rgba(255,255,255,.04); }
+.theme-dark .language-switcher a.is-active, .theme-dark .language-switcher a:hover, .theme-dark .language-switcher a:focus-visible { color: #04101c; background: var(--coral); }
+.hero-code-panel { position: absolute; z-index: 4; right: -1.8rem; bottom: 3.5rem; width: min(17rem, 74%); padding: .78rem .9rem .72rem; border: 1px solid rgba(190,220,255,.24); border-radius: .65rem; color: #eaf5ff; background: rgba(5,9,16,.9); box-shadow: .65rem .7rem 0 rgba(91,170,255,.18), 0 1rem 2rem rgba(0,0,0,.25); transform: rotate(-4deg); backdrop-filter: blur(12px); transition: transform 260ms var(--ease-out), box-shadow 260ms var(--ease-out); }
+.hero-code-panel:hover { transform: rotate(-1deg) translateY(-4px); box-shadow: .45rem .55rem 0 rgba(91,170,255,.3), 0 1.2rem 2.4rem rgba(0,0,0,.32); }
+.hero-code-top, .hero-code-foot { display: flex; align-items: center; justify-content: space-between; gap: .5rem; font-family: "Space Grotesk", sans-serif; font-size: .49rem; letter-spacing: .08em; }
+.hero-code-top > span { display: inline-flex; gap: .22rem; }
+.hero-code-top i { width: .34rem; height: .34rem; display: block; border-radius: 50%; background: var(--coral); }
+.hero-code-top i:nth-child(2) { background: #f0cf8d; }.hero-code-top i:nth-child(3) { background: #8de0bb; }
+.hero-code-top small { flex: 1; color: rgba(234,245,255,.6); font-size: .49rem; }.hero-code-top b { color: #8de0bb; font-size: .48rem; font-weight: 700; }
+.hero-code-panel pre { margin: .85rem 0 .7rem; color: #d0e8ff; font: .65rem/1.8 ui-monospace, SFMono-Regular, Menlo, monospace; }
+.hero-code-panel pre span { color: var(--coral); }.hero-code-foot { padding-top: .55rem; border-top: 1px solid rgba(190,220,255,.14); color: rgba(234,245,255,.57); }.hero-code-foot span:first-child { color: var(--coral); }
+.project-row[data-scroll-project].is-entering-up.is-from-left { transform: translateX(-4rem) translateY(0) scale(.985); }
+.project-row[data-scroll-project].is-entering-up.is-from-right { transform: translateX(4rem) translateY(0) scale(.985); }
+.project-row[data-scroll-project].is-entering-up.is-project-visible { transform: translateX(0) translateY(0) scale(1); }
+.theme-dark .hero-code-panel { border-color: rgba(155,208,255,.3); }
+
+@media (max-width: 900px) {
+  .hero-code-panel { right: -.8rem; bottom: 2.8rem; }
+  .language-switcher { margin: .35rem 0; align-self: flex-start; }
+}
+@media (max-width: 640px) {
+  .hero-code-panel { right: .2rem; bottom: 2.2rem; width: 15rem; transform: rotate(-3deg) scale(.9); transform-origin: right bottom; }
+  .hero-code-panel:hover { transform: rotate(0deg) translateY(-3px) scale(.9); }
+  .project-row[data-scroll-project].is-entering-up.is-from-left { transform: translateX(-2rem) scale(.99); }
+  .project-row[data-scroll-project].is-entering-up.is-from-right { transform: translateX(2rem) scale(.99); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-code-panel, .hero-code-panel:hover { transform: none; }
+  .project-row[data-scroll-project].is-entering-up.is-from-left, .project-row[data-scroll-project].is-entering-up.is-from-right, .project-row[data-scroll-project].is-entering-up.is-project-visible { transform: none; }
+}

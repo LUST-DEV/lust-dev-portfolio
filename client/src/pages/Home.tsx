@@ -78,36 +78,70 @@ const projects = [
   },
 ];
 
-const skillCategories = [
+const skillGroups = [
   {
-    name: "Frontend",
-    status: "01 / MAÎTRISÉ",
-    description: "Des interfaces accessibles, structurées et animées avec intention. HTML, CSS, JavaScript, TypeScript et React sont maîtrisés.",
+    name: "Langages",
+    status: "01 / SOCLE",
+    description: "HTML / CSS, JavaScript et TypeScript sont maîtrisés. Python et Shell / Bash sont en apprentissage.",
     tone: "coral",
-    icon: <Code2 size={20} aria-hidden="true" />,
+    icon: <Terminal size={20} aria-hidden="true" />,
     skills: [
-      { name: "HTML", icon: <FileCode2 size={15} aria-hidden="true" /> },
-      { name: "CSS", icon: <Palette size={15} aria-hidden="true" /> },
-      { name: "JavaScript", icon: <Braces size={15} aria-hidden="true" /> },
-      { name: "TypeScript", icon: <FileCode2 size={15} aria-hidden="true" /> },
-      { name: "React", icon: <Atom size={15} aria-hidden="true" /> },
+      { name: "HTML / CSS", level: "mastered", icon: <Palette size={15} aria-hidden="true" /> },
+      { name: "JavaScript", level: "mastered", icon: <Braces size={15} aria-hidden="true" /> },
+      { name: "TypeScript", level: "mastered", icon: <FileCode2 size={15} aria-hidden="true" /> },
+      { name: "Python", level: "progress", icon: <Code2 size={15} aria-hidden="true" /> },
+      { name: "Shell / Bash", level: "progress", icon: <Terminal size={15} aria-hidden="true" /> },
     ],
   },
   {
-    name: "Backend",
-    status: "02 / EN COURS",
-    description: "Je construis progressivement mes bases côté serveur pour comprendre le produit dans son ensemble.",
+    name: "Web & Frontend",
+    status: "02 / FRONTEND",
+    description: "React est maîtrisé pour construire des interfaces modernes. Next.js, Angular et Vue.js restent en progression.",
     tone: "sky",
+    icon: <Globe2 size={20} aria-hidden="true" />,
+    skills: [
+      { name: "React", level: "mastered", icon: <Atom size={15} aria-hidden="true" /> },
+      { name: "Next.js", level: "progress", icon: <Code2 size={15} aria-hidden="true" /> },
+      { name: "Angular", level: "progress", icon: <Code2 size={15} aria-hidden="true" /> },
+      { name: "Vue.js", level: "progress", icon: <Code2 size={15} aria-hidden="true" /> },
+    ],
+  },
+  {
+    name: "Mobile",
+    status: "03 / EN COURS",
+    description: "Les technologies mobiles sont en cours d’exploration pour élargir la création d’expériences.",
+    tone: "butter",
+    icon: <Phone size={20} aria-hidden="true" />,
+    skills: [
+      { name: "React Native", level: "progress", icon: <Atom size={15} aria-hidden="true" /> },
+      { name: "Flutter", level: "progress", icon: <Code2 size={15} aria-hidden="true" /> },
+    ],
+  },
+  {
+    name: "Backend & Frameworks",
+    status: "04 / EN COURS",
+    description: "Node.js, SQL, Django, FastAPI et Flask sont les prochains axes de progression côté serveur.",
+    tone: "steel",
     icon: <Server size={20} aria-hidden="true" />,
-    progress: 42,
+    skills: [
+      { name: "Node.js", level: "progress", icon: <Server size={15} aria-hidden="true" /> },
+      { name: "SQL", level: "progress", icon: <Code2 size={15} aria-hidden="true" /> },
+      { name: "Django", level: "progress", icon: <Server size={15} aria-hidden="true" /> },
+      { name: "FastAPI", level: "progress", icon: <Server size={15} aria-hidden="true" /> },
+      { name: "Flask", level: "progress", icon: <Server size={15} aria-hidden="true" /> },
+    ],
   },
   {
     name: "Cybersécurité",
-    status: "03 / EN COURS",
-    description: "Une nouvelle dimension de mon parcours : concevoir des expériences sûres par défaut.",
+    status: "05 / EN COURS",
+    description: "Un axe de progression dédié aux fondamentaux de la sécurité web, Linux et des réseaux.",
     tone: "butter",
     icon: <ShieldCheck size={20} aria-hidden="true" />,
-    progress: 24,
+    skills: [
+      { name: "Sécurité web", level: "progress", icon: <ShieldCheck size={15} aria-hidden="true" /> },
+      { name: "Linux", level: "progress", icon: <Terminal size={15} aria-hidden="true" /> },
+      { name: "Réseaux", level: "progress", icon: <Globe2 size={15} aria-hidden="true" /> },
+    ],
   },
 ];
 
@@ -462,12 +496,15 @@ export default function Home() {
             </div>
             <div className="skills-intro">
               <p>{t("HTML, CSS, JavaScript, TypeScript et React forment le socle frontend maîtrisé. Les autres technologies et domaines sont actuellement en cours d’apprentissage.")}</p>
-              <span className="skills-note"><span className="skills-note-dot" /> {t("Frontend maîtrisé · autres domaines en progression")}</span>
+              <div className="skills-legend" aria-label={t("Légende des niveaux de compétence")}>
+                <span><i className="skills-legend-dot is-mastered" /> {t("Maîtrisé")}</span>
+                <span><i className="skills-legend-dot is-progress" /> {t("En progression")}</span>
+              </div>
             </div>
           </div>
           <div className="skills-category-grid" aria-label={t("Compétences techniques et niveaux de progression")}>
-            {skillCategories.map((category, index) => (
-              <article className={`skill-category-card ${category.tone} ${category.progress ? "is-progress" : "is-mastered"}`} data-scroll-fade data-fade-side={index % 2 === 0 ? "left" : "right"} key={category.name}>
+            {skillGroups.map((category, index) => (
+              <article className={`skill-category-card ${category.tone}`} data-scroll-fade data-fade-side={index % 2 === 0 ? "left" : "right"} key={category.name}>
                 <div className="skill-category-top">
                   <span className="skill-category-icon">{category.icon}</span>
                   <div>
@@ -477,18 +514,13 @@ export default function Home() {
                   <span className="skill-category-index">0{index + 1}</span>
                 </div>
                 <p className="skill-category-description">{t(category.description)}</p>
-                {category.skills ? (
-                  <div className="skill-chip-list">
-                    {category.skills.map((skill) => <span className="skill-chip" key={skill.name}>{skill.icon}{skill.name}</span>)}
-                  </div>
-                ) : (
-                  <>
-                    <div className="category-progress" role="progressbar" aria-label={`${category.name} : ${t("en progression")}`} aria-valuemin={0} aria-valuemax={100} aria-valuenow={category.progress}>
-                      <span style={{ width: `${category.progress}%` }} />
-                    </div>
-                    <div className="category-progress-label"><span>{t("In progress")}</span><span>{category.progress}%</span></div>
-                  </>
-                )}
+                <div className="skill-chip-list" aria-label={`${t(category.name)} : ${t("niveaux de compétence")}`}>
+                  {category.skills.map((skill) => (
+                    <span className={`skill-chip ${skill.level === "mastered" ? "is-mastered" : "is-progress"}`} key={skill.name}>
+                      {skill.icon}{t(skill.name)}
+                    </span>
+                  ))}
+                </div>
               </article>
             ))}
           </div>

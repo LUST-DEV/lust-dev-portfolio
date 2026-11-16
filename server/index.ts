@@ -2,7 +2,7 @@ import express from "express";
 import { createServer } from "http";
 import path from "path";
 import { fileURLToPath } from "url";
-import { rateLimit, rejectSuspiciousApiPayload, securityHeaders } from "./security.js";
+import { rateLimit, securityHeaders } from "./security.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -11,11 +11,13 @@ async function startServer() {
   const app = express();
   const server = createServer(app);
 
+  // The published app runs behind one trusted reverse proxy; req.ip must not
+  // be derived from an arbitrary client-supplied X-Forwarded-For value.
+  app.set("trust proxy", 1);
   app.disable("x-powered-by");
   app.use(securityHeaders);
   app.use(rateLimit);
   app.use(express.json({ limit: "32kb" }));
-  app.use(rejectSuspiciousApiPayload);
 
   // Serve static files from dist/public in production
   const staticPath =

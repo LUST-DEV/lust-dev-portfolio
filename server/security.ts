@@ -2,7 +2,14 @@ import type { NextFunction, Request, Response } from "express";
 
 const WINDOW_MS = 60_000;
 const MAX_REQUESTS_PER_WINDOW = 120;
+const MAX_TRACKED_CLIENTS = 10_000;
 const requestCounts = new Map<string, { count: number; resetAt: number }>();
+
+function pruneExpiredEntries(now: number) {
+  requestCounts.forEach((value, key) => {
+    if (value.resetAt <= now) requestCounts.delete(key);
+  });
+}
 
 export function securityHeaders(_req: Request, res: Response, next: NextFunction) {
   res.setHeader("X-Content-Type-Options", "nosniff");
@@ -14,10 +21,16 @@ export function securityHeaders(_req: Request, res: Response, next: NextFunction
 }
 
 export function rateLimit(req: Request, res: Response, next: NextFunction) {
-  const forwarded = req.headers["x-forwarded-for"];
-  const ip = typeof forwarded === "string" ? forwarded.split(",")[0].trim() : req.socket.remoteAddress ?? "unknown";
   const now = Date.now();
+  pruneExpiredEntries(now);
+
+  const ip = req.ip ?? req.socket.remoteAddress ?? "unknown";
   const current = requestCounts.get(ip);
+
+  if (!current && requestCounts.size >= MAX_TRACKED_CLIENTS) {
+    return res.status(503).json({ error: "Service temporairement indisponible." });
+  }
+
   if (!current || current.resetAt <= now) {
     requestCounts.set(ip, { count: 1, resetAt: now + WINDOW_MS });
     return next();
@@ -27,12 +40,5 @@ export function rateLimit(req: Request, res: Response, next: NextFunction) {
     res.setHeader("Retry-After", "60");
     return res.status(429).json({ error: "Trop de requêtes. Réessaie dans une minute." });
   }
-  return next();
-}
-
-export function rejectSuspiciousApiPayload(req: Request, res: Response, next: NextFunction) {
-  const raw = JSON.stringify({ query: req.query, body: req.body ?? {} }).slice(0, 50_000);
-  const suspicious = /(<script|javascript:|onerror\s*=|union\s+select|drop\s+table|insert\s+into|delete\s+from|--\s|\/\*)/i.test(raw);
-  if (suspicious) return res.status(400).json({ error: "Requête non valide." });
   return next();
 }

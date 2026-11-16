@@ -82,7 +82,7 @@ const skillCategories = [
   {
     name: "Frontend",
     status: "01 / MAÎTRISÉ",
-    description: "Des interfaces accessibles, structurées et animées avec intention.",
+    description: "Des interfaces accessibles, structurées et animées avec intention. HTML, CSS, JavaScript, TypeScript et React sont maîtrisés.",
     tone: "coral",
     icon: <Code2 size={20} aria-hidden="true" />,
     skills: [
@@ -461,8 +461,8 @@ export default function Home() {
               <h2 id="skills-title">{t("Une stack")}<br /><span>{t("en construction.")}</span></h2>
             </div>
             <div className="skills-intro">
-              <p>{t("HTML, CSS, JavaScript, TypeScript et React forment le socle frontend. Backend et cybersécurité avancent au rythme d’un apprentissage quotidien.")}</p>
-              <span className="skills-note"><span className="skills-note-dot" /> {t("Socle maîtrisé · reste en progression")}</span>
+              <p>{t("HTML, CSS, JavaScript, TypeScript et React forment le socle frontend maîtrisé. Les autres technologies et domaines sont actuellement en cours d’apprentissage.")}</p>
+              <span className="skills-note"><span className="skills-note-dot" /> {t("Frontend maîtrisé · autres domaines en progression")}</span>
             </div>
           </div>
           <div className="skills-category-grid" aria-label={t("Compétences techniques et niveaux de progression")}>

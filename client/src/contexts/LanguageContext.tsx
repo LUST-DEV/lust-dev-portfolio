@@ -184,6 +184,7 @@ const copy: Record<string, readonly [string, string, string, string]> = {
   "Un terrain de jeu supplémentaire dans l’écosystème public LUST DEV, à explorer directement sur GitHub.": ["Un terrain de jeu supplémentaire dans l’écosystème public LUST DEV, à explorer directement sur GitHub.", "Another project in the public LUST DEV ecosystem, ready to explore on GitHub.", "Otro proyecto del ecosistema público de LUST DEV, disponible en GitHub.", "Yon lòt pwojè nan ekosistèm piblik LUST DEV, ou ka eksplore l sou GitHub."],
   "PUBLIC REPO / ACTIVITY": ["REPO PUBLIC / ACTIVITÉ", "PUBLIC REPO / ACTIVITY", "REPO PÚBLICO / ACTIVIDAD", "REPO PIBLIK / AKTIVITE"],
   "Open repo": ["Ouvrir le dépôt", "Open repo", "Abrir repositorio", "Louvri repo a"],
+  "Voir le projet": ["Voir le projet", "View project", "Ver proyecto", "Gade pwojè a"],
   "Voir les 20 dépôts": ["Voir les 20 dépôts", "View all 20 repositories", "Ver los 20 repositorios", "Gade 20 repo yo"],
   "CONNECT / LIENS": ["CONNECT / LIENS", "CONNECT / LINKS", "CONTACTO / ENLACES", "KONEKSYON / LYEN"],
   "RESTER CONNECTÉ": ["RESTER CONNECTÉ", "STAY CONNECTED", "MANTENTE EN CONTACTO", "RETE KONEKTE"],

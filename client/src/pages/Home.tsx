@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useTheme } from "@/contexts/ThemeContext";
 import { localizedPath, useLanguage } from "@/contexts/LanguageContext";
+import { projects } from "@/data/projects";
 import {
   ArrowDownRight,
   ArrowUpRight,
@@ -44,39 +45,6 @@ const links = {
   email: "mailto:lustdev927@gmail.com",
   phone: "tel:+18294786326",
 };
-
-const projects = [
-  {
-    index: "01",
-    name: "LUST-XMD",
-    type: "JavaScript · bot toolkit",
-    description:
-      "Une présence publique autour des bots et des outils qui transforment une idée technique en expérience utilisable.",
-    proof: "PUBLIC REPO / JS",
-    href: "https://github.com/LUST-DEV/LUST-XMD",
-    tone: "ember",
-  },
-  {
-    index: "02",
-    name: "SavageHackCheck",
-    type: "Python · utility",
-    description:
-      "Un dépôt public qui témoigne d’une approche orientée scripts, vérification et automatisation concrète.",
-    proof: "PUBLIC REPO / PY",
-    href: "https://github.com/LUST-DEV/SavageHackCheck",
-    tone: "steel",
-  },
-  {
-    index: "03",
-    name: "GOKU-MD",
-    type: "JavaScript · open source",
-    description:
-      "Un terrain de jeu supplémentaire dans l’écosystème public LUST DEV, à explorer directement sur GitHub.",
-    proof: "PUBLIC REPO / ACTIVITY",
-    href: "https://github.com/LUST-DEV/GOKU-MD",
-    tone: "signal",
-  },
-];
 
 const skillGroups = [
   {
@@ -643,7 +611,7 @@ export default function Home() {
           </div>
           <div className="project-list">
             {projects.map((project) => (
-              <a className={`project-row ${project.tone}`} data-scroll-project data-project-side={Number(project.index) % 2 === 0 ? "right" : "left"} href={project.href} target="_blank" rel="noopener noreferrer" key={project.name}>
+              <a className={`project-row ${project.tone}`} data-scroll-project data-project-side={Number(project.index) % 2 === 0 ? "right" : "left"} href={localizedPath(`/projects/${project.slug}`, language)} key={project.name}>
                 <span className="project-index">{project.index}</span>
                 <span className="project-main">
                   <span className="project-name"><span className="project-symbol"><Code2 size={15} aria-hidden="true" /></span>{project.name}<ArrowUpRight size={20} aria-hidden="true" /></span>
@@ -651,7 +619,7 @@ export default function Home() {
                 </span>
                 <span className="project-description">{t(project.description)}</span>
                 <span className="project-proof">// {t(project.proof)}</span>
-                <span className="project-open"><ExternalLink size={17} aria-hidden="true" /> {t("Open repo")}</span>
+                <span className="project-open"><ExternalLink size={17} aria-hidden="true" /> {t("Voir le projet")}</span>
               </a>
             ))}
           </div>

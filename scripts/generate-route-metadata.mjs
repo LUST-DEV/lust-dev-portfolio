@@ -58,6 +58,54 @@ const pages = [
   },
 ];
 
+pages.push(
+  {
+    suffix: "/projects/lust-xmd",
+    titles: {
+      fr: "LUST-XMD — LUST DEV",
+      en: "LUST-XMD — LUST DEV",
+      es: "LUST-XMD — LUST DEV",
+      ht: "LUST-XMD — LUST DEV",
+    },
+    descriptions: {
+      fr: "Étude de cas LUST-XMD : bots, outils JavaScript et automatisation open source par LUST DEV.",
+      en: "LUST-XMD case study: JavaScript bots, tools, and open source automation by LUST DEV.",
+      es: "Estudio de caso de LUST-XMD: bots, herramientas JavaScript y automatización open source de LUST DEV.",
+      ht: "Etid ka LUST-XMD: bot JavaScript, zouti ak otomatik open source pa LUST DEV.",
+    },
+  },
+  {
+    suffix: "/projects/savage-hack-check",
+    titles: {
+      fr: "SavageHackCheck — LUST DEV",
+      en: "SavageHackCheck — LUST DEV",
+      es: "SavageHackCheck — LUST DEV",
+      ht: "SavageHackCheck — LUST DEV",
+    },
+    descriptions: {
+      fr: "Étude de cas SavageHackCheck : scripts Python, vérification et automatisation pratique.",
+      en: "SavageHackCheck case study: Python scripts, checks, and practical automation.",
+      es: "Estudio de caso de SavageHackCheck: scripts Python, comprobaciones y automatización práctica.",
+      ht: "Etid ka SavageHackCheck: script Python, verifikasyon ak otomatik pratik.",
+    },
+  },
+  {
+    suffix: "/projects/goku-md",
+    titles: {
+      fr: "GOKU-MD — LUST DEV",
+      en: "GOKU-MD — LUST DEV",
+      es: "GOKU-MD — LUST DEV",
+      ht: "GOKU-MD — LUST DEV",
+    },
+    descriptions: {
+      fr: "Étude de cas GOKU-MD : expérimentation JavaScript, open source et communauté.",
+      en: "GOKU-MD case study: JavaScript experimentation, open source, and community.",
+      es: "Estudio de caso de GOKU-MD: experimentación JavaScript, código abierto y comunidad.",
+      ht: "Etid ka GOKU-MD: eksperyans JavaScript, open source ak kominote.",
+    },
+  },
+);
+
 function escaped(value) {
   return value.replaceAll("&", "&amp;").replaceAll('"', "&quot;").replaceAll("<", "&lt;");
 }

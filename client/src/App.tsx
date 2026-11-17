@@ -13,6 +13,7 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import { LanguageProvider } from "./contexts/LanguageContext";
 import Home from "./pages/Home";
 import LegalPage from "./pages/LegalPage";
+import ProjectDetail from "./pages/ProjectDetail";
 
 function Router() {
   return (
@@ -21,6 +22,10 @@ function Router() {
       <Route path="/en" component={Home} />
       <Route path="/es" component={Home} />
       <Route path="/ht" component={Home} />
+      <Route path="/projects/:slug" component={ProjectDetail} />
+      <Route path="/en/projects/:slug" component={ProjectDetail} />
+      <Route path="/es/projects/:slug" component={ProjectDetail} />
+      <Route path="/ht/projects/:slug" component={ProjectDetail} />
       <Route path="/cgu" component={() => <LegalPage kind="terms" />} />
       <Route path="/confidentialite" component={() => <LegalPage kind="privacy" />} />
       <Route path="/en/cgu" component={() => <LegalPage kind="terms" />} />

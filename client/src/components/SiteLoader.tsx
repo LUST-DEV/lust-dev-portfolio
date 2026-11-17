@@ -7,14 +7,14 @@ export default function SiteLoader() {
 
   useEffect(() => {
     const finish = () => {
-      window.setTimeout(() => setVisible(false), 420);
+      window.setTimeout(() => setVisible(false), 180);
     };
-    if (document.readyState === "complete") {
+    if (document.readyState !== "loading") {
       finish();
       return;
     }
-    window.addEventListener("load", finish, { once: true });
-    return () => window.removeEventListener("load", finish);
+    window.addEventListener("DOMContentLoaded", finish, { once: true });
+    return () => window.removeEventListener("DOMContentLoaded", finish);
   }, []);
 
   if (!visible) return null;

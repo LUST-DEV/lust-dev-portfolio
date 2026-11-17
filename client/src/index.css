@@ -1,5 +1,4 @@
 /* Style system: LUST DEV — palette Blue Night / Glacier Blue, surfaces fraîches et animations CSS3 discrètes. */
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap");
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -898,4 +897,17 @@ html { scroll-behavior: smooth; scroll-padding-top: 5.5rem; }
 }
 @media (prefers-reduced-motion: reduce) {
   .skill-chip { transition: none; }
+}
+
+
+/* Deferred GitHub statistics keep their footprint before the network request starts. */
+.stats-image-placeholder { width: 100%; min-height: 10rem; aspect-ratio: 495 / 195; border: 1px solid var(--line); border-radius: .65rem; background: linear-gradient(110deg, color-mix(in srgb, var(--sky), var(--white) 16%), color-mix(in srgb, var(--white), transparent 12%), color-mix(in srgb, var(--sky), var(--white) 16%)); background-size: 220% 100%; animation: stats-placeholder-shimmer 1.8s linear infinite; }
+.theme-dark .stats-image-placeholder { background: linear-gradient(110deg, #101a29, #18283b, #101a29); background-size: 220% 100%; }
+@keyframes stats-placeholder-shimmer { from { background-position: 100% 0; } to { background-position: -100% 0; } }
+@media (prefers-reduced-motion: reduce) { .stats-image-placeholder { animation: none; } }
+
+
+@media (max-width: 640px) {
+  .ambient { filter: blur(40px); opacity: .18; }
+  .site-header, .cookie-banner { backdrop-filter: none; -webkit-backdrop-filter: none; }
 }

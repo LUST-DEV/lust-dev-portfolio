@@ -253,6 +253,8 @@ function NetworkTelemetry({ showPlanet, onTogglePlanet }: { showPlanet: boolean;
 export default function Home() {
   const { theme, toggleTheme } = useTheme();
   const { language, t } = useLanguage();
+  const [statsReady, setStatsReady] = useState(false);
+  const statsSectionRef = useRef<HTMLElement | null>(null);
   const pageTitle = {
     fr: "Joseph Lusty Gregoire — LUST DEV",
     en: "Joseph Lusty Gregoire — LUST DEV | Developer Portfolio",
@@ -317,6 +319,24 @@ export default function Home() {
       window.removeEventListener("scroll", updateScrollDirection);
       if (scrollFrame) window.cancelAnimationFrame(scrollFrame);
     };
+  }, []);
+
+  useEffect(() => {
+    const section = statsSectionRef.current;
+    if (!section) return;
+    const revealStats = () => setStatsReady(true);
+    if (!("IntersectionObserver" in window)) {
+      revealStats();
+      return;
+    }
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        revealStats();
+        observer.disconnect();
+      }
+    }, { rootMargin: "500px 0px" });
+    observer.observe(section);
+    return () => observer.disconnect();
   }, []);
 
   const closeMenu = () => setMenuOpen(false);
@@ -526,7 +546,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="stats-section content-section" id="stats" aria-labelledby="stats-title">
+        <section className="stats-section content-section" id="stats" aria-labelledby="stats-title" ref={statsSectionRef}>
           <div className="section-rail">
             <span className="section-number">03</span>
             <span className="section-rail-label">{t("STATS / ACTIVITÉ")}</span>
@@ -545,8 +565,17 @@ export default function Home() {
                 <Github size={18} aria-hidden="true" />
               </div>
               <div className="stats-images stats-images-duo">
-                <img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=LUST-DEV&theme=tokyonight" alt={t("Statistiques GitHub de LUST DEV")} loading="lazy" />
-                <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=LUST-DEV&theme=tokyonight" alt={t("Langages utilisés dans les dépôts LUST DEV")} loading="lazy" />
+                {statsReady ? (
+                  <>
+                    <img width="495" height="195" src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=LUST-DEV&theme=tokyonight" alt={t("Statistiques GitHub de LUST DEV")} loading="lazy" decoding="async" />
+                    <img width="495" height="195" src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=LUST-DEV&theme=tokyonight" alt={t("Langages utilisés dans les dépôts LUST DEV")} loading="lazy" decoding="async" />
+                  </>
+                ) : (
+                  <>
+                    <div className="stats-image-placeholder" aria-hidden="true" />
+                    <div className="stats-image-placeholder" aria-hidden="true" />
+                  </>
+                )}
               </div>
             </article>
             <article className="stats-panel dev-stats-panel" data-scroll-fade data-fade-side="right">
@@ -555,7 +584,7 @@ export default function Home() {
                 <Code2 size={18} aria-hidden="true" />
               </div>
               <div className="stats-images">
-                <img src="https://streak-stats.demolab.com/?user=LUST-DEV&theme=tokyonight&hide_border=true" alt={t("Régularité des contributions GitHub")} loading="lazy" />
+                {statsReady ? <img width="495" height="195" src="https://streak-stats.demolab.com/?user=LUST-DEV&theme=tokyonight&hide_border=true" alt={t("Régularité des contributions GitHub")} loading="lazy" decoding="async" /> : <div className="stats-image-placeholder" aria-hidden="true" />}
               </div>
               <div className="dev-metrics">
                 <div><strong>06</strong><span>{t("technologies suivies")}</span></div>

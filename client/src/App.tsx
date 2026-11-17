@@ -1,4 +1,5 @@
 // Style system: Forge rouge / terminal éditorial — charbon, rouge LUST, ivoire, rail latéral et micro-interactions brèves.
+import { useEffect, useState } from "react";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
@@ -34,13 +35,29 @@ function Router() {
   );
 }
 
+function DeferredParticles() {
+  const [enabled, setEnabled] = useState(false);
+
+  useEffect(() => {
+    if (window.matchMedia("(max-width: 640px), (prefers-reduced-motion: reduce)").matches) return;
+    const idle = window.requestIdleCallback?.(() => setEnabled(true), { timeout: 1400 });
+    const fallback = window.setTimeout(() => setEnabled(true), 1400);
+    return () => {
+      if (idle !== undefined) window.cancelIdleCallback?.(idle);
+      window.clearTimeout(fallback);
+    };
+  }, []);
+
+  return enabled ? <GlobalParticles /> : null;
+}
+
 export default function App() {
   return (
     <ErrorBoundary>
       <LanguageProvider>
         <ThemeProvider defaultTheme="dark" switchable>
           <div className="app-root">
-            <GlobalParticles />
+            <DeferredParticles />
             <div className="app-content">
               <TooltipProvider>
                 <Toaster />

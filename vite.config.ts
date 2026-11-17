@@ -15,6 +15,8 @@ const PROJECT_ROOT = import.meta.dirname;
 const LOG_DIR = path.join(PROJECT_ROOT, ".manus-logs");
 const MAX_LOG_SIZE_BYTES = 1 * 1024 * 1024; // 1MB per log file
 const TRIM_TARGET_BYTES = Math.floor(MAX_LOG_SIZE_BYTES * 0.6); // Trim to 60% to avoid constant re-trimming
+const MAX_DEBUG_REQUEST_BYTES = 256 * 1024;
+const MAX_DEBUG_ENTRIES = 2_000;
 
 type LogSource = "browserConsole" | "networkRequests" | "sessionReplay";
 
@@ -56,7 +58,7 @@ function writeToLogFile(source: LogSource, entries: unknown[]) {
   const logPath = path.join(LOG_DIR, `${source}.log`);
 
   // Format entries with timestamps
-  const lines = entries.map((entry) => {
+  const lines = entries.map(entry => {
     const ts = new Date().toISOString();
     return `[${ts}] ${JSON.stringify(entry)}`;
   });
@@ -104,16 +106,57 @@ function vitePluginManusDebugCollector(): Plugin {
           return next();
         }
 
-        const handlePayload = (payload: any) => {
+        const contentType = req.headers["content-type"]
+          ?.split(";", 1)[0]
+          .trim();
+        if (contentType !== "application/json") {
+          res.writeHead(415, { "Content-Type": "application/json" });
+          res.end(JSON.stringify({ success: false, error: "JSON requis." }));
+          return;
+        }
+
+        const handlePayload = (payload: unknown) => {
+          if (
+            !payload ||
+            typeof payload !== "object" ||
+            Array.isArray(payload)
+          ) {
+            throw new Error("Payload JSON invalide.");
+          }
+
+          const record = payload as Record<string, unknown>;
+          for (const key of [
+            "consoleLogs",
+            "networkRequests",
+            "sessionEvents",
+          ]) {
+            const entries = record[key];
+            if (
+              entries !== undefined &&
+              (!Array.isArray(entries) || entries.length > MAX_DEBUG_ENTRIES)
+            ) {
+              throw new Error("Trop d’entrées de debug.");
+            }
+          }
+
           // Write logs directly to files
-          if (payload.consoleLogs?.length > 0) {
-            writeToLogFile("browserConsole", payload.consoleLogs);
+          if (
+            Array.isArray(record.consoleLogs) &&
+            record.consoleLogs.length > 0
+          ) {
+            writeToLogFile("browserConsole", record.consoleLogs);
           }
-          if (payload.networkRequests?.length > 0) {
-            writeToLogFile("networkRequests", payload.networkRequests);
+          if (
+            Array.isArray(record.networkRequests) &&
+            record.networkRequests.length > 0
+          ) {
+            writeToLogFile("networkRequests", record.networkRequests);
           }
-          if (payload.sessionEvents?.length > 0) {
-            writeToLogFile("sessionReplay", payload.sessionEvents);
+          if (
+            Array.isArray(record.sessionEvents) &&
+            record.sessionEvents.length > 0
+          ) {
+            writeToLogFile("sessionReplay", record.sessionEvents);
           }
 
           res.writeHead(200, { "Content-Type": "application/json" });
@@ -132,11 +175,27 @@ function vitePluginManusDebugCollector(): Plugin {
         }
 
         let body = "";
-        req.on("data", (chunk) => {
+        let bodyBytes = 0;
+        let tooLarge = false;
+        req.on("data", chunk => {
+          bodyBytes += Buffer.byteLength(chunk);
+          if (bodyBytes > MAX_DEBUG_REQUEST_BYTES) {
+            tooLarge = true;
+            res.writeHead(413, { "Content-Type": "application/json" });
+            res.end(
+              JSON.stringify({
+                success: false,
+                error: "Payload trop volumineux.",
+              })
+            );
+            req.destroy();
+            return;
+          }
           body += chunk.toString();
         });
 
         req.on("end", () => {
+          if (tooLarge) return;
           try {
             const payload = JSON.parse(body);
             handlePayload(payload);
@@ -155,14 +214,39 @@ function vitePluginStorageProxy(): Plugin {
     name: "manus-storage-proxy",
     configureServer(server: ViteDevServer) {
       server.middlewares.use("/manus-storage", async (req, res) => {
-        const key = req.url?.replace(/^\//, "");
-        if (!key) {
-          res.writeHead(400, { "Content-Type": "text/plain" });
-          res.end("Missing storage key");
+        if (req.method !== "GET") {
+          res.writeHead(405, { "Content-Type": "text/plain", Allow: "GET" });
+          res.end("Method not allowed");
           return;
         }
 
-        const forgeBaseUrl = (process.env.BUILT_IN_FORGE_API_URL || "").replace(/\/+$/, "");
+        let key = "";
+        try {
+          key = decodeURIComponent(
+            req.url?.split("?", 1)[0].replace(/^\//, "") || ""
+          );
+        } catch {
+          res.writeHead(400, { "Content-Type": "text/plain" });
+          res.end("Invalid storage key");
+          return;
+        }
+
+        if (
+          !key ||
+          key.length > 512 ||
+          key.includes("..") ||
+          key.includes("\\") ||
+          !/^[A-Za-z0-9][A-Za-z0-9._/-]*$/.test(key)
+        ) {
+          res.writeHead(400, { "Content-Type": "text/plain" });
+          res.end("Invalid storage key");
+          return;
+        }
+
+        const forgeBaseUrl = (process.env.BUILT_IN_FORGE_API_URL || "").replace(
+          /\/+$/,
+          ""
+        );
         const forgeKey = process.env.BUILT_IN_FORGE_API_KEY;
 
         if (!forgeBaseUrl || !forgeKey) {
@@ -172,7 +256,10 @@ function vitePluginStorageProxy(): Plugin {
         }
 
         try {
-          const forgeUrl = new URL("v1/storage/presign/get", forgeBaseUrl + "/");
+          const forgeUrl = new URL(
+            "v1/storage/presign/get",
+            forgeBaseUrl + "/"
+          );
           forgeUrl.searchParams.set("path", key);
 
           const forgeResp = await fetch(forgeUrl, {
@@ -186,13 +273,22 @@ function vitePluginStorageProxy(): Plugin {
           }
 
           const { url } = (await forgeResp.json()) as { url: string };
-          if (!url) {
+          let signedUrl: URL;
+          try {
+            signedUrl = new URL(url);
+          } catch {
+            signedUrl = new URL("https://invalid.local/");
+          }
+          if (!url || signedUrl.protocol !== "https:") {
             res.writeHead(502, { "Content-Type": "text/plain" });
             res.end("Empty signed URL");
             return;
           }
 
-          res.writeHead(307, { Location: url, "Cache-Control": "no-store" });
+          res.writeHead(307, {
+            Location: signedUrl.toString(),
+            "Cache-Control": "no-store",
+          });
           res.end();
         } catch {
           res.writeHead(502, { "Content-Type": "text/plain" });
@@ -204,10 +300,18 @@ function vitePluginStorageProxy(): Plugin {
 }
 
 const isProduction = process.env.NODE_ENV === "production";
+const devHost = process.env.MANUS_LOCAL_ONLY === "true" ? "127.0.0.1" : true;
 const plugins = [
   react(),
   tailwindcss(),
-  ...(!isProduction ? [jsxLocPlugin(), vitePluginManusRuntime(), vitePluginManusDebugCollector(), vitePluginStorageProxy()] : []),
+  ...(!isProduction
+    ? [
+        jsxLocPlugin(),
+        vitePluginManusRuntime(),
+        vitePluginManusDebugCollector(),
+        vitePluginStorageProxy(),
+      ]
+    : []),
 ];
 
 export default defineConfig({
@@ -229,7 +333,8 @@ export default defineConfig({
   server: {
     port: 3000,
     strictPort: false, // Will find next available port if 3000 is busy
-    host: true,
+    // Cloud Preview needs all interfaces; set MANUS_LOCAL_ONLY=true for local-only dev.
+    host: devHost,
     allowedHosts: [
       ".manuspre.computer",
       ".manus.computer",

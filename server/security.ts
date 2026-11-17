@@ -4,6 +4,21 @@ const WINDOW_MS = 60_000;
 const MAX_REQUESTS_PER_WINDOW = 120;
 const MAX_TRACKED_CLIENTS = 10_000;
 const requestCounts = new Map<string, { count: number; resetAt: number }>();
+const CONTENT_SECURITY_POLICY = [
+  "default-src 'self'",
+  "base-uri 'self'",
+  "form-action 'self'",
+  "object-src 'none'",
+  "frame-ancestors 'none'",
+  "upgrade-insecure-requests",
+  "img-src 'self' data: https://github-profile-summary-cards.vercel.app https://streak-stats.demolab.com",
+  "style-src-elem 'self' https://fonts.googleapis.com",
+  "style-src-attr 'unsafe-inline'",
+  "font-src 'self' https://fonts.gstatic.com",
+  "script-src 'self' https://www.googletagmanager.com https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/",
+  "connect-src 'self' https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/ https://www.google-analytics.com https://region1.google-analytics.com",
+  "frame-src 'self' https://www.google.com/recaptcha/",
+].join("; ");
 
 function pruneExpiredEntries(now: number) {
   requestCounts.forEach((value, key) => {
@@ -11,12 +26,23 @@ function pruneExpiredEntries(now: number) {
   });
 }
 
-export function securityHeaders(_req: Request, res: Response, next: NextFunction) {
+export function securityHeaders(
+  _req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  res.setHeader("Content-Security-Policy", CONTENT_SECURITY_POLICY);
   res.setHeader("X-Content-Type-Options", "nosniff");
   res.setHeader("X-Frame-Options", "DENY");
   res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
-  res.setHeader("Permissions-Policy", "camera=(), microphone=(), geolocation=(), payment=()");
-  res.setHeader("Strict-Transport-Security", "max-age=31536000; includeSubDomains; preload");
+  res.setHeader(
+    "Permissions-Policy",
+    "camera=(), microphone=(), geolocation=(), payment=()"
+  );
+  res.setHeader(
+    "Strict-Transport-Security",
+    "max-age=31536000; includeSubDomains; preload"
+  );
   next();
 }
 
@@ -28,7 +54,9 @@ export function rateLimit(req: Request, res: Response, next: NextFunction) {
   const current = requestCounts.get(ip);
 
   if (!current && requestCounts.size >= MAX_TRACKED_CLIENTS) {
-    return res.status(503).json({ error: "Service temporairement indisponible." });
+    return res
+      .status(503)
+      .json({ error: "Service temporairement indisponible." });
   }
 
   if (!current || current.resetAt <= now) {
@@ -38,7 +66,9 @@ export function rateLimit(req: Request, res: Response, next: NextFunction) {
   current.count += 1;
   if (current.count > MAX_REQUESTS_PER_WINDOW) {
     res.setHeader("Retry-After", "60");
-    return res.status(429).json({ error: "Trop de requêtes. Réessaie dans une minute." });
+    return res
+      .status(429)
+      .json({ error: "Trop de requêtes. Réessaie dans une minute." });
   }
   return next();
 }
